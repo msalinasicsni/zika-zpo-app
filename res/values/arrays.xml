@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <string-array name="menu_main">
+        <item>@string/main_maternal</item>
+        <item>@string/main_infant</item>
+        <item>@string/main_specimen</item>
+        <item>@string/main_consent</item>
+        <item>@string/main_us</item>
+    </string-array>
+    
+    <string-array name="menu_maternal_a">
+        <item>@string/maternal_a_1</item>
+        <item>@string/maternal_q_1</item>
+        <item>@string/maternal_a_2</item>
+        <item>@string/maternal_q_2</item>
+        <item>@string/maternal_a_3</item>
+        <item>@string/maternal_q_3</item>
+        <item>@string/maternal_a_4</item>
+        <item>@string/maternal_q_4</item>
+        <item>@string/maternal_a_5</item>
+        <item>@string/maternal_q_5</item>
+        <item>@string/maternal_a_6</item>
+        <item>@string/maternal_q_6</item>
+        <item>@string/maternal_a_7</item>
+        <item>@string/maternal_q_7</item>
+        <item>@string/maternal_a_8</item>
+        <item>@string/maternal_q_8</item>
+        <item>@string/maternal_a_9</item>
+        <item>@string/maternal_q_9</item>
+        <item>@string/maternal_a_10</item>
+        <item>@string/maternal_q_10</item>
+        <item>@string/maternal_a_11</item>
+        <item>@string/maternal_q_11</item>
+        <item>@string/maternal_a_12</item>
+        <item>@string/maternal_a_13</item>
+        <item>@string/maternal_a_14</item>
+        <item>@string/maternal_a_15</item>
+        <item>@string/maternal_a_16</item>
+        <item>@string/maternal_a_17</item>
+        <item>@string/maternal_a_18</item>
+        <item>@string/maternal_a_19</item>
+        <item>@string/maternal_a_20</item>
+    </string-array>
+    
+    <string-array name="menu_maternal_ingreso">
+        <item>@string/maternal_b_1</item>
+        <item>@string/maternal_b_2</item>
+        <item>@string/maternal_b_3</item>
+        <item>@string/maternal_b_4</item>
+        <item>@string/maternal_b_6</item>
+        <item>@string/maternal_b_7</item>
+        <item>@string/maternal_b_8</item>
+        <item>@string/maternal_b_9</item>
+    </string-array>
+    
+    <string-array name="menu_maternal_mensual">
+        <item>@string/maternal_b_4</item>
+        <item>@string/maternal_b_5</item>
+        <item>@string/maternal_b_6</item>
+        <item>@string/maternal_b_7</item>
+        <item>@string/maternal_b_8</item>
+        <item>@string/maternal_b_9</item>
+    </string-array>
+    
+    <string-array name="menu_maternal_delivery">
+        <item>@string/maternal_b_4</item>
+        <item>@string/maternal_b_5</item>
+        <item>@string/maternal_b_6</item>
+        <item>@string/maternal_b_7</item>
+        <item>@string/maternal_b_8</item>
+        <item>@string/maternal_b_9</item>
+        <item>@string/maternal_b_10</item>
+    </string-array>
+    
+    <string-array name="menu_maternal_postpartum">
+        <item>@string/maternal_b_4</item>
+        <item>@string/maternal_b_5</item>
+        <item>@string/maternal_b_6</item>
+        <item>@string/maternal_b_7</item>
+        <item>@string/maternal_b_8</item>
+        <item>@string/maternal_b_9</item>
+        <item>@string/maternal_b_11</item>
+    </string-array>
+    
+    <string-array name="menu_maternal_quincenal">
+        <item>@string/maternal_b_4</item>
+    </string-array>
+    
+    <string-array name="menu_infant">
+        <item>@string/infant_a_1</item>
+        <item>@string/infant_a_2</item>
+        <item>@string/infant_a_3</item>
+        <item>@string/infant_a_4</item>
+        <item>@string/infant_a_5</item>
+        <item>@string/infant_a_6</item>
+        <item>@string/infant_a_7</item>
+        <item>@string/infant_a_8</item>
+        <item>@string/infant_a_9</item>
+        <item>@string/infant_a_10</item>
+    </string-array>
+
+    <string-array name="menu_infant_visit">
+        <item>@string/infant_b_1</item>
+        <item>@string/infant_b_3</item>
+        <item>@string/infant_b_4</item>
+        <item>@string/infant_b_2</item>
+        <item>@string/infant_b_5</item>
+        <item>@string/infant_b_6</item>
+        <item>@string/infant_b_7</item>
+        <item>@string/infant_b_8</item>
+    </string-array>    
+    
+    <string-array name="menu_infant_parto">
+        <item>@string/infant_b_1</item>
+        <item>@string/infant_b_2</item>
+    </string-array>
+    
+    <string-array name="menu_infant_3m">
+        <item>@string/infant_b_1</item>
+        <item>@string/infant_b_2</item>
+    </string-array>
+
+    <string-array name="menu_infant_6m">
+        <item>@string/infant_b_1</item>
+        <item>@string/infant_b_2</item>
+    </string-array>    
+    
+    <string-array name="menu_infant_12m">
+        <item>@string/infant_b_1</item>
+        <item>@string/infant_b_2</item>
+    </string-array>    
+    
+    <string-array name="menu_infant_unsched">
+        <item>@string/infant_b_2</item>
+    </string-array>
+    
+    <string-array name="menu_specimen">
+        <item>@string/specimen_1</item>
+        <item>@string/specimen_2</item>
+    </string-array>
+    
+    <string-array name="menu_consent">
+        <item>@string/consent_1</item>
+        <item>@string/consent_2</item>
+    </string-array>
+    
+    <string-array name="menu_us">
+        <item>@string/us_1</item>
+        <item>@string/us_2</item>
+    </string-array>    
+    
+    <string-array name="list_cs">
+        <item>@string/select</item>
+        <item>Socrates Flores</item>
+        <item>Francisco Buitrago</item>
+        <item>Villa Libertad</item>
+        <item>Edgard Lang</item>
+    </string-array>
+    
+   	<string-array name="yes_no">
+   	    <item>@string/select</item>
+        <item>@string/yes</item>
+        <item>@string/no</item>
+    </string-array>
+    
+   	<string-array name="list_personas_salida_cons">
+        <item>@string/select</item>
+        <item>Jesslie María Barrera Martínez</item>
+        <item>Ana Massiel Urbina Gómez Martínez</item>
+        <item>Lohana Julissa Zeledón López</item>
+        <item>Izamar Altamirano Arias</item>
+        <item>Gloria Liseth Baldelomar Carballo</item>
+        <item>Mabel Gissell Sequeira González</item>
+        <item>Anna Gajewski</item>
+        <item>Elsa Videa López</item>
+        <item>Liliam Llufrío González</item>
+        <item>William Rivas</item>
+        <item>Josue Narvaez</item>
+        <item>Carmen Gisselle Arauz</item>
+        <item>Fabio Marchena</item>
+        <item>Oscar Ortega</item>
+    </string-array>
+    
+   	<string-array name="list_personas_llegada_cons">
+        <item>@string/select</item>
+        <item>Anna Gajewski</item>
+        <item>Elsa Videa López</item>
+        <item>Liliam Llufrío González</item>
+        <item>Ennio Sáenz Martínez</item>
+        <item>William Rivas</item>
+        <item>Josue Narvaez</item>
+        <item>Carmen Gisselle Arauz</item>
+        <item>Fabio Marchena</item>
+        <item>Oscar Ortega</item>
+    </string-array>   
+    
+   	<string-array name="list_personas_salida_us">
+        <item>@string/select</item>
+        <item>Jesslie María Barrera Martínez</item>
+        <item>Ana Massiel Urbina Gómez Martínez</item>
+        <item>Lohana Julissa Zeledón López</item>
+        <item>Izamar Altamirano Arias</item>
+        <item>Gloria Liseth Baldelomar Carballo</item>
+        <item>Mabel Gissell Sequeira González</item>
+        <item>Heidi del Carmen González Gaitán</item>
+        <item>Anna Gajewski</item>
+        <item>Elsa Videa López</item>
+        <item>Liliam Llufrío González</item>
+        <item>William Rivas</item>
+        <item>Josue Narvaez</item>
+        <item>Carmen Gisselle Arauz</item>
+        <item>Fabio Marchena</item>
+        <item>Oscar Ortega</item>
+    </string-array>
+    
+   	<string-array name="list_personas_llegada_us">
+        <item>@string/select</item>
+        <item>@string/select</item>
+        <item>Anna Gajewski</item>
+        <item>Elsa Videa López</item>
+        <item>Liliam Llufrío González</item>
+        <item>Ennio Sáenz Martínez</item>
+        <item>William Rivas</item>
+        <item>Josue Narvaez</item>
+        <item>Carmen Gisselle Arauz</item>
+        <item>Fabio Marchena</item>
+        <item>Oscar Ortega</item>
+    </string-array>
+    
+    <string-array name="list_lugares_salida">
+        <item>@string/select</item>
+        <item>Socrates Flores</item>
+        <item>Francisco Buitrago</item>
+        <item>Villa Libertad</item>
+        <item>Edgard Lang</item>
+        <item>Bertha Calderón</item>
+    </string-array>
+
+    <string-array name="list_lugares_llegada">
+        <item>@string/select</item>
+        <item>Socrates Flores</item>
+        <item>Francisco Buitrago</item>
+        <item>Villa Libertad</item>
+        <item>Edgard Lang</item>
+        <item>Bertha Calderón</item>
+        <item>Oficina ICS</item>
+    </string-array>    
+    
+    <string-array name="list_estados">
+        <item>@string/inm</item>
+        <item>@string/noimn</item>
+        <item>@string/no_def</item>
+    </string-array>
+   	
+    
+</resources>

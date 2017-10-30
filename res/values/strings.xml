@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Estudio ZPO</string>
+    <string name="main_header">Zika en infantes y en el embarazo (Estudio ZPO)</string>
+    <string name="desc_logo">Instituto de Ciencias Sostenibles</string>
+    
+    <string name="success">Operación exitosa!</string>
+    <string name="error">Ha ocurrido un error!</string>
+    <string name="errordb">Ha ocurrido un error, base de datos no existe!</string>
+    <string name="loading">Cargando.....</string>
+    <string name="yes">Si</string>
+    <string name="no">No</string>
+    <string name="confirm">Confirmar</string>
+    <string name="exiting">Realmente desea Salir?</string>
+    <string name="downloading">Descargar toda la info del servidor? Esta operacion descarta toda la informacion actual en el dispositivo</string>
+    <string name="uploading">Enviar toda la info al servidor?</string>
+    <string name="desc_barcode">Escanear código de barras</string>
+    <string name="out_of_time">Este evento se encuentra fuera de calendario!!! Realmente desea ingresar información?</string>
+    <string name="parametro">Parámetro de búsqueda</string>
+    <string name="method">Método:</string>
+    <string name="ok">Aceptar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="edit">Editar</string>
+    <string name="add">Agregar</string>
+    <string name="select">Seleccionar</string>
+    <string name="enter">Ingresar</string>
+    <string name="save">Guardar</string>
+    <string name="form">Formulario</string>
+    <string name="barcode_error">Escaner de código de barras no disponible</string>
+    <string name="barcode_code">Escanee el Código de Barras</string>
+    <string name="search_hint">Ingresar texto de búsqueda</string>
+    <string name="code_error">Identificador inválido!</string>
+    <string name="code_notfound">Identificador no encontrado!</string>
+    <string name="scan_error">Esta lectura es inválida!</string>
+    <string name="no_items">No hay registros!</string>
+    <string name="today_items">Registros de hoy</string>
+    <string name="storage_error">Medio de almacenamiento no disponible!</string>
+    <string name="err_not_completed">No ha completado el formulario</string>
+    <string name="err_duplicated">Error! Codigo ya existe en la base de datos!</string>
+    <string name="err_cancel">Ha cancelado el proceso!</string>
+    <string name="notelegible">Participante no es elegible para participar en el estudio!</string>
+    <string name="study_id">Código del estudio</string>
+    <string name="pending">Pendiente</string>
+    <string name="done">Realizado</string>
+    <string name="notdone">No Realizado</string>
+    <string name="ontime">(En tiempo)</string>
+    <string name="delayed">(Con atraso)</string>
+    <string name="notavailable">No disponible</string>
+    <string name="available">Disponible</string>
+    <string name="programmed">Programado</string>
+    <string name="forms">Formularios a realizar en este evento</string>
+    <string name="verify">Esta acción no se puede deshacer, desea proceder???</string>
+    <string name="data_not_sent">Hay datos sin enviar en el equipo, estos datos se borrarán si continúa. Aún desea descargar la información del servidor?</string>
+    <string name="wipe_db_confirm">Al marcar esta opción borrará la base de datos del equipo, los datos almacenados se borrarán si continúa. Aún desea marcar esta opción?</string>
+    <string name="next">Siguiente</string>
+    <string name="prev">Previo</string>
+    <string name="finish">Finalizar</string>
+    <string name="review">Revisar</string>
+    <string name="is_null">(Nulo)</string>
+    <string name="submit_confirm_message">Guardar la informacion en la base de datos?</string>
+    <string name="submit_confirm_button">Guardar</string>    
+    
+    <string name="gpstitle">Configuración GPS</string>
+    <string name="gpsquestion">El GPS no está habilitado. Quiere ir al menú de configuración y activarlo?</string>
+    
+    <string name="error_cons">Debe contestar si dió consentimiento!</string>
+    <string name="error_cs">Centro de salud inválido!</string>
+    <string name="no_cons">La mujer no dió consentimiento!</string>
+    
+    <string name="status">Estado</string>
+    <string name="inm">Inmunológico</string>
+    <string name="noimn">No inmunológico</string>
+    <string name="no_def">No definido!</string>
+    <string name="label_status">Definir estado de la participante</string>
+    
+    <string name="evento">Evento</string>
+    <string name="SCREENING">Ingreso</string>
+    <string name="TRI2">2do Trimestre</string>
+    <string name="TRI3">3er Trimestre</string>
+    <string name="UNSCHED">No programado</string>
+    
+    <string name="consents">Consentimientos:</string>
+    <string name="c2aAlmTej">a. Los tejidos fetales pueden ser almacenados y examinados:</string>
+    <string name="c2bEnvMue">b. Las muestras pueden ser enviadas a Estados Unidos:</string>
+    <string name="c2cAlmMue">c. Permiso para almacenar muestras y datos para investigaciones en el futuro:</string>
+    <string name="c2dContact">d. Quiere ser contactada para dar consentimiento para investigaciones en el futuro:</string>
+    <string name="c2eExp">e. Autoriza el acceso a los registros médicos:</string>
+    <string name="c2fOport">f. Permiso de ser re-contactada sobre oportunidades de participar en otras investigaciones en el futuro:</string>
+    
+    
+</resources>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="us_1">Salida de reportes US</string>
+	<string name="us_2">Recepción de reportes US</string>
+</resources>

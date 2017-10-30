@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="main_maternal">Embarazada</string>
+    <string name="main_infant">Infante</string>
+    <string name="main_specimen">Muestras</string>
+    <string name="main_consent">Control Consentimientos</string>
+    <string name="main_us">Control Reportes US</string>
+</resources>
