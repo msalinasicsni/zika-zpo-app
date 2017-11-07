@@ -34,7 +34,6 @@ public class ZpoEstadoEmbarazada extends BaseMetaData {
 		this.ingreso = ingreso;
 	}
 
-    
     public char getMes12() {
         return mes12;
     }
@@ -52,7 +51,6 @@ public class ZpoEstadoEmbarazada extends BaseMetaData {
 		this.mes24 = mes24;
 	}
 
-	
 	@Override
 	public String toString(){
 		return this.recordId;

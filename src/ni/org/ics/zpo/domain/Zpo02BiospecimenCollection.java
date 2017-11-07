@@ -16,7 +16,7 @@ public class Zpo02BiospecimenCollection extends BaseMetaData {
     private String bscMatBldCol;
     private String bscMatBldTyp1;
     private String bscMatBldId1;
-    private Integer bscMatBldVol1;
+    private Double bscMatBldVol1;
     private String bscMatBldTime;
     private String bscMatBldCom;
     private String bscPerson1;
@@ -88,11 +88,11 @@ public class Zpo02BiospecimenCollection extends BaseMetaData {
     }
 
     
-    public Integer getBscMatBldVol1() {
+    public Double getBscMatBldVol1() {
         return bscMatBldVol1;
     }
 
-    public void setBscMatBldVol1(Integer bscMatBldVol1) {
+    public void setBscMatBldVol1(Double bscMatBldVol1) {
         this.bscMatBldVol1 = bscMatBldVol1;
     }
 

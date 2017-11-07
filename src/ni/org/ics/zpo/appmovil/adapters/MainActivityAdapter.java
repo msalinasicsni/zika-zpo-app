@@ -41,16 +41,8 @@ public class MainActivityAdapter extends ArrayAdapter<String> {
 			img=getContext().getResources().getDrawable( R.drawable.ic_baby);
 			textView.setCompoundDrawablesWithIntrinsicBounds(img, null, null, null);
 			break;
-		case 2: 
-			img=getContext().getResources().getDrawable( R.drawable.ic_tubes);
-			textView.setCompoundDrawablesWithIntrinsicBounds(img, null, null, null);
-			break;
-		case 3: 
+		case 2:
 			img=getContext().getResources().getDrawable( R.drawable.ic_briefcase);
-			textView.setCompoundDrawablesWithIntrinsicBounds(img, null, null, null);
-			break;
-		case 4: 
-			img=getContext().getResources().getDrawable( R.drawable.ic_us);
 			textView.setCompoundDrawablesWithIntrinsicBounds(img, null, null, null);
 			break;
 		default:

@@ -46,6 +46,36 @@
             android:screenOrientation="portrait" />
         <activity android:name="ni.org.ics.zpo.appmovil.activities.server.DownloadAllActivity"
             android:screenOrientation="portrait" />
+        <activity android:name="ni.org.ics.zpo.appmovil.activities.buscar.BuscarMadreActivity"
+                  android:screenOrientation="portrait" />
+        <activity android:name="ni.org.ics.zpo.appmovil.activities.paginas.MenuMadresActivity"
+                  android:screenOrientation="portrait" />
+        <activity android:name="ni.org.ics.zpo.appmovil.activities.paginas.eventosmadre.IngresoActivity"
+                  android:screenOrientation="portrait" />
+        <activity android:name="ni.org.ics.zpo.appmovil.activities.nuevos.NewZpo00ScreeningActivity"
+                  android:screenOrientation="portrait" />
+        <activity android:name="ni.org.ics.zpo.appmovil.activities.nuevos.NewZpo01StudyEntrySectionDtoFActivity"
+                  android:screenOrientation="portrait" />
+        <activity android:name="ni.org.ics.zpo.appmovil.activities.nuevos.NewZpo01StudyEntrySectionAtoBActivity"
+                  android:screenOrientation="portrait" />
+        <activity android:name="ni.org.ics.zpo.appmovil.activities.nuevos.NewZpo01StudyEntrySectionCActivity"
+                  android:screenOrientation="portrait" />
+        <activity android:name="ni.org.ics.zpo.appmovil.activities.nuevos.NewZpo02BiospecimenCollectionActivity"
+                  android:screenOrientation="portrait" />
+        <activity android:name="ni.org.ics.zpo.appmovil.activities.nuevos.NewZpo04ExtendedSectionAtoDActivity"
+                  android:screenOrientation="portrait" />
+        <activity android:name="ni.org.ics.zpo.appmovil.activities.nuevos.NewZpo04ExtendedSectionEActivity"
+                  android:screenOrientation="portrait" />
+        <activity android:name="ni.org.ics.zpo.appmovil.activities.nuevos.NewZpo04ExtendedSectionFActivity"
+                  android:screenOrientation="portrait" />
+        <activity android:name="ni.org.ics.zpo.appmovil.activities.nuevos.NewZpo05DeliveryActivity"
+                  android:screenOrientation="portrait" />
+        <activity android:name="ni.org.ics.zpo.appmovil.activities.nuevos.NewZpo08StudyExitActivity"
+                  android:screenOrientation="portrait" />
+        <activity android:name="ni.org.ics.zpo.appmovil.activities.buscar.BuscarInfanteActivity"
+                  android:screenOrientation="portrait" />
+        <activity android:name="ni.org.ics.zpo.appmovil.activities.paginas.MenuInfantesActivity"
+                  android:screenOrientation="portrait" />
     </application>
 
 </manifest>

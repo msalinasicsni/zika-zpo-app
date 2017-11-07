@@ -254,9 +254,9 @@ public final class R {
         public static final int back=0x7f0800cb;
         public static final int barcode_code=0x7f08001a;
         public static final int barcode_error=0x7f080019;
-        public static final int c2aAlmTej=0x7f08004a;
-        public static final int c2bEnvMue=0x7f08004b;
-        public static final int c2cAlmMue=0x7f08004c;
+        public static final int c2aEnvMue =0x7f08004a;
+        public static final int c2bAlmMue =0x7f08004b;
+        public static final int c2cEstGen =0x7f08004c;
         public static final int c2dContact=0x7f08004d;
         public static final int c2eExp=0x7f08004e;
         public static final int c2fOport=0x7f08004f;

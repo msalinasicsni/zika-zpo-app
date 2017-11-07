@@ -14,23 +14,31 @@ public class Zpo00Screening extends BaseMetaData{
 	 */
 	private static final long serialVersionUID = 1L;
 	private String recordId;
-    private String preScreenId;
     private String eventName;
     private Date scrVisitDate;
+    private String scrConsentObta;
+    private String scrObDobDay;
+    private String scrObDobMon;
+    private Integer scrObDobYear;
+    private Integer scrObAge;
+    private String scrObAssent;
     private String scrConsentA; //envio muestras a EEUU
     private String scrConsentB; //USO FUTORO DE MUESTRAS BIOLOGICAS
     private String scrConsentC; //ESTUDIOS GENETICOS
-    private String nombre1Tutor;
-    private String nombre2Tutor;
-    private String apellido1Tutor;
-    private String apellido2Tutor;
-    private String relacionFamiliarTutor;
-    private String participanteOTutorAlfabeto;
-    private String testigoPresente;
-    private String nombre1Testigo;
-    private String nombre2Testigo;
-    private String apellido1Testigo;
-    private String apellido2Testigo;
+    private String scrName1Tutor;
+    private String scrName2Tutor;
+    private String scrLastName1Tutor;
+    private String scrLastName2Tutor;
+    private String scrFamilyRelationship;
+    private String scrFamilyRelOther;
+    private String scrIlliterate;
+    private String scrName1Witness;
+    private String scrName2Witness;
+    private String scrLastName1Witness;
+    private String scrLastName2Witness;
+    private String scrReasonNot;
+    private String scrReasonOther;
+    private String scrCs;
 
     public String getRecordId() {
         return recordId;
@@ -38,14 +46,6 @@ public class Zpo00Screening extends BaseMetaData{
 
     public void setRecordId(String recordId) {
         this.recordId = recordId;
-    }
-
-    public String getPreScreenId() {
-        return preScreenId;
-    }
-
-    public void setPreScreenId(String preScreenId) {
-        this.preScreenId = preScreenId;
     }
 
     public String getEventName() {
@@ -62,6 +62,54 @@ public class Zpo00Screening extends BaseMetaData{
 
     public void setScrVisitDate(Date scrVisitDate) {
         this.scrVisitDate = scrVisitDate;
+    }
+
+    public String getScrConsentObta() {
+        return scrConsentObta;
+    }
+
+    public void setScrConsentObta(String scrConsentObta) {
+        this.scrConsentObta = scrConsentObta;
+    }
+
+    public String getScrObDobDay() {
+        return scrObDobDay;
+    }
+
+    public void setScrObDobDay(String scrObDobDay) {
+        this.scrObDobDay = scrObDobDay;
+    }
+
+    public String getScrObDobMon() {
+        return scrObDobMon;
+    }
+
+    public void setScrObDobMon(String scrObDobMon) {
+        this.scrObDobMon = scrObDobMon;
+    }
+
+    public Integer getScrObDobYear() {
+        return scrObDobYear;
+    }
+
+    public void setScrObDobYear(Integer scrObDobYear) {
+        this.scrObDobYear = scrObDobYear;
+    }
+
+    public Integer getScrObAge() {
+        return scrObAge;
+    }
+
+    public void setScrObAge(Integer scrObAge) {
+        this.scrObAge = scrObAge;
+    }
+
+    public String getScrObAssent() {
+        return scrObAssent;
+    }
+
+    public void setScrObAssent(String scrObAssent) {
+        this.scrObAssent = scrObAssent;
     }
 
     public String getScrConsentA() {
@@ -88,96 +136,119 @@ public class Zpo00Screening extends BaseMetaData{
         this.scrConsentC = scrConsentC;
     }
 
-    public String getNombre1Tutor() {
-        return nombre1Tutor;
+    public String getScrName1Tutor() {
+        return scrName1Tutor;
     }
 
-    public void setNombre1Tutor(String nombre1Tutor) {
-        this.nombre1Tutor = nombre1Tutor;
+    public void setScrName1Tutor(String scrName1Tutor) {
+        this.scrName1Tutor = scrName1Tutor;
     }
 
-    public String getNombre2Tutor() {
-        return nombre2Tutor;
+    public String getScrName2Tutor() {
+        return scrName2Tutor;
     }
 
-    public void setNombre2Tutor(String nombre2Tutor) {
-        this.nombre2Tutor = nombre2Tutor;
+    public void setScrName2Tutor(String scrName2Tutor) {
+        this.scrName2Tutor = scrName2Tutor;
     }
 
-    public String getApellido1Tutor() {
-        return apellido1Tutor;
+    public String getScrLastName1Tutor() {
+        return scrLastName1Tutor;
     }
 
-    public void setApellido1Tutor(String apellido1Tutor) {
-        this.apellido1Tutor = apellido1Tutor;
+    public void setScrLastName1Tutor(String scrLastName1Tutor) {
+        this.scrLastName1Tutor = scrLastName1Tutor;
     }
 
-    public String getApellido2Tutor() {
-        return apellido2Tutor;
+    public String getScrLastName2Tutor() {
+        return scrLastName2Tutor;
     }
 
-    public void setApellido2Tutor(String apellido2Tutor) {
-        this.apellido2Tutor = apellido2Tutor;
+    public void setScrLastName2Tutor(String scrLastName2Tutor) {
+        this.scrLastName2Tutor = scrLastName2Tutor;
     }
 
-    public String getRelacionFamiliarTutor() {
-        return relacionFamiliarTutor;
+    public String getScrFamilyRelationship() {
+        return scrFamilyRelationship;
     }
 
-    public void setRelacionFamiliarTutor(String relacionFamiliar) {
-        this.relacionFamiliarTutor = relacionFamiliar;
+    public void setScrFamilyRelationship(String scrFamilyRelationship) {
+        this.scrFamilyRelationship = scrFamilyRelationship;
     }
 
-    public String getParticipanteOTutorAlfabeto() {
-        return participanteOTutorAlfabeto;
+    public String getScrFamilyRelOther() {
+        return scrFamilyRelOther;
     }
 
-    public void setParticipanteOTutorAlfabeto(String participanteOTutorAlfabeto) {
-        this.participanteOTutorAlfabeto = participanteOTutorAlfabeto;
+    public void setScrFamilyRelOther(String scrFamilyRelOther) {
+        this.scrFamilyRelOther = scrFamilyRelOther;
     }
 
-    public String getTestigoPresente() {
-        return testigoPresente;
+    public String getScrIlliterate() {
+        return scrIlliterate;
     }
 
-    public void setTestigoPresente(String testigoPresente) {
-        this.testigoPresente = testigoPresente;
+    public void setScrIlliterate(String scrIlliterate) {
+        this.scrIlliterate = scrIlliterate;
     }
 
-    public String getNombre1Testigo() {
-        return nombre1Testigo;
+    public String getScrName1Witness() {
+        return scrName1Witness;
     }
 
-    public void setNombre1Testigo(String nombre1Testigo) {
-        this.nombre1Testigo = nombre1Testigo;
+    public void setScrName1Witness(String scrName1Witness) {
+        this.scrName1Witness = scrName1Witness;
     }
 
-    public String getNombre2Testigo() {
-        return nombre2Testigo;
+    public String getScrName2Witness() {
+        return scrName2Witness;
     }
 
-    public void setNombre2Testigo(String nombre2Testigo) {
-        this.nombre2Testigo = nombre2Testigo;
+    public void setScrName2Witness(String scrName2Witness) {
+        this.scrName2Witness = scrName2Witness;
     }
 
-    public String getApellido1Testigo() {
-        return apellido1Testigo;
+    public String getScrLastName1Witness() {
+        return scrLastName1Witness;
     }
 
-    public void setApellido1Testigo(String apellido1Testigo) {
-        this.apellido1Testigo = apellido1Testigo;
+    public void setScrLastName1Witness(String scrLastName1Witness) {
+        this.scrLastName1Witness = scrLastName1Witness;
     }
 
-    public String getApellido2Testigo() {
-        return apellido2Testigo;
+    public String getScrLastName2Witness() {
+        return scrLastName2Witness;
     }
 
-    public void setApellido2Testigo(String apellido2Testigo) {
-        this.apellido2Testigo = apellido2Testigo;
+    public void setScrLastName2Witness(String scrLastName2Witness) {
+        this.scrLastName2Witness = scrLastName2Witness;
     }
 
-	
-	@Override
+    public String getScrReasonNot() {
+        return scrReasonNot;
+    }
+
+    public void setScrReasonNot(String scrReasonNot) {
+        this.scrReasonNot = scrReasonNot;
+    }
+
+    public String getScrReasonOther() {
+        return scrReasonOther;
+    }
+
+    public void setScrReasonOther(String scrReasonOther) {
+        this.scrReasonOther = scrReasonOther;
+    }
+
+    public String getScrCs() {
+        return scrCs;
+    }
+
+    public void setScrCs(String scrCs) {
+        this.scrCs = scrCs;
+    }
+
+    @Override
 	public String toString(){
 		return this.recordId;
 	}

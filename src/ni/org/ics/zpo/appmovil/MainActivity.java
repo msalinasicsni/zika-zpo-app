@@ -2,6 +2,8 @@ package ni.org.ics.zpo.appmovil;
 
 
 
+import ni.org.ics.zpo.appmovil.activities.buscar.BuscarInfanteActivity;
+import ni.org.ics.zpo.appmovil.activities.buscar.BuscarMadreActivity;
 import ni.org.ics.zpo.appmovil.activities.server.DownloadAllActivity;
 import ni.org.ics.zpo.appmovil.activities.server.UploadAllActivity;
 import ni.org.ics.zpo.appmovil.adapters.MainActivityAdapter;
@@ -75,12 +77,23 @@ public class MainActivity extends ListActivity {
 	protected void onListItemClick(ListView listView, View view, int position,
 			long id) {
 		// Opcion de menu seleccionada
-		
+        Intent i;
 		switch(position){
-				
-		default: 
-			String s = (String) getListAdapter().getItem(position);
-			Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
+            case 0:
+                i = new Intent(getApplicationContext(),
+                        BuscarMadreActivity.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(i);
+                break;
+            case 1:
+                i = new Intent(getApplicationContext(),
+                        BuscarInfanteActivity.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(i);
+                break;
+            default:
+                String s = (String) getListAdapter().getItem(position);
+                Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
 		}
 	}
 

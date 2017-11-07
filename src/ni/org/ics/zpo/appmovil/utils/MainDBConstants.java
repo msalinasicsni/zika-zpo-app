@@ -91,5 +91,180 @@ public class MainDBConstants {
 	public static final String PHONE_NUMBER = "numero_telefono";
 	public static final String TODAY = "fecha_registro";
 
-	
+    //Tabla usuarios
+    public static final String SCREENING_TABLE = "zpo00_screening";
+    //Campos usuarios
+    public static final String recordId = "recordId";
+    public static final String eventName = "eventName";
+    public static final String scrVisitDate = "scrVisitDate";
+    public static final String scrConsentObta = "scrConsentObta";
+    public static final String scrObDobDay = "scrObDobDay";
+    public static final String scrObDobMon = "scrObDobMon";
+    public static final String scrObDobYear = "scrObDobYear";
+    public static final String scrObAge = "scrObAge";
+    public static final String scrObAssent = "scrObAssent";
+    public static final String scrConsentA = "scrConsentA"; //envio muestras a EEUU
+    public static final String scrConsentB = "scrConsentB"; //USO FUTORO DE MUESTRAS BIOLOGICAS
+    public static final String scrConsentC = "scrConsentC"; //ESTUDIOS GENETICOS
+    public static final String scrName1Tutor = "scrName1Tutor";
+    public static final String scrName2Tutor = "scrName2Tutor";
+    public static final String scrLastName1Tutor = "scrLastName1Tutor";
+    public static final String scrLastName2Tutor = "scrLastName2Tutor";
+    public static final String scrFamilyRelationship = "scrFamilyRelationship";
+    public static final String scrFamilyRelOther = "scrFamilyRelOther";
+    public static final String scrIlliterate = "scrIlliterate";
+    public static final String scrName1Witness = "scrName1Witness";
+    public static final String scrName2Witness = "scrName2Witness";
+    public static final String scrLastName1Witness = "scrLastName1Witness";
+    public static final String scrLastName2Witness = "scrLastName2Witness";
+    public static final String scrReasonNot = "scrReasonNot";
+    public static final String scrReasonOther = "scrReasonOther";
+    public static final String scrCs = "scrCs";
+
+    //Crear tabla usuarios
+    public static final String CREATE_SCREENING_TABLE = "create table if not exists "
+            + SCREENING_TABLE + " ("
+            + recordId + " text not null, "
+            + eventName + " text not null, "
+            + scrVisitDate + " date, "
+            + scrConsentObta  + " text, "
+            + scrObDobDay + " text, "
+            + scrObDobMon + " text, "
+            + scrObDobYear + " integer, "
+            + scrObAge + " integer, "
+            + scrObAssent + " text, "
+            + scrConsentA + " text, "
+            + scrConsentB + " text, "
+            + scrConsentC + " text, "
+            + scrName1Tutor + " text, "
+            + scrName2Tutor + " text, "
+            + scrLastName1Tutor + " text, "
+            + scrLastName2Tutor + " text, "
+            + scrFamilyRelationship + " text, "
+            + scrFamilyRelOther + " text, "
+            + scrIlliterate  + " text, "
+            + scrName1Witness + " text, "
+            + scrName2Witness + " text, "
+            + scrLastName1Witness + " text, "
+            + scrLastName2Witness + " text, "
+            + scrReasonNot + " text, "
+            + scrReasonOther + " text, "
+            + scrCs + " text, "
+            + recordDate + " date, "
+            + recordUser + " text, "
+            + pasive + " text, "
+            + ID_INSTANCIA + " integer,"
+            + FILE_PATH + " text,"
+            + STATUS + " text not null, "
+            + START  + " text, "
+            + END  + " text, "
+            + DEVICE_ID  + " text, "
+            + SIM_SERIAL + " text, "
+            + PHONE_NUMBER  + " text, "
+            + TODAY  + " date, "
+            + "primary key (" + recordId + "));";
+
+    //Tabla estado embarazada
+    public static final String STATUS_MOTHER_TABLE = "estado_madre";
+    //Campos estado embarazada
+    public static final String ingreso = "ingreso";
+    public static final String mes12 = "mes12";
+    public static final String mes24 = "mes24";
+
+    //Crear tabla estado embarazada
+    public static final String CREATE_STATUS_MOTHER_TABLE = "create table if not exists "
+            + STATUS_MOTHER_TABLE + " ("
+            + recordId + " text not null, "
+            + ingreso + " text, "
+            + mes12 + " text, "
+            + mes24 + " text, "
+            + recordDate + " date, "
+            + recordUser + " text, "
+            + pasive + " text, "
+            + ID_INSTANCIA + " integer,"
+            + FILE_PATH + " text,"
+            + STATUS + " text not null, "
+            + START  + " text, "
+            + END  + " text, "
+            + DEVICE_ID  + " text, "
+            + SIM_SERIAL + " text, "
+            + PHONE_NUMBER  + " text, "
+            + TODAY  + " date, "
+            + "primary key (" + recordId + "));";
+
+    //Tabla ZpoInfantData
+    public static String INFANTDATA_TABLE = "zpo_datos_infante";
+
+    public static final String pregnantId = "pregnantId";
+    public static final String infantBirthDate = "infantBirthDate";
+    public static final String infantMode = "infantMode";
+    public static final String infantDeliveryWho = "infantDeliveryWho";
+    public static final String infantDeliveryOccur = "infantDeliveryOccur";
+    public static final String infantHospitalId = "infantHospitalId";
+    public static final String infantClinicId = "infantClinicId";
+    public static final String infantDeliveryOther = "infantDeliveryOther";
+    public static final String infantNumBirth = "infantNumBirth";
+    public static final String infantFetalOutcome = "infantFetalOutcome";
+    public static final String infantCauseDeath = "infantCauseDeath";
+    public static final String infantSexBaby = "infantSexBaby";
+    public static final String infantConsentInfant = "infantConsentInfant";
+    public static final String infantReasonNoconsent = "infantReasonNoconsent";
+    public static final String infantNoconsentOther = "infantNoconsentOther";
+
+    //Crear tabla ZpoInfantData
+    public static final String CREATE_INFANTDATA_TABLE = "create table if not exists "
+            + INFANTDATA_TABLE + " ("
+            + recordId + " text not null, "
+            + pregnantId + " text, "
+            + infantBirthDate + " date, "
+            + infantMode + " text, "
+            + infantDeliveryWho + " text, "
+            + infantDeliveryOccur + " text, "
+            + infantHospitalId + " text, "
+            + infantClinicId + " text, "
+            + infantDeliveryOther + " text, "
+            + infantNumBirth + " text, "
+            + infantFetalOutcome + " text, "
+            + infantCauseDeath + " text, "
+            + infantSexBaby + " text, "
+            + infantConsentInfant + " text, "
+            + infantReasonNoconsent + " text, "
+            + infantNoconsentOther + " text, "
+            + MainDBConstants.recordDate + " date, "
+            + MainDBConstants.recordUser + " text, "
+            + MainDBConstants.pasive + " text, "
+            + MainDBConstants.ID_INSTANCIA + " integer,"
+            + MainDBConstants.FILE_PATH + " text,"
+            + MainDBConstants.STATUS + " text not null, "
+            + MainDBConstants.START  + " text, "
+            + MainDBConstants.END  + " text, "
+            + MainDBConstants.DEVICE_ID  + " text, "
+            + MainDBConstants.SIM_SERIAL + " text, "
+            + MainDBConstants.PHONE_NUMBER  + " text, "
+            + MainDBConstants.TODAY  + " date, "
+            + "primary key (" + recordId + "));";
+
+    //Tabla ZpoEstadoInfante
+    public static String INFANTSTATUS_TABLE = "zpo_estado_infante";
+
+    //Crear tabla ZpoEstadoInfante
+    public static final String CREATE_INFANTSTATUS_TABLE = "create table if not exists "
+            + INFANTSTATUS_TABLE + " ("
+            + recordId + " text not null, "
+            + ingreso + " text, "
+            + mes12 + " text, "
+            + mes24 + " text, "
+            + MainDBConstants.recordDate + " date, "
+            + MainDBConstants.recordUser + " text, "
+            + MainDBConstants.pasive + " text, "
+            + MainDBConstants.ID_INSTANCIA + " integer,"
+            + MainDBConstants.FILE_PATH + " text,"
+            + MainDBConstants.STATUS + " text not null, "
+            + MainDBConstants.START  + " text, "
+            + MainDBConstants.END  + " text, "
+            + MainDBConstants.DEVICE_ID  + " text, "
+            + MainDBConstants.SIM_SERIAL + " text, "
+            + MainDBConstants.PHONE_NUMBER  + " text, "
+            + MainDBConstants.TODAY  + " date, "
+            + "primary key (" + recordId + "));";
 }

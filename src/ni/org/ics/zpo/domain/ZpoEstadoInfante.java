@@ -1,5 +1,7 @@
 package ni.org.ics.zpo.domain;
 
+import java.util.Date;
+
 /**
  * Created by FIRSTICT on 2/10/2017.
  * V1.0
@@ -14,7 +16,24 @@ public class ZpoEstadoInfante extends BaseMetaData{
     private char mes12 = '0';
     private char mes24 = '0';
 
-    
+    public ZpoEstadoInfante(){
+
+    }
+
+    public ZpoEstadoInfante(String recordId, char ingreso, char mes12,
+                           char mes24, Date recordDate, String recordUser, char pasive,
+                           Integer idInstancia, String instancePath, String estado,
+                           String start, String end, String deviceid, String simserial,
+                           String phonenumber, Date today) {
+        super(recordDate, recordUser, pasive,
+                idInstancia, instancePath, estado,
+                start, end, deviceid, simserial,
+                phonenumber, today);
+        this.recordId = recordId;
+        this.ingreso = ingreso;
+        this.mes12 = mes12;
+        this.mes24 = mes24;
+    }
     public String getRecordId() {
         return recordId;
     }
