@@ -2,15 +2,9 @@
 <resources>
     <string name="infant_events">Matriz de eventos para infantes</string>
     
-    <string name="infant_a_1">Parto</string>
-    <string name="infant_a_2">3 meses</string>
-    <string name="infant_a_3">6 meses</string>
-    <string name="infant_a_4">12 meses</string>
-    <string name="infant_a_5">No programada 1</string>
-    <string name="infant_a_6">No programada 2</string>
-    <string name="infant_a_7">No programada 3</string>
-    <string name="infant_a_8">No programada 4</string>
-    <string name="infant_a_9">No programada 5</string>
+    <string name="infant_a_1">Ingreso</string>
+    <string name="infant_a_2">12 meses</string>
+    <string name="infant_a_3">24 meses</string>
     <string name="infant_a_10">Salida</string>
     
     <!-- Formularios -->

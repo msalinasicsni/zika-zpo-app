@@ -429,6 +429,18 @@ public class NewZpo05DeliveryActivity extends AbstractAsyncActivity {
                                 zipA.editarZpoInfantData(mZpoInfantData3);
                             else zipA.crearZpoInfantData(mZpoInfantData3);
                         }
+                        if (mZpoEstadoInfante1!=null){
+                            if (zipA.getZpoEstadoInfante(MainDBConstants.recordId + "='" + mZpoEstadoInfante1.getRecordId() + "'",null)==null)
+                                zipA.crearZpoEstadoInfante(mZpoEstadoInfante1);
+                        }
+                        if (mZpoEstadoInfante2!=null){
+                            if (zipA.getZpoInfantData(MainDBConstants.recordId + "='" + mZpoEstadoInfante2.getRecordId() + "'",null)==null)
+                                zipA.crearZpoEstadoInfante(mZpoEstadoInfante2);
+                        }
+                        if (mZpoEstadoInfante3!=null){
+                            if (zipA.getZpoInfantData(MainDBConstants.recordId + "='" + mZpoEstadoInfante3.getRecordId() + "'",null)==null)
+                                zipA.crearZpoEstadoInfante(mZpoEstadoInfante3);
+                        }
     				}
     				zipA.close();
     			} catch (Exception e) {

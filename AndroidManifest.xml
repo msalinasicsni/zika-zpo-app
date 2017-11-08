@@ -52,6 +52,8 @@
                   android:screenOrientation="portrait" />
         <activity android:name="ni.org.ics.zpo.appmovil.activities.paginas.eventosmadre.IngresoActivity"
                   android:screenOrientation="portrait" />
+        <activity android:name="ni.org.ics.zpo.appmovil.activities.paginas.eventosmadre.MotherVisitActivity"
+                  android:screenOrientation="portrait" />
         <activity android:name="ni.org.ics.zpo.appmovil.activities.nuevos.NewZpo00ScreeningActivity"
                   android:screenOrientation="portrait" />
         <activity android:name="ni.org.ics.zpo.appmovil.activities.nuevos.NewZpo01StudyEntrySectionDtoFActivity"
@@ -75,6 +77,30 @@
         <activity android:name="ni.org.ics.zpo.appmovil.activities.buscar.BuscarInfanteActivity"
                   android:screenOrientation="portrait" />
         <activity android:name="ni.org.ics.zpo.appmovil.activities.paginas.MenuInfantesActivity"
+                  android:screenOrientation="portrait" />
+        <activity android:name="ni.org.ics.zpo.appmovil.activities.paginas.eventosinfante.InfantVisitActivity"
+                  android:screenOrientation="portrait" />
+        <activity android:name="ni.org.ics.zpo.appmovil.activities.paginas.eventosinfante.InfantEntryActivity"
+                  android:screenOrientation="portrait" />
+        <activity android:name="ni.org.ics.zpo.appmovil.activities.nuevos.NewZpo07InfantAssessmentVisitActivity"
+                  android:screenOrientation="portrait" />
+        <activity android:name="ni.org.ics.zpo.appmovil.activities.nuevos.NewZpo07InfantAssessmentVisitOphtActivity"
+                  android:screenOrientation="portrait" />
+        <activity android:name="ni.org.ics.zpo.appmovil.activities.nuevos.NewZpo07InfantAssessmentVisitPsyActivity"
+                  android:screenOrientation="portrait" />
+        <activity android:name="ni.org.ics.zpo.appmovil.activities.nuevos.NewZpo07aInfantOphtResultsActivity"
+                  android:screenOrientation="portrait" />
+        <activity android:name="ni.org.ics.zpo.appmovil.activities.nuevos.NewZpo07bInfantAudioResultsActivity"
+                  android:screenOrientation="portrait" />
+        <activity android:name="ni.org.ics.zpo.appmovil.activities.nuevos.NewZpo07cInfantImageStudiesActivity"
+                  android:screenOrientation="portrait" />
+        <activity android:name="ni.org.ics.zpo.appmovil.activities.nuevos.NewZpo07dInfantBayleyScalesActivity"
+                  android:screenOrientation="portrait" />
+        <activity android:name="ni.org.ics.zpo.appmovil.activities.paginas.MenuControlConsentimientosActivity"
+                  android:screenOrientation="portrait" />
+        <activity android:name="ni.org.ics.zpo.appmovil.activities.nuevos.NewZpoControlConsentimientosRecepcionActivity"
+                  android:screenOrientation="portrait" />
+        <activity android:name="ni.org.ics.zpo.appmovil.activities.nuevos.NewZpoControlConsentimientosSalidaActivity"
                   android:screenOrientation="portrait" />
     </application>
 

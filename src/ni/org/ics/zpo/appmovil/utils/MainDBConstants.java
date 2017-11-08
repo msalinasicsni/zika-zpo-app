@@ -164,6 +164,50 @@ public class MainDBConstants {
             + TODAY  + " date, "
             + "primary key (" + recordId + "));";
 
+    //Tabla datos embarazada
+    public static final String DATA_MOTHER_TABLE = "datos_madre";
+    //Campos estado embarazada
+    public static final String cs = "cs";
+    public static final String barrio = "barrio";
+    public static final String nombre1 = "nombre1";
+    public static final String nombre2 = "nombre2";
+    public static final String apellido1 = "apellido1";
+    public static final String apellido2 = "apellido2";
+    public static final String fechaNac = "fechaNac";
+    public static final String direccion = "direccion";
+    public static final String latitud = "latitud";
+    public static final String longitud = "longitud";
+    public static final String telefonoContacto = "telefonoContacto";
+
+    //Crear tabla datos embarazada
+    public static final String CREATE_DATA_MOTHER_TABLE = "create table if not exists "
+            + DATA_MOTHER_TABLE + " ("
+            + recordId + " text not null, "
+            + cs + " text, "
+            + barrio + " text, "
+            + nombre1 + " text, "
+            + nombre2 + " text, "
+            + apellido1 + " text, "
+            + apellido2 + " text, "
+            + fechaNac + " date, "
+            + direccion + " text, "
+            + telefonoContacto + " text, "
+            + latitud + " numeric, "
+            + longitud + " numeric, "
+            + recordDate + " date, "
+            + recordUser + " text, "
+            + pasive + " text, "
+            + ID_INSTANCIA + " integer,"
+            + FILE_PATH + " text,"
+            + STATUS + " text not null, "
+            + START  + " text, "
+            + END  + " text, "
+            + DEVICE_ID  + " text, "
+            + SIM_SERIAL + " text, "
+            + PHONE_NUMBER  + " text, "
+            + TODAY  + " date, "
+            + "primary key (" + recordId + "));";
+
     //Tabla estado embarazada
     public static final String STATUS_MOTHER_TABLE = "estado_madre";
     //Campos estado embarazada
@@ -267,4 +311,62 @@ public class MainDBConstants {
             + MainDBConstants.PHONE_NUMBER  + " text, "
             + MainDBConstants.TODAY  + " date, "
             + "primary key (" + recordId + "));";
+
+    //Tabla datos salida consentimientos
+    public static final String DATA_CONSSAL_TABLE = "salidas_consentimiento";
+    //Campos salida consentimientos
+    public static final String lugarSalida = "lugarSalida";
+    public static final String codigo = "codigo";
+    public static final String fechaHoraSalida = "fechaHoraSalida";
+    public static final String persona = "persona";
+
+    //Crear tabla salida consentimientos
+    public static final String CREATE_DATA_CONSSAL_TABLE = "create table if not exists "
+            + DATA_CONSSAL_TABLE + " ("
+            + lugarSalida + " text not null, "
+            + codigo + " text not null, "
+            + fechaHoraSalida + " date not null, "
+            + persona + " text not null, "
+            + recordDate + " date, "
+            + recordUser + " text, "
+            + pasive + " text, "
+            + ID_INSTANCIA + " integer,"
+            + FILE_PATH + " text,"
+            + STATUS + " text not null, "
+            + START  + " text, "
+            + END  + " text, "
+            + DEVICE_ID  + " text, "
+            + SIM_SERIAL + " text, "
+            + PHONE_NUMBER  + " text, "
+            + TODAY  + " date, "
+            + "primary key (" + codigo  +"));";
+
+    //Tabla datos recepcion consentimientos
+    public static final String DATA_CONSREC_TABLE = "recepcion_consentimiento";
+    //Campos recepcion consentimientos
+    public static final String lugarLlegada = "lugarLlegada";
+    public static final String evento = "evento";
+    public static final String fechaHoraLLegada = "fechaHoraLLegada";
+    public static final String fechaDato = "fechaDato";
+
+    //Crear tabla recepcion consentimientos
+    public static final String CREATE_DATA_CONSREC_TABLE = "create table if not exists "
+            + DATA_CONSREC_TABLE + " ("
+            + lugarLlegada + " text not null, "
+            + codigo + " text not null, "
+            + fechaHoraLLegada + " date not null, "
+            + persona + " text not null, "
+            + recordDate + " date, "
+            + recordUser + " text, "
+            + pasive + " text, "
+            + ID_INSTANCIA + " integer,"
+            + FILE_PATH + " text,"
+            + STATUS + " text not null, "
+            + START  + " text, "
+            + END  + " text, "
+            + DEVICE_ID  + " text, "
+            + SIM_SERIAL + " text, "
+            + PHONE_NUMBER  + " text, "
+            + TODAY  + " date, "
+            + "primary key (" + codigo  +"));";
 }

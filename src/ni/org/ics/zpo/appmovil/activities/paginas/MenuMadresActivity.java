@@ -237,10 +237,17 @@ public class MenuMadresActivity extends AbstractAsyncActivity {
 			i.putExtras(arguments);
 			startActivity(i);
 			break;
-		case 1:
+		case 1:case 2:
+                i = new Intent(getApplicationContext(),
+                        MotherVisitActivity.class);
+                //Aca se pasa evento, tamizaje y estado
+                if(position==1)	arguments.putString(Constants.EVENT, Constants.MONTH12);
+                if(position==2)	arguments.putString(Constants.EVENT, Constants.MONTH24);
+                if (zp00!=null) arguments.putSerializable(Constants.OBJECTO_ZP00 , zp00);
+                if (zpEstado!=null) arguments.putSerializable(Constants.OBJECTO_ZPEST , zpEstado);
+                i.putExtras(arguments);
+                startActivity(i);
 			break;		
-		case 2:
-			break;
 		default:
 			break;
 		}

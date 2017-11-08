@@ -24,46 +24,13 @@
         <item>@string/maternal_b_10</item>
     </string-array>
     
-    <string-array name="menu_maternal_mensual">
-        <item>@string/maternal_b_4</item>
-        <item>@string/maternal_b_5</item>
-        <item>@string/maternal_b_6</item>
-        <item>@string/maternal_b_7</item>
-        <item>@string/maternal_b_8</item>
-    </string-array>
-    
-    <string-array name="menu_maternal_delivery">
-        <item>@string/maternal_b_4</item>
-        <item>@string/maternal_b_5</item>
-        <item>@string/maternal_b_6</item>
-        <item>@string/maternal_b_7</item>
-        <item>@string/maternal_b_8</item>
-        <item>@string/maternal_b_10</item>
-    </string-array>
-    
-    <string-array name="menu_maternal_postpartum">
-        <item>@string/maternal_b_4</item>
-        <item>@string/maternal_b_5</item>
-        <item>@string/maternal_b_6</item>
-        <item>@string/maternal_b_7</item>
-        <item>@string/maternal_b_8</item>
-        <item>@string/maternal_b_11</item>
-    </string-array>
-    
-    <string-array name="menu_maternal_quincenal">
+    <string-array name="menu_maternal_visita">
         <item>@string/maternal_b_4</item>
     </string-array>
-    
     <string-array name="menu_infant">
         <item>@string/infant_a_1</item>
         <item>@string/infant_a_2</item>
         <item>@string/infant_a_3</item>
-        <item>@string/infant_a_4</item>
-        <item>@string/infant_a_5</item>
-        <item>@string/infant_a_6</item>
-        <item>@string/infant_a_7</item>
-        <item>@string/infant_a_8</item>
-        <item>@string/infant_a_9</item>
         <item>@string/infant_a_10</item>
     </string-array>
 
@@ -78,30 +45,11 @@
         <item>@string/infant_b_8</item>
     </string-array>    
     
-    <string-array name="menu_infant_parto">
-        <item>@string/infant_b_1</item>
-        <item>@string/infant_b_2</item>
-    </string-array>
-    
-    <string-array name="menu_infant_3m">
-        <item>@string/infant_b_1</item>
+    <string-array name="menu_infant_entry">
         <item>@string/infant_b_2</item>
     </string-array>
 
-    <string-array name="menu_infant_6m">
-        <item>@string/infant_b_1</item>
-        <item>@string/infant_b_2</item>
-    </string-array>    
-    
-    <string-array name="menu_infant_12m">
-        <item>@string/infant_b_1</item>
-        <item>@string/infant_b_2</item>
-    </string-array>    
-    
-    <string-array name="menu_infant_unsched">
-        <item>@string/infant_b_2</item>
-    </string-array>
-    
+
     <string-array name="menu_specimen">
         <item>@string/specimen_1</item>
         <item>@string/specimen_2</item>
@@ -199,18 +147,12 @@
         <item>@string/select</item>
         <item>Socrates Flores</item>
         <item>Francisco Buitrago</item>
-        <item>Villa Libertad</item>
-        <item>Edgard Lang</item>
-        <item>Bertha Calderón</item>
     </string-array>
 
     <string-array name="list_lugares_llegada">
         <item>@string/select</item>
         <item>Socrates Flores</item>
         <item>Francisco Buitrago</item>
-        <item>Villa Libertad</item>
-        <item>Edgard Lang</item>
-        <item>Bertha Calderón</item>
         <item>Oficina ICS</item>
     </string-array>    
 

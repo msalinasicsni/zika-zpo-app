@@ -50,6 +50,7 @@ public class ZpoAdapter {
 		public void onCreate(SQLiteDatabase db) {
 			db.execSQL(MainDBConstants.CREATE_USER_TABLE);
 			db.execSQL(MainDBConstants.CREATE_ROLE_TABLE);
+            db.execSQL(MainDBConstants.CREATE_DATA_MOTHER_TABLE);
             db.execSQL(MainDBConstants.CREATE_STATUS_MOTHER_TABLE);
             db.execSQL(MainDBConstants.CREATE_SCREENING_TABLE);
             db.execSQL(Zpo01DBConstants.CREATE_STUDYENTRY_AB_TABLE);
@@ -63,7 +64,13 @@ public class ZpoAdapter {
             db.execSQL(Zpo08DBConstants.CREATE_STUDYEXIT_TABLE);
             db.execSQL(MainDBConstants.CREATE_INFANTDATA_TABLE);
             db.execSQL(MainDBConstants.CREATE_INFANTSTATUS_TABLE);
-
+            db.execSQL(Zpo07DBConstants.CREATE_INFANTASSESSMENT_TABLE);
+            db.execSQL(Zpo07aDBConstants.CREATE_AINFANT_OPHTRESULTS_TABLE);
+            db.execSQL(Zpo07bDBConstants.CREATE_BINFANT_AUDIORESULTS_TABLE);
+            db.execSQL(Zpo07cDBConstants.CREATE_CINFANT_IMAGESTUDIES_TABLE);
+            db.execSQL(Zpo07dDBConstants.CREATE_DINFANT_BAYLEYSCALES_TABLE);
+            db.execSQL(MainDBConstants.CREATE_DATA_CONSREC_TABLE);
+            db.execSQL(MainDBConstants.CREATE_DATA_CONSSAL_TABLE);
 		}
 
 		@Override
@@ -175,7 +182,51 @@ public class ZpoAdapter {
 	}
 	
 	public Boolean verificarData() throws SQLException{
-		return true;
+        Cursor c = null;
+        c = crearCursor(MainDBConstants.SCREENING_TABLE, MainDBConstants.STATUS + "='"  + Constants.STATUS_NOT_SUBMITTED+ "'", null, null);
+        if (c != null && c.getCount()>0) {c.close();return true;}
+        c = crearCursor(MainDBConstants.DATA_MOTHER_TABLE, MainDBConstants.STATUS + "='"  + Constants.STATUS_NOT_SUBMITTED+ "'", null, null);
+        if (c != null && c.getCount()>0) {c.close();return true;}
+        c = crearCursor(MainDBConstants.STATUS_MOTHER_TABLE, MainDBConstants.STATUS + "='"  + Constants.STATUS_NOT_SUBMITTED+ "'", null, null);
+        if (c != null && c.getCount()>0) {c.close();return true;}
+        c = crearCursor(Zpo01DBConstants.STUDYENTRY_AB_TABLE, MainDBConstants.STATUS + "='"  + Constants.STATUS_NOT_SUBMITTED+ "'", null, null);
+        if (c != null && c.getCount()>0) {c.close();return true;}
+        c = crearCursor(Zpo01DBConstants.STUDYENTRY_C_TABLE, MainDBConstants.STATUS + "='"  + Constants.STATUS_NOT_SUBMITTED+ "'", null, null);
+        if (c != null && c.getCount()>0) {c.close();return true;}
+        c = crearCursor(Zpo01DBConstants.STUDYENTRY_DF_TABLE, MainDBConstants.STATUS + "='"  + Constants.STATUS_NOT_SUBMITTED+ "'", null, null);
+        if (c != null && c.getCount()>0) {c.close();return true;}
+        c = crearCursor(Zpo02DBConstants.BIOCOLLECTION_TABLE, MainDBConstants.STATUS + "='"  + Constants.STATUS_NOT_SUBMITTED+ "'", null, null);
+        if (c != null && c.getCount()>0) {c.close();return true;}
+        c = crearCursor(Zpo04DBConstants.EXTENDED_AD_TABLE, MainDBConstants.STATUS + "='"  + Constants.STATUS_NOT_SUBMITTED+ "'", null, null);
+        if (c != null && c.getCount()>0) {c.close();return true;}
+        c = crearCursor(Zpo04DBConstants.EXTENDED_E_TABLE, MainDBConstants.STATUS + "='"  + Constants.STATUS_NOT_SUBMITTED+ "'", null, null);
+        if (c != null && c.getCount()>0) {c.close();return true;}
+        c = crearCursor(Zpo04DBConstants.EXTENDED_F_TABLE, MainDBConstants.STATUS + "='"  + Constants.STATUS_NOT_SUBMITTED+ "'", null, null);
+        if (c != null && c.getCount()>0) {c.close();return true;}
+        c = crearCursor(Zpo05DBConstants.DELIVERY_TABLE, MainDBConstants.STATUS + "='"  + Constants.STATUS_NOT_SUBMITTED+ "'", null, null);
+        if (c != null && c.getCount()>0) {c.close();return true;}
+        c = crearCursor(Zpo08DBConstants.STUDYEXIT_TABLE, MainDBConstants.STATUS + "='"  + Constants.STATUS_NOT_SUBMITTED+ "'", null, null);
+        if (c != null && c.getCount()>0) {c.close();return true;}
+        c = crearCursor(MainDBConstants.DATA_CONSSAL_TABLE, MainDBConstants.STATUS + "='"  + Constants.STATUS_NOT_SUBMITTED+ "'", null, null);
+        if (c != null && c.getCount()>0) {c.close();return true;}
+        c = crearCursor(MainDBConstants.DATA_CONSREC_TABLE, MainDBConstants.STATUS + "='"  + Constants.STATUS_NOT_SUBMITTED+ "'", null, null);
+        if (c != null && c.getCount()>0) {c.close();return true;}
+        c = crearCursor(Zpo07DBConstants.INFANTASSESSMENT_TABLE, MainDBConstants.STATUS + "='"  + Constants.STATUS_NOT_SUBMITTED+ "'", null, null);
+        if (c != null && c.getCount()>0) {c.close();return true;}
+        c = crearCursor(MainDBConstants.INFANTDATA_TABLE, MainDBConstants.STATUS + "='"  + Constants.STATUS_NOT_SUBMITTED+ "'", null, null);
+        if (c != null && c.getCount()>0) {c.close();return true;}
+        c = crearCursor(MainDBConstants.INFANTSTATUS_TABLE, MainDBConstants.STATUS + "='"  + Constants.STATUS_NOT_SUBMITTED+ "'", null, null);
+        if (c != null && c.getCount()>0) {c.close();return true;}
+        c = crearCursor(Zpo07aDBConstants.AINFANT_OPHTRESULTS_TABLE, MainDBConstants.STATUS + "='"  + Constants.STATUS_NOT_SUBMITTED+ "'", null, null);
+        if (c != null && c.getCount()>0) {c.close();return true;}
+        c = crearCursor(Zpo07bDBConstants.BINFANT_AUDIORESULTS_TABLE, MainDBConstants.STATUS + "='"  + Constants.STATUS_NOT_SUBMITTED+ "'", null, null);
+        if (c != null && c.getCount()>0) {c.close();return true;}
+        c = crearCursor(Zpo07cDBConstants.CINFANT_IMAGESTUDIES_TABLE, MainDBConstants.STATUS + "='"  + Constants.STATUS_NOT_SUBMITTED+ "'", null, null);
+        if (c != null && c.getCount()>0) {c.close();return true;}
+        c = crearCursor(Zpo07dDBConstants.DINFANT_BAYLEYSCALES_TABLE, MainDBConstants.STATUS + "='"  + Constants.STATUS_NOT_SUBMITTED+ "'", null, null);
+        if (c != null && c.getCount()>0) {c.close();return true;}
+        c.close();
+        return false;
 		
 	}
 
@@ -612,6 +663,240 @@ public class ZpoAdapter {
         return deliveryAnd6weekVisits;
     }
 
+    /**
+     * Metodos para Zpo07InfantAssessmentVisit en la base de datos
+     *
+     */
+    //Crear nuevo Zpo07InfantAssessmentVisit en la base de datos
+    public void crearZpo07InfantAssessmentVisit(Zpo07InfantAssessmentVisit infantAssessmentVisit) {
+        ContentValues cv = Zpo07InfantAssessmentVisitHelper.crearZpo07InfantAssessmentVisit(infantAssessmentVisit);
+        mDb.insert(Zpo07DBConstants.INFANTASSESSMENT_TABLE, null, cv);
+    }
+    //Editar Zpo07InfantAssessmentVisit existente en la base de datos
+    public boolean editarZpo07InfantAssessmentVisit(Zpo07InfantAssessmentVisit infantAssessmentVisit) {
+        ContentValues cv = Zpo07InfantAssessmentVisitHelper.crearZpo07InfantAssessmentVisit(infantAssessmentVisit);
+        return mDb.update(Zpo07DBConstants.INFANTASSESSMENT_TABLE, cv, Zpo07DBConstants.recordId + "='"
+                + infantAssessmentVisit.getRecordId() + "' and " + Zpo07DBConstants.eventName + "='" + infantAssessmentVisit.getEventName() +"'", null) > 0;
+    }
+    //Limpiar la tabla de Zpo07InfantAssessmentVisit de la base de datos
+    public boolean borrarZpo07InfantAssessmentVisit() {
+        return mDb.delete(Zpo07DBConstants.INFANTASSESSMENT_TABLE, null, null) > 0;
+    }
+    //Obtener un Zpo07InfantAssessmentVisit de la base de datos
+    public Zpo07InfantAssessmentVisit getZpo07InfantAssessmentVisit(String filtro, String orden) throws SQLException {
+        Zpo07InfantAssessmentVisit infantAssessmentVisit = null;
+        Cursor cursor = crearCursor(Zpo07DBConstants.INFANTASSESSMENT_TABLE, filtro, null, orden);
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            infantAssessmentVisit=Zpo07InfantAssessmentVisitHelper.crearZpo07InfantAssessmentVisit(cursor);
+        }
+        if (!cursor.isClosed()) cursor.close();
+        return infantAssessmentVisit;
+    }
+    //Obtener una lista de Zpo07InfantAssessmentVisit de la base de datos
+    public List<Zpo07InfantAssessmentVisit> getZpo07InfantAssessmentVisits(String filtro, String orden) throws SQLException {
+        List<Zpo07InfantAssessmentVisit> infantAssessmentVisits = new ArrayList<Zpo07InfantAssessmentVisit>();
+        Cursor cursor = crearCursor(Zpo07DBConstants.INFANTASSESSMENT_TABLE, filtro, null, orden);
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            infantAssessmentVisits.clear();
+            do{
+                Zpo07InfantAssessmentVisit infantAssessmentVisit = null;
+                infantAssessmentVisit = Zpo07InfantAssessmentVisitHelper.crearZpo07InfantAssessmentVisit(cursor);
+                infantAssessmentVisits.add(infantAssessmentVisit);
+            } while (cursor.moveToNext());
+        }
+        if (!cursor.isClosed()) cursor.close();
+        return infantAssessmentVisits;
+    }
+
+    /**
+     * Metodos para Zpo07aInfantOphtResults en la base de datos
+     *
+     */
+    //Crear nuevo Zp07AInfantOphtResults en la base de datos
+    public void crearZpo07aInfantOphtResults(Zpo07aInfantOphtResults aInfantOpthResults) {
+        ContentValues cv = Zpo07aInfantOphtResultsHelper.crearZp07AInfantOpthResults(aInfantOpthResults);
+        mDb.insert(Zpo07aDBConstants.AINFANT_OPHTRESULTS_TABLE, null, cv);
+    }
+    //Editar Zp07AInfantOphtResults existente en la base de datos
+    public boolean editarZpo07aInfantOphtResults(Zpo07aInfantOphtResults aInfantOpthResults) {
+        ContentValues cv = Zpo07aInfantOphtResultsHelper.crearZp07AInfantOpthResults(aInfantOpthResults);
+        return mDb.update(Zpo07aDBConstants.AINFANT_OPHTRESULTS_TABLE, cv, Zpo07DBConstants.recordId + "='"
+                + aInfantOpthResults.getRecordId() + "' and " + Zpo07DBConstants.eventName + "='" + aInfantOpthResults.getEventName() +"'", null) > 0;
+    }
+    //Limpiar la tabla de Zp07InfantAssessmentVisit de la base de datos
+    public boolean borrarZpo07aInfantOphtResults() {
+        return mDb.delete(Zpo07aDBConstants.AINFANT_OPHTRESULTS_TABLE, null, null) > 0;
+    }
+    //Obtener un Zp07InfantAssessmentVisit de la base de datos
+    public Zpo07aInfantOphtResults getZpo07aInfantOphtResult(String filtro, String orden) throws SQLException {
+        Zpo07aInfantOphtResults aInfantOpthResults = null;
+        Cursor cursor = crearCursor(Zpo07aDBConstants.AINFANT_OPHTRESULTS_TABLE, filtro, null, orden);
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            aInfantOpthResults= Zpo07aInfantOphtResultsHelper.crearZp07AInfantOphtResults(cursor);
+        }
+        if (!cursor.isClosed()) cursor.close();
+        return aInfantOpthResults;
+    }
+    //Obtener una lista de Zp07InfantAssessmentVisit de la base de datos
+    public List<Zpo07aInfantOphtResults> getZpo07aInfantOphtResults(String filtro, String orden) throws SQLException {
+        List<Zpo07aInfantOphtResults> aInfantOpthResults = new ArrayList<Zpo07aInfantOphtResults>();
+        Cursor cursor = crearCursor(Zpo07aDBConstants.AINFANT_OPHTRESULTS_TABLE, filtro, null, orden);
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            aInfantOpthResults.clear();
+            do{
+                Zpo07aInfantOphtResults aInfantOpthResult = null;
+                aInfantOpthResult = Zpo07aInfantOphtResultsHelper.crearZp07AInfantOphtResults(cursor);
+                aInfantOpthResults.add(aInfantOpthResult);
+            } while (cursor.moveToNext());
+        }
+        if (!cursor.isClosed()) cursor.close();
+        return aInfantOpthResults;
+    }
+
+    /**
+     * Metodos para Zpo07bInfantAudioResults en la base de datos
+     *
+     */
+    //Crear nuevo Zpo07bInfantAudioResults en la base de datos
+    public void crearZpo07bInfantAudioResults(Zpo07bInfantAudioResults bInfantAudioResults) {
+        ContentValues cv = Zpo07bInfantAudioResultsHelper.crearZpo07bInfantAudioResults(bInfantAudioResults);
+        mDb.insert(Zpo07bDBConstants.BINFANT_AUDIORESULTS_TABLE, null, cv);
+    }
+    //Editar Zpo07bInfantAudioResults existente en la base de datos
+    public boolean editarZpo07bInfantAudioResults(Zpo07bInfantAudioResults bInfantAudioResults) {
+        ContentValues cv = Zpo07bInfantAudioResultsHelper.crearZpo07bInfantAudioResults(bInfantAudioResults);
+        return mDb.update(Zpo07bDBConstants.BINFANT_AUDIORESULTS_TABLE, cv, Zpo07DBConstants.recordId + "='"
+                + bInfantAudioResults.getRecordId() + "' and " + Zpo07DBConstants.eventName + "='" + bInfantAudioResults.getEventName() +"'", null) > 0;
+    }
+    //Limpiar la tabla de Zpo07bInfantAudioResults de la base de datos
+    public boolean borrarZpo07bInfantAudioResults() {
+        return mDb.delete(Zpo07bDBConstants.BINFANT_AUDIORESULTS_TABLE, null, null) > 0;
+    }
+    //Obtener un Zpo07bInfantAudioResults de la base de datos
+    public Zpo07bInfantAudioResults getZpo07bInfantAudioResult(String filtro, String orden) throws SQLException {
+        Zpo07bInfantAudioResults bInfantAudioResults = null;
+        Cursor cursor = crearCursor(Zpo07bDBConstants.BINFANT_AUDIORESULTS_TABLE, filtro, null, orden);
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            bInfantAudioResults= Zpo07bInfantAudioResultsHelper.crearZpo07bInfantAudioResults(cursor);
+        }
+        if (!cursor.isClosed()) cursor.close();
+        return bInfantAudioResults;
+    }
+    //Obtener una lista de Zpo07bInfantAudioResults de la base de datos
+    public List<Zpo07bInfantAudioResults> getZpo07bInfantAudioResults(String filtro, String orden) throws SQLException {
+        List<Zpo07bInfantAudioResults> bInfantAudioResults = new ArrayList<Zpo07bInfantAudioResults>();
+        Cursor cursor = crearCursor(Zpo07bDBConstants.BINFANT_AUDIORESULTS_TABLE, filtro, null, orden);
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            bInfantAudioResults.clear();
+            do{
+                Zpo07bInfantAudioResults bInfantAudioResult = null;
+                bInfantAudioResult = Zpo07bInfantAudioResultsHelper.crearZpo07bInfantAudioResults(cursor);
+                bInfantAudioResults.add(bInfantAudioResult);
+            } while (cursor.moveToNext());
+        }
+        if (!cursor.isClosed()) cursor.close();
+        return bInfantAudioResults;
+    }
+
+    /**
+     * Metodos para Zpo07cInfantImageStudies en la base de datos
+     *
+     */
+    //Crear nuevo Zpo07cInfantImageStudies en la base de datos
+    public void crearZpo07cInfantImageStudies(Zpo07cInfantImageStudies cInfantImageStudies) {
+        ContentValues cv = Zpo07cInfantImageStudiesHelper.crearZpo07cInfantImageStudies(cInfantImageStudies);
+        mDb.insert(Zpo07cDBConstants.CINFANT_IMAGESTUDIES_TABLE, null, cv);
+    }
+    //Editar Zpo07cInfantImageStudies existente en la base de datos
+    public boolean editarZpo07cInfantImageStudies(Zpo07cInfantImageStudies cInfantImageStudies) {
+        ContentValues cv = Zpo07cInfantImageStudiesHelper.crearZpo07cInfantImageStudies(cInfantImageStudies);
+        return mDb.update(Zpo07cDBConstants.CINFANT_IMAGESTUDIES_TABLE, cv, Zpo07DBConstants.recordId + "='"
+                + cInfantImageStudies.getRecordId() + "' and " + Zpo07DBConstants.eventName + "='" + cInfantImageStudies.getEventName() +"'", null) > 0;
+    }
+    //Limpiar la tabla de Zpo07cInfantImageStudies de la base de datos
+    public boolean borrarZpo07cInfantImageStudies() {
+        return mDb.delete(Zpo07cDBConstants.CINFANT_IMAGESTUDIES_TABLE, null, null) > 0;
+    }
+    //Obtener un Zpo07cInfantImageStudies de la base de datos
+    public Zpo07cInfantImageStudies getZpo07cInfantImageSt(String filtro, String orden) throws SQLException {
+        Zpo07cInfantImageStudies cInfantImageStudies = null;
+        Cursor cursor = crearCursor(Zpo07cDBConstants.CINFANT_IMAGESTUDIES_TABLE, filtro, null, orden);
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            cInfantImageStudies= Zpo07cInfantImageStudiesHelper.crearZpo07cInfantImageStudies(cursor);
+        }
+        if (!cursor.isClosed()) cursor.close();
+        return cInfantImageStudies;
+    }
+    //Obtener una lista de Zpo07cInfantImageStudies de la base de datos
+    public List<Zpo07cInfantImageStudies> getZpo07cInfantImageStudies(String filtro, String orden) throws SQLException {
+        List<Zpo07cInfantImageStudies> cInfantImageStudies = new ArrayList<Zpo07cInfantImageStudies>();
+        Cursor cursor = crearCursor(Zpo07cDBConstants.CINFANT_IMAGESTUDIES_TABLE, filtro, null, orden);
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            cInfantImageStudies.clear();
+            do{
+                Zpo07cInfantImageStudies cInfantImageSt = null;
+                cInfantImageSt = Zpo07cInfantImageStudiesHelper.crearZpo07cInfantImageStudies(cursor);
+                cInfantImageStudies.add(cInfantImageSt);
+            } while (cursor.moveToNext());
+        }
+        if (!cursor.isClosed()) cursor.close();
+        return cInfantImageStudies;
+    }
+
+    /**
+     * Metodos para Zpo07dInfantBayleyScales en la base de datos
+     *
+     */
+    //Crear nuevo Zpo07dInfantBayleyScales en la base de datos
+    public void crearZpo07dInfantBayleyScales(Zpo07dInfantBayleyScales dInfantBayleyScales) {
+        ContentValues cv = Zpo07dInfantBayleyScalesHelper.crearZpo07dInfantBayleyScales(dInfantBayleyScales);
+        mDb.insert(Zpo07dDBConstants.DINFANT_BAYLEYSCALES_TABLE, null, cv);
+    }
+    //Editar Zpo07dInfantBayleyScales existente en la base de datos
+    public boolean editarZpo07dInfantBayleyScales(Zpo07dInfantBayleyScales dInfantBayleyScales) {
+        ContentValues cv = Zpo07dInfantBayleyScalesHelper.crearZpo07dInfantBayleyScales(dInfantBayleyScales);
+        return mDb.update(Zpo07dDBConstants.DINFANT_BAYLEYSCALES_TABLE, cv, Zpo07DBConstants.recordId + "='"
+                + dInfantBayleyScales.getRecordId() + "' and " + Zpo07DBConstants.eventName + "='" + dInfantBayleyScales.getEventName() +"'", null) > 0;
+    }
+    //Limpiar la tabla de Zpo07dInfantBayleyScales de la base de datos
+    public boolean borrarZpo07dInfantBayleyScales() {
+        return mDb.delete(Zpo07dDBConstants.DINFANT_BAYLEYSCALES_TABLE, null, null) > 0;
+    }
+    //Obtener un Zpo07dInfantBayleyScales de la base de datos
+    public Zpo07dInfantBayleyScales getZpo07dInfantBayleySc(String filtro, String orden) throws SQLException {
+        Zpo07dInfantBayleyScales dInfantBayleyScales = null;
+        Cursor cursor = crearCursor(Zpo07dDBConstants.DINFANT_BAYLEYSCALES_TABLE, filtro, null, orden);
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            dInfantBayleyScales= Zpo07dInfantBayleyScalesHelper.crearZpo07dInfantBayleyScales(cursor);
+        }
+        if (!cursor.isClosed()) cursor.close();
+        return dInfantBayleyScales;
+    }
+    //Obtener una lista de Zpo07dInfantBayleyScales de la base de datos
+    public List<Zpo07dInfantBayleyScales> getZpo07dInfantBayleyScales(String filtro, String orden) throws SQLException {
+        List<Zpo07dInfantBayleyScales> dInfantBayleyScales = new ArrayList<Zpo07dInfantBayleyScales>();
+        Cursor cursor = crearCursor(Zpo07dDBConstants.DINFANT_BAYLEYSCALES_TABLE, filtro, null, orden);
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            dInfantBayleyScales.clear();
+            do{
+                Zpo07dInfantBayleyScales dInfantBayleySc = null;
+                dInfantBayleySc = Zpo07dInfantBayleyScalesHelper.crearZpo07dInfantBayleyScales(cursor);
+                dInfantBayleyScales.add(dInfantBayleySc);
+            } while (cursor.moveToNext());
+        }
+        if (!cursor.isClosed()) cursor.close();
+        return dInfantBayleyScales;
+    }
     
     /**
      * Metodos para Zpo08StudyExit en la base de datos
@@ -803,5 +1088,103 @@ public class ZpoAdapter {
         }
         if (!cursor.isClosed()) cursor.close();
         return mZpoEstadoInfantes;
+    }
+
+    /**
+     * Metodos para ZpoControlConsentimientosSalida en la base de datos
+     *
+     * @param datos
+     *            Objeto ZpoControlConsentimientosSalida que contiene la informacion
+     *
+     */
+    //Crear nuevo ZpoControlConsentimientosSalida en la base de datos
+    public void crearZpoControlConsentimientosSalida(ZpoControlConsentimientosSalida datos) {
+        ContentValues cv = ZpoControlConsentimientosSalidaHelper.crearZpoControlConsentimientosSalida(datos);
+        mDb.insert(MainDBConstants.DATA_CONSSAL_TABLE, null, cv);
+    }
+    //Editar ZpoControlConsentimientosSalida existente en la base de datos
+    public boolean editarZpoControlConsentimientosSalida(ZpoControlConsentimientosSalida datos) {
+        ContentValues cv = ZpoControlConsentimientosSalidaHelper.crearZpoControlConsentimientosSalida(datos);
+        return mDb.update(MainDBConstants.DATA_CONSSAL_TABLE, cv, MainDBConstants.codigo + "='" + datos.getCodigo() +"'", null) > 0;
+    }
+    //Limpiar la tabla de ZpoControlConsentimientosSalida de la base de datos
+    public boolean borrarZpoControlConsentimientosSalida() {
+        return mDb.delete(MainDBConstants.DATA_CONSSAL_TABLE, null, null) > 0;
+    }
+    //Obtener un ZpoControlConsentimientosSalida de la base de datos
+    public ZpoControlConsentimientosSalida getZpoControlConsentimientosSalida(String filtro, String orden) throws SQLException {
+        ZpoControlConsentimientosSalida mDatos = null;
+        Cursor cursorDatos = crearCursor(MainDBConstants.DATA_CONSSAL_TABLE, filtro, null, orden);
+        if (cursorDatos != null && cursorDatos.getCount() > 0) {
+            cursorDatos.moveToFirst();
+            mDatos=ZpoControlConsentimientosSalidaHelper.crearZpoControlConsentimientosSalida(cursorDatos);
+        }
+        if (!cursorDatos.isClosed()) cursorDatos.close();
+        return mDatos;
+    }
+    //Obtener una lista de ZpoControlConsentimientosSalida de la base de datos
+    public List<ZpoControlConsentimientosSalida> getZpoControlConsentimientosSalidas(String filtro, String orden) throws SQLException {
+        List<ZpoControlConsentimientosSalida> zpControlConsentimientosSalida = new ArrayList<ZpoControlConsentimientosSalida>();
+        Cursor cursorStatus = crearCursor(MainDBConstants.DATA_CONSSAL_TABLE, filtro, null, orden);
+        if (cursorStatus != null && cursorStatus.getCount() > 0) {
+            cursorStatus.moveToFirst();
+            zpControlConsentimientosSalida.clear();
+            do{
+                ZpoControlConsentimientosSalida datosSalida = null;
+                datosSalida = ZpoControlConsentimientosSalidaHelper.crearZpoControlConsentimientosSalida(cursorStatus);
+                zpControlConsentimientosSalida.add(datosSalida);
+            } while (cursorStatus.moveToNext());
+        }
+        if (!cursorStatus.isClosed()) cursorStatus.close();
+        return zpControlConsentimientosSalida;
+    }
+
+    /**
+     * Metodos para ZpoControlConsentimientosRecepcion en la base de datos
+     *
+     * @param datos
+     *            Objeto ZpoControlConsentimientosRecepcion que contiene la informacion
+     *
+     */
+    //Crear nuevo ZpoControlConsentimientosRecepcion en la base de datos
+    public void crearZpoControlConsentimientosRecepcion(ZpoControlConsentimientosRecepcion datos) {
+        ContentValues cv = ZpoControlConsentimientosRecepcionHelper.crearZpoControlConsentimientosRecepcion(datos);
+        mDb.insert(MainDBConstants.DATA_CONSREC_TABLE, null, cv);
+    }
+    //Editar ZpoControlConsentimientosRecepcion existente en la base de datos
+    public boolean editarZpoControlConsentimientosRecepcion(ZpoControlConsentimientosRecepcion datos) {
+        ContentValues cv = ZpoControlConsentimientosRecepcionHelper.crearZpoControlConsentimientosRecepcion(datos);
+        return mDb.update(MainDBConstants.DATA_CONSREC_TABLE, cv, MainDBConstants.codigo + "='" + datos.getCodigo() +"'", null) > 0;
+    }
+    //Limpiar la tabla de ZpoControlConsentimientosRecepcion de la base de datos
+    public boolean borrarZpoControlConsentimientosRecepcion() {
+        return mDb.delete(MainDBConstants.DATA_CONSREC_TABLE, null, null) > 0;
+    }
+    //Obtener un ZpoControlConsentimientosRecepcion de la base de datos
+    public ZpoControlConsentimientosRecepcion getZpoControlConsentimientosRecepcion(String filtro, String orden) throws SQLException {
+        ZpoControlConsentimientosRecepcion mDatos = null;
+        Cursor cursorDatos = crearCursor(MainDBConstants.DATA_CONSREC_TABLE, filtro, null, orden);
+        if (cursorDatos != null && cursorDatos.getCount() > 0) {
+            cursorDatos.moveToFirst();
+            mDatos=ZpoControlConsentimientosRecepcionHelper.crearZpoControlConsentimientosRecepcion(cursorDatos);
+        }
+        if (!cursorDatos.isClosed()) cursorDatos.close();
+        return mDatos;
+    }
+    //Obtener una lista de ZpoControlConsentimientosRecepcion de la base de datos
+    public List<ZpoControlConsentimientosRecepcion> getZpoControlConsentimientosRecepciones(String filtro, String orden) throws SQLException {
+        List<ZpoControlConsentimientosRecepcion> zpControlConsentimientosRecepcion = new ArrayList<ZpoControlConsentimientosRecepcion>();
+        Cursor cursorStatus = crearCursor(MainDBConstants.DATA_CONSREC_TABLE, filtro, null, orden);
+        if (cursorStatus != null && cursorStatus.getCount() > 0) {
+            cursorStatus.moveToFirst();
+            zpControlConsentimientosRecepcion.clear();
+            do{
+                ZpoControlConsentimientosRecepcion datosRecepcion = null;
+                datosRecepcion = ZpoControlConsentimientosRecepcionHelper.crearZpoControlConsentimientosRecepcion(cursorStatus);
+                zpControlConsentimientosRecepcion.add(datosRecepcion);
+            } while (cursorStatus.moveToNext());
+        }
+        if (!cursorStatus.isClosed()) cursorStatus.close();
+        return zpControlConsentimientosRecepcion;
     }
 }

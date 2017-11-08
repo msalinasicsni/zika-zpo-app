@@ -17,6 +17,7 @@ public class Zpo07InfantAssessmentVisit extends BaseMetaData{
     private String infantStatus;
     private Date infantDeathDt;
     private String infantVisit;
+    private Date infantDob;
     private Float infantTemp;
     private String infantTmpUnit;
     private Float infantWt;
@@ -1521,7 +1522,7 @@ public class Zpo07InfantAssessmentVisit extends BaseMetaData{
         this.infantDtReview3 = infantDtReview3;
     }
 
-    
+
     public String getInfantIdDataEntry3() {
         return infantIdDataEntry3;
     }
@@ -1530,7 +1531,6 @@ public class Zpo07InfantAssessmentVisit extends BaseMetaData{
         this.infantIdDataEntry3 = infantIdDataEntry3;
     }
 
-    
     public Date getInfantDtEnter3() {
         return infantDtEnter3;
     }
@@ -1539,7 +1539,6 @@ public class Zpo07InfantAssessmentVisit extends BaseMetaData{
         this.infantDtEnter3 = infantDtEnter3;
     }
 
-    
     public Integer getPart1() {
         return part1;
     }
@@ -1548,7 +1547,6 @@ public class Zpo07InfantAssessmentVisit extends BaseMetaData{
         this.part1 = part1;
     }
 
-    
     public Integer getPart2() {
         return part2;
     }
@@ -1557,8 +1555,6 @@ public class Zpo07InfantAssessmentVisit extends BaseMetaData{
         this.part2 = part2;
     }
 
-
-    
     public Integer getPart3() {
         return part3;
     }
@@ -1567,7 +1563,6 @@ public class Zpo07InfantAssessmentVisit extends BaseMetaData{
         this.part3 = part3;
     }
 
-    
     public Integer getIdInstancia2() {
         return idInstancia2;
     }
@@ -1576,7 +1571,6 @@ public class Zpo07InfantAssessmentVisit extends BaseMetaData{
         this.idInstancia2 = idInstancia2;
     }
 
-    
     public Integer getIdInstancia3() {
         return idInstancia3;
     }
@@ -1584,11 +1578,7 @@ public class Zpo07InfantAssessmentVisit extends BaseMetaData{
     public void setIdInstancia3(Integer idInstancia3) {
         this.idInstancia3 = idInstancia3;
     }
-    
-    //added v2.4
-    private Date infantDob;
 
-    
     public Date getInfantDob() {
 		return infantDob;
 	}

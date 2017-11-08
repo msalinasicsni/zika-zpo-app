@@ -4,6 +4,7 @@ package ni.org.ics.zpo.appmovil;
 
 import ni.org.ics.zpo.appmovil.activities.buscar.BuscarInfanteActivity;
 import ni.org.ics.zpo.appmovil.activities.buscar.BuscarMadreActivity;
+import ni.org.ics.zpo.appmovil.activities.paginas.MenuControlConsentimientosActivity;
 import ni.org.ics.zpo.appmovil.activities.server.DownloadAllActivity;
 import ni.org.ics.zpo.appmovil.activities.server.UploadAllActivity;
 import ni.org.ics.zpo.appmovil.adapters.MainActivityAdapter;
@@ -88,6 +89,12 @@ public class MainActivity extends ListActivity {
             case 1:
                 i = new Intent(getApplicationContext(),
                         BuscarInfanteActivity.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(i);
+                break;
+            case 2:
+                i = new Intent(getApplicationContext(),
+                        MenuControlConsentimientosActivity.class);
                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(i);
                 break;
