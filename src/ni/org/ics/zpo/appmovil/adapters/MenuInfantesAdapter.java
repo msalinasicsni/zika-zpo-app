@@ -76,7 +76,7 @@ public class MenuInfantesAdapter extends ArrayAdapter<String> {
         Drawable img = null;
         switch (position){
             case 0:
-                fechaEvento = fechaIngreso.getTime();
+                fechaEvento = mZpInfante.getRecordDate();
                 if(String.valueOf(mZpEstado.getIngreso()).equals("0")){
                     textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.pending));
                     long dif = getDateDiff(fechaEvento,todayDate,TimeUnit.DAYS);

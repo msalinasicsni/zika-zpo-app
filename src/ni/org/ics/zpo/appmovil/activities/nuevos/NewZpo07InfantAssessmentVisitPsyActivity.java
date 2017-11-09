@@ -84,7 +84,7 @@ public class NewZpo07InfantAssessmentVisitPsyActivity extends AbstractAsyncActiv
 
         //to set the message
         TextView message =(TextView) dialogInit.findViewById(R.id.yesnotext);
-        if (mInfantAssessment !=null){
+        if (mInfantAssessment !=null && mInfantAssessment.getPart3()!=null){
             message.setText(getString(R.string.edit)+ " " + getString(R.string.infant_b_4)+"?");
         }
         else{

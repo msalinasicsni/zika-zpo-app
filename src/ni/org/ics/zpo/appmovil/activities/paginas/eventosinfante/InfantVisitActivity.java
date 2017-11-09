@@ -14,7 +14,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Button;
 import android.widget.GridView;
 import android.widget.TextView;
 import ni.org.ics.zpo.appmovil.AbstractAsyncActivity;
@@ -35,7 +34,7 @@ public class InfantVisitActivity extends AbstractAsyncActivity {
 	private ZpoAdapter zipA;
 	private static ZpoInfantData zpInfante = new ZpoInfantData();
 	private static ZpoEstadoInfante zpEstado = new ZpoEstadoInfante();
-	private static Zpo02BiospecimenCollection zp02d = null;
+	private static Zpo02BiospecimenCollection zp02 = null;
 	private static Zpo07InfantAssessmentVisit zp07 = null;
 	private static Zpo07aInfantOphtResults zp07a = null;
 	private static Zpo07bInfantAudioResults zp07b = null;
@@ -118,7 +117,7 @@ public class InfantVisitActivity extends AbstractAsyncActivity {
 					case 3: //MUESTRAS
 						i = new Intent(getApplicationContext(),
 								NewZpo02BiospecimenCollectionActivity.class);
-						if (zp02d != null) arguments.putSerializable(Constants.OBJECTO_ZP02D, zp02d);
+						if (zp02 != null) arguments.putSerializable(Constants.OBJECTO_ZP02, zp02);
 						i.putExtras(arguments);
 						startActivity(i);
 						break;
@@ -285,14 +284,14 @@ public class InfantVisitActivity extends AbstractAsyncActivity {
 				try {
 					zipA.open();
 					filtro = MainDBConstants.recordId + "='" + zpInfante.getRecordId() + "' and " + Zpo02DBConstants.eventName + "='" + eventoaFiltrar +"'";
-					zp02d = zipA.getZpo02BiospecimenCollection(filtro, MainDBConstants.recordId);
+					zp02 = zipA.getZpo02BiospecimenCollection(filtro, MainDBConstants.recordId);
 					zp07 = zipA.getZpo07InfantAssessmentVisit(filtro, MainDBConstants.recordId);
 					zp07a = zipA.getZpo07aInfantOphtResult(filtro, MainDBConstants.recordId);
 					zp07b = zipA.getZpo07bInfantAudioResult(filtro, MainDBConstants.recordId);
 					zp07c = zipA.getZpo07cInfantImageSt(filtro, MainDBConstants.recordId);
 					zp07d = zipA.getZpo07dInfantBayleySc(filtro, MainDBConstants.recordId);
 
-					if (zp02d!=null && zp07!=null && zp07a!=null && zp07b!=null && zp07c!=null && zp07d!=null){
+					if (zp02 !=null && zp07!=null && zp07a!=null && zp07b!=null && zp07c!=null && zp07d!=null){
 						if(eventoaFiltrar.matches(Constants.MONTH12)){
 							zpEstado.setMes12('1');
 						}
@@ -311,8 +310,8 @@ public class InfantVisitActivity extends AbstractAsyncActivity {
 
 			protected void onPostExecute(String resultado) {
 				// after the network request completes, hide the progress indicator
-				gridView.setAdapter(new InfantVisitAdapter(getApplicationContext(), R.layout.menu_item_2, menu_infante_info, 
-						zp02d, zp07, zp07a, zp07b, zp07c, zp07d));
+				gridView.setAdapter(new InfantVisitAdapter(getApplicationContext(), R.layout.menu_item_2, menu_infante_info,
+                        zp02, zp07, zp07a, zp07b, zp07c, zp07d));
 				dismissProgressDialog();
 			}
 

@@ -156,7 +156,7 @@ public class InfantVisitAdapter extends ArrayAdapter<String> {
 				textView.setCompoundDrawablesWithIntrinsicBounds(null, img, null, null);
 				break;
 		default:
-			img=getContext().getResources().getDrawable( R.drawable.ic_launcher);
+			img=getContext().getResources().getDrawable( R.drawable.logo);
 			textView.setCompoundDrawablesWithIntrinsicBounds(null, img, null, null);
 			break;
 		}

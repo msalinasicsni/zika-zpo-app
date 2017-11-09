@@ -26,6 +26,7 @@ import ni.org.ics.zpo.appmovil.activities.paginas.eventosmadre.*;
 import ni.org.ics.zpo.appmovil.adapters.MenuMadresAdapter;
 import ni.org.ics.zpo.appmovil.database.ZpoAdapter;
 import ni.org.ics.zpo.domain.Zpo00Screening;
+import ni.org.ics.zpo.domain.Zpo05Delivery;
 import ni.org.ics.zpo.domain.Zpo08StudyExit;
 import ni.org.ics.zpo.domain.ZpoEstadoEmbarazada;
 import ni.org.ics.zpo.appmovil.utils.Constants;
@@ -41,7 +42,8 @@ public class MenuMadresActivity extends AbstractAsyncActivity {
 
 	private static Zpo00Screening zp00 = new Zpo00Screening();
 	private static ZpoEstadoEmbarazada zpEstado = new ZpoEstadoEmbarazada();
-	private static Zpo08StudyExit zpSalida= new Zpo08StudyExit();
+	private static Zpo05Delivery zpo05 = null;
+    private static Zpo08StudyExit zpSalida= new Zpo08StudyExit();
 	private GridView gridView;
 	private TextView textView;
 	private SimpleDateFormat mDateFormat = new SimpleDateFormat("MMM dd, yyyy");
@@ -82,7 +84,7 @@ public class MenuMadresActivity extends AbstractAsyncActivity {
 			e.printStackTrace();
 		}
 		this.fechaIngreso = Calendar.getInstance();
-		fechaIngreso.setTime(zp00.getScrVisitDate());
+
 		
 		gridView.setOnItemClickListener(new OnItemClickListener() {
 			@Override
@@ -90,21 +92,33 @@ public class MenuMadresActivity extends AbstractAsyncActivity {
 					int position, long id) {
 				long diff =0;
 				boolean habilitado = true;
+                if (zpo05!=null)
+                    fechaIngreso.setTime(zpo05.getDeliDeliveryDate());
 				switch (position){
 				case 0:
-		        	fechaEvento = fechaIngreso.getTime();
-		        	diff = getDateDiff(fechaEvento,todayDate,TimeUnit.DAYS);
-		        	if(diff>15) habilitado = false;
+                    if (zpo05!=null) {
+                        fechaEvento = fechaIngreso.getTime();
+                        diff = getDateDiff(fechaEvento, todayDate, TimeUnit.DAYS);
+                        if (diff > 15) habilitado = false;
+                    }
 		        	break;
 				case 1:
-					fechaIngreso.add(Calendar.DATE, 14);fechaEvento = fechaIngreso.getTime();fechaIngreso.add(Calendar.DATE, -14);
-		        	diff = getDateDiff(fechaEvento,todayDate,TimeUnit.DAYS);
-		        	if(diff<-7||diff>7) habilitado = false;
+                    if (zpo05!=null) {
+                        fechaIngreso.add(Calendar.DATE, 365);
+                        fechaEvento = fechaIngreso.getTime();
+                        fechaIngreso.add(Calendar.DATE, -365);
+                        diff = getDateDiff(fechaEvento, todayDate, TimeUnit.DAYS);
+                        if (diff < -7 || diff > 7) habilitado = false;
+                    }
 		        	break;
 				case 2:
-					fechaIngreso.add(Calendar.DATE, 28);fechaEvento = fechaIngreso.getTime();fechaIngreso.add(Calendar.DATE, -28);
-		        	diff = getDateDiff(fechaEvento,todayDate,TimeUnit.DAYS);
-		        	if(diff<-7||diff>7) habilitado = false;
+                    if (zpo05!=null) {
+                        fechaIngreso.add(Calendar.DATE, 730);
+                        fechaEvento = fechaIngreso.getTime();
+                        fechaIngreso.add(Calendar.DATE, -730);
+                        diff = getDateDiff(fechaEvento, todayDate, TimeUnit.DAYS);
+                        if (diff < -7 || diff > 7) habilitado = false;
+                    }
 		        	break;
 				default:
 					habilitado = true;
@@ -282,6 +296,7 @@ public class MenuMadresActivity extends AbstractAsyncActivity {
 			try {
 				zipA.open();
 				zpEstado = zipA.getZpoEstadoMadre(filtro, MainDBConstants.recordId);
+                zpo05 = zipA.getZpo05Delivery(filtro, MainDBConstants.recordId);
 				zpSalida = zipA.getZpo08StudyExit(filtro, null);
 				zipA.close();
 			} catch (Exception e) {
@@ -308,7 +323,7 @@ public class MenuMadresActivity extends AbstractAsyncActivity {
 
 			textView.setText(Html.fromHtml(textView.getText().toString()+ labelHeader));
 			
-			gridView.setAdapter(new MenuMadresAdapter(getApplicationContext(), R.layout.menu_item_2, menu_maternal_info, zp00, zpEstado, zpSalida));
+			gridView.setAdapter(new MenuMadresAdapter(getApplicationContext(), R.layout.menu_item_2, menu_maternal_info, zp00, zpEstado, zpSalida, zpo05));
 			if (zpSalida != null){
 				textView.setTextColor(Color.RED);
 				textView.setText(textView.getText()+"\n"+getString(R.string.mat_retired)

@@ -94,22 +94,19 @@ public class MenuInfantesActivity extends AbstractAsyncActivity {
                 boolean habilitado = true;
                 switch (position){
                     case 0:
-                        fechaEvento = fechaIngreso.getTime();
+                        fechaEvento = zpInfante.getRecordDate();
                         diff = getDateDiff(fechaEvento,todayDate,TimeUnit.DAYS);
                         if(diff>15) habilitado = false;
                         break;
                     case 1:
-                        fechaIngreso.add(Calendar.DATE, 84);fechaEvento = fechaIngreso.getTime();fechaIngreso.add(Calendar.DATE, -84);
+                        fechaIngreso.add(Calendar.DATE, 365);fechaEvento = fechaIngreso.getTime();
+                        fechaIngreso.add(Calendar.DATE, -365);
                         diff = getDateDiff(fechaEvento,todayDate,TimeUnit.DAYS);
                         if(diff<-7||diff>7) habilitado = false;
                         break;
                     case 2:
-                        fechaIngreso.add(Calendar.DATE, 182);fechaEvento = fechaIngreso.getTime();fechaIngreso.add(Calendar.DATE, -182);
-                        diff = getDateDiff(fechaEvento,todayDate,TimeUnit.DAYS);
-                        if(diff<-7||diff>7) habilitado = false;
-                        break;
-                    case 3:
-                        fechaIngreso.add(Calendar.DATE, 365);fechaEvento = fechaIngreso.getTime();fechaIngreso.add(Calendar.DATE, -365);
+                        fechaIngreso.add(Calendar.DATE, 730);fechaEvento = fechaIngreso.getTime();
+                        fechaIngreso.add(Calendar.DATE, -730);
                         diff = getDateDiff(fechaEvento,todayDate,TimeUnit.DAYS);
                         if(diff<-7||diff>7) habilitado = false;
                         break;

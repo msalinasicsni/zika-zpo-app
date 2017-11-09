@@ -22,7 +22,6 @@ import ni.org.ics.zpo.appmovil.MyZpoApplication;
 import ni.org.ics.zpo.appmovil.R;
 import ni.org.ics.zpo.appmovil.activities.nuevos.*;
 import ni.org.ics.zpo.appmovil.adapters.eventosinfante.InfantEntryAdapter;
-import ni.org.ics.zpo.appmovil.adapters.eventosinfante.InfantVisitAdapter;
 import ni.org.ics.zpo.appmovil.database.ZpoAdapter;
 import ni.org.ics.zpo.appmovil.utils.Constants;
 import ni.org.ics.zpo.appmovil.utils.MainDBConstants;
@@ -35,7 +34,7 @@ public class InfantEntryActivity extends AbstractAsyncActivity {
 	private ZpoAdapter zipA;
 	private static ZpoInfantData zpInfante = new ZpoInfantData();
 	private static ZpoEstadoInfante zpEstado = new ZpoEstadoInfante();
-	private static Zpo02BiospecimenCollection zp02d = null;
+	private static Zpo02BiospecimenCollection zp02 = null;
 
 	private SimpleDateFormat mDateFormat = new SimpleDateFormat("MMM dd, yyyy");
 	private static String evento;
@@ -90,7 +89,7 @@ public class InfantEntryActivity extends AbstractAsyncActivity {
                     case 0:  //MUESTRAS
 						i = new Intent(getApplicationContext(),
 								NewZpo02BiospecimenCollectionActivity.class);
-						if (zp02d != null) arguments.putSerializable(Constants.OBJECTO_ZP02D, zp02d);
+						if (zp02 != null) arguments.putSerializable(Constants.OBJECTO_ZP02, zp02);
 						i.putExtras(arguments);
 						startActivity(i);
 						break;
@@ -229,9 +228,9 @@ public class InfantEntryActivity extends AbstractAsyncActivity {
 				try {
 					zipA.open();
 					filtro = MainDBConstants.recordId + "='" + zpInfante.getRecordId() + "' and " + Zpo02DBConstants.eventName + "='" + eventoaFiltrar +"'";
-					zp02d = zipA.getZpo02BiospecimenCollection(filtro, MainDBConstants.recordId);
+					zp02 = zipA.getZpo02BiospecimenCollection(filtro, MainDBConstants.recordId);
 
-					if (zp02d!=null){
+					if (zp02 !=null){
 						if(eventoaFiltrar.matches(Constants.ENTRY)){
 							zpEstado.setIngreso('1');
 						}
@@ -253,7 +252,7 @@ public class InfantEntryActivity extends AbstractAsyncActivity {
 
 			protected void onPostExecute(String resultado) {
 				// after the network request completes, hide the progress indicator
-				gridView.setAdapter(new InfantEntryAdapter(getApplicationContext(), R.layout.menu_item_2, menu_infante_info, zp02d));
+				gridView.setAdapter(new InfantEntryAdapter(getApplicationContext(), R.layout.menu_item_2, menu_infante_info, zp02));
 				dismissProgressDialog();
 			}
 

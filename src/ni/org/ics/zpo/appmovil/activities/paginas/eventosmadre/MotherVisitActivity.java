@@ -83,7 +83,7 @@ public class MotherVisitActivity extends AbstractAsyncActivity {
 					int position, long id) {
 				Bundle arguments = new Bundle();
 				Intent i;
-				arguments.putString(Constants.EVENT, Constants.ENTRY);
+				arguments.putString(Constants.EVENT, evento);
                 arguments.putString(Constants.RECORDID, zp00.getRecordId());
 				switch(position){ 
                     case 0: //MUESTRAS

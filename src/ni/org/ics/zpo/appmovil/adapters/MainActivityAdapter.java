@@ -46,7 +46,7 @@ public class MainActivityAdapter extends ArrayAdapter<String> {
 			textView.setCompoundDrawablesWithIntrinsicBounds(img, null, null, null);
 			break;
 		default:
-			img=getContext().getResources().getDrawable( R.drawable.ic_launcher);
+			img=getContext().getResources().getDrawable( R.drawable.logo);
 			textView.setCompoundDrawablesWithIntrinsicBounds(img, null, null, null);
 			break;
 		}
