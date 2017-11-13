@@ -169,6 +169,8 @@ public class Zpo01StudyEntrySectionDtoFXml {
 
     @Element(required=false)
     private String note1;
+    @Element(required=false)
+    private String note2;
 
     @Element(required=false)
     private String generated_table_list_label_5;
