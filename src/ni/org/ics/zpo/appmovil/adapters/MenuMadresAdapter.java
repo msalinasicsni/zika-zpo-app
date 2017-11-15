@@ -86,6 +86,7 @@ public class MenuMadresAdapter extends ArrayAdapter<String> {
 			fechaEvento = fechaIngreso.getTime();
 			if(String.valueOf(mZpEstado.getIngreso()).equals("0")){
 				textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.pending));
+                textView.setTextColor(Color.BLUE);
                 if (mZpo05!=null) {
                     long dif = getDateDiff(fechaEvento, todayDate, TimeUnit.DAYS);
                     if (dif > 15) {

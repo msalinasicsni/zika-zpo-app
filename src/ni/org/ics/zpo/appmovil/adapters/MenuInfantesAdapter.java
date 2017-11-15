@@ -79,6 +79,7 @@ public class MenuInfantesAdapter extends ArrayAdapter<String> {
                 fechaEvento = mZpInfante.getRecordDate();
                 if(String.valueOf(mZpEstado.getIngreso()).equals("0")){
                     textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.pending));
+                    textView.setTextColor(Color.BLUE);
                     long dif = getDateDiff(fechaEvento,todayDate,TimeUnit.DAYS);
                     if(dif>15){
                         textView.setTextColor(Color.RED);
@@ -105,6 +106,7 @@ public class MenuInfantesAdapter extends ArrayAdapter<String> {
                 fechaEvento = fechaIngreso.getTime();
                 if(String.valueOf(mZpEstado.getMes12()).equals("0")){
                     textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.pending));
+                    textView.setTextColor(Color.BLUE);
                     long dif = getDateDiff(fechaEvento,todayDate,TimeUnit.DAYS);
                     if(dif<-7){
                         textView.setTextColor(Color.GRAY);
@@ -136,6 +138,7 @@ public class MenuInfantesAdapter extends ArrayAdapter<String> {
                 fechaEvento = fechaIngreso.getTime();
                 if(String.valueOf(mZpEstado.getMes24()).equals("0")){
                     textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.pending));
+                    textView.setTextColor(Color.BLUE);
                     long dif = getDateDiff(fechaEvento,todayDate,TimeUnit.DAYS);
                     if(dif<-7){
                         textView.setTextColor(Color.GRAY);

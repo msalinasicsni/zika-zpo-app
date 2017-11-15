@@ -122,7 +122,7 @@ public class BuscarMadreActivity extends AbstractAsyncListActivity {
 					mParametroView.setError(getString(R.string.search_hint));
 					return;
 				}
-				if(!mParametroView.getText().toString().matches("^ZPO\\d{3}[0]$")){
+				if(!mParametroView.getText().toString().matches("^ZPO-\\d{3}[0]$")){
 					mParametroView.requestFocus();
 					mParametroView.setError(getString(R.string.code_error));
 					return;
@@ -227,7 +227,7 @@ public class BuscarMadreActivity extends AbstractAsyncListActivity {
 			String sb = intent.getStringExtra("SCAN_RESULT");
 			if (sb != null && sb.length() > 0) {
 				try{
-					if(!(sb.matches("^ZPO\\d{3}[0]$"))){
+					if(!(sb.matches("^ZPO-\\d{3}[0]$"))){
 						showToast(getString(R.string.scan_error));
 						return;
 					}

@@ -162,7 +162,7 @@ public class NewZpo00ScreeningActivity extends AbstractAsyncActivity {
 			mRecordId = intent.getStringExtra("SCAN_RESULT");
 			if (mRecordId != null && mRecordId.length() > 0) {
 				try{
-					if(!(mRecordId.matches("^ZPO\\d{3}[0-3]$"))){
+					if(!(mRecordId.matches("^ZPO-\\d{3}[0-3]$"))){
 						Toast.makeText(getApplicationContext(),	getString(R.string.scan_error), Toast.LENGTH_LONG).show();
 						createInitDialog();
 						return;
@@ -326,7 +326,7 @@ public class NewZpo00ScreeningActivity extends AbstractAsyncActivity {
 				public void onClick(DialogInterface dialog, int which) {
 					dialog.dismiss();
 					mRecordId = input.getText().toString(); 
-					if(!(mRecordId.matches("^ZPO\\d{3}[0-3]$"))){
+					if(!(mRecordId.matches("^ZPO-\\d{3}[0-3]$"))){
 						Toast.makeText(getApplicationContext(),	getString(R.string.code_error), Toast.LENGTH_LONG).show();
 						createDialog(ADD_TAM_MANUAL);
 						return;

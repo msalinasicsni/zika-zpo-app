@@ -118,7 +118,7 @@ public class BuscarInfanteActivity extends AbstractAsyncListActivity {
 					mParametroView.setError(getString(R.string.search_hint));
 					return;
 				}
-				if(!mParametroView.getText().toString().matches("^ZPO\\d{3}[1-3]$")){
+				if(!mParametroView.getText().toString().matches("^ZPO-\\d{3}[1-3]$")){
 					mParametroView.requestFocus();
 					mParametroView.setError(getString(R.string.code_error));
 					return;
@@ -207,7 +207,7 @@ public class BuscarInfanteActivity extends AbstractAsyncListActivity {
 			String sb = intent.getStringExtra("SCAN_RESULT");
 			if (sb != null && sb.length() > 0) {
 				try{
-					if(!(sb.matches("^ZPO\\d{3}[1-3]$"))){
+					if(!(sb.matches("^ZPO-\\d{3}[1-3]$"))){
 						showToast(getString(R.string.scan_error));
 						return;
 					}
