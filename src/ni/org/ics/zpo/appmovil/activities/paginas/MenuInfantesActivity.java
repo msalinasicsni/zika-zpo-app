@@ -84,7 +84,8 @@ public class MenuInfantesActivity extends AbstractAsyncActivity {
             e.printStackTrace();
         }
         this.fechaIngreso = Calendar.getInstance();
-        fechaIngreso.setTime(zpInfante.getInfantBirthDate());
+        if (zpInfante.getInfantBirthDate()!=null)
+            fechaIngreso.setTime(zpInfante.getInfantBirthDate());
 
         gridView.setOnItemClickListener(new OnItemClickListener() {
             @Override
@@ -284,7 +285,7 @@ public class MenuInfantesActivity extends AbstractAsyncActivity {
             textView.setTextColor(Color.BLUE);
             textView.setText(getString(R.string.infant_events)+"\n"+
                     getString(R.string.inf_id)+": "+zpInfante.getRecordId()+"\n"+
-                    getString(R.string.inf_dob)+": "+ mDateFormat.format(zpInfante.getInfantBirthDate()));
+                    getString(R.string.inf_dob)+": "+ (zpInfante.getInfantBirthDate()!=null?mDateFormat.format(zpInfante.getInfantBirthDate()):"ND"));
             gridView.setAdapter(new MenuInfantesAdapter(getApplicationContext(), R.layout.menu_item_2, menu_infante_info, zpInfante, zpEstado, zpSalida));
             if (zpSalida != null){
                 textView.setTextColor(Color.RED);

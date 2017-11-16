@@ -47,7 +47,8 @@ public class MenuInfantesAdapter extends ArrayAdapter<String> {
             e.printStackTrace();
         }
         this.fechaIngreso = Calendar.getInstance();
-        fechaIngreso.setTime(mZpInfante.getInfantBirthDate());
+        if (mZpInfante.getInfantBirthDate()!=null)
+            fechaIngreso.setTime(mZpInfante.getInfantBirthDate());
     }
 
 

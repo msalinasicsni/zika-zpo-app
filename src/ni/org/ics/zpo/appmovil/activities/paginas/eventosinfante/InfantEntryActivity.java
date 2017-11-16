@@ -74,7 +74,7 @@ public class InfantEntryActivity extends AbstractAsyncActivity {
 		textView = (TextView) findViewById(R.id.label);
 		textView.setText(getString(R.string.forms)+"\n"+
 				getString(R.string.inf_id)+": "+zpInfante.getRecordId()+"\n"+
-						getString(R.string.inf_dob)+": "+ mDateFormat.format(zpInfante.getInfantBirthDate()));
+						getString(R.string.inf_dob)+": "+ (zpInfante.getInfantBirthDate()!=null?mDateFormat.format(zpInfante.getInfantBirthDate()):"ND"));
 		menu_infante_info = getResources().getStringArray(R.array.menu_infant_entry);
 		gridView = (GridView) findViewById(R.id.gridView1);
 		gridView.setOnItemClickListener(new OnItemClickListener() {

@@ -40,7 +40,7 @@ public class ZpoInfantDataAdapter extends ArrayAdapter<ZpoInfantData> {
 
 			textView = (TextView) v.findViewById(R.id.identifier_text);
 			if (textView != null) {
-				textView.setText(this.getContext().getString(R.string.inf_dob) + ": " + mDateFormat.format(p.getInfantBirthDate()));
+				textView.setText(this.getContext().getString(R.string.inf_dob) + ": " + (p.getInfantBirthDate()!=null?mDateFormat.format(p.getInfantBirthDate()):"ND"));
 			}
 			
 			ImageView imageView = (ImageView) v.findViewById(R.id.image);
