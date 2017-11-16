@@ -50,13 +50,9 @@ public class MenuMadresAdapter extends ArrayAdapter<String> {
 			e.printStackTrace();
 		}
 		this.fechaIngreso = Calendar.getInstance();
-        if (mZpo05!=null)
+        if (mZpo05!=null && mZpo05.getDeliDeliveryDate()!=null)
             fechaIngreso.setTime(mZpo05.getDeliDeliveryDate());
 	}
-	
-	
-
-
 	
 	@Override
     public boolean isEnabled(int position) {

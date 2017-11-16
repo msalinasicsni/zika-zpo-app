@@ -118,6 +118,11 @@ public class Zpo05DeliveryXml {
     @Element(required=false)
     private String note2;
 
+    @Element(required=false)
+    private String question1;
+    @Element(required=false)
+    private String question2;
+
     @Attribute
     private String id;
     @Attribute(required = false)

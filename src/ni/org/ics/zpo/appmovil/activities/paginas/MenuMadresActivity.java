@@ -92,18 +92,18 @@ public class MenuMadresActivity extends AbstractAsyncActivity {
 					int position, long id) {
 				long diff =0;
 				boolean habilitado = true;
-                if (zpo05!=null)
+                if (zpo05!=null && zpo05.getDeliDeliveryDate()!=null)
                     fechaIngreso.setTime(zpo05.getDeliDeliveryDate());
 				switch (position){
 				case 0:
-                    if (zpo05!=null) {
+                    if (zpo05!=null && zpo05.getDeliDeliveryDate()!=null) {
                         fechaEvento = fechaIngreso.getTime();
                         diff = getDateDiff(fechaEvento, todayDate, TimeUnit.DAYS);
                         if (diff > 15) habilitado = false;
                     }
 		        	break;
 				case 1:
-                    if (zpo05!=null) {
+                    if (zpo05!=null && zpo05.getDeliDeliveryDate()!=null) {
                         fechaIngreso.add(Calendar.DATE, 365);
                         fechaEvento = fechaIngreso.getTime();
                         fechaIngreso.add(Calendar.DATE, -365);
@@ -112,7 +112,7 @@ public class MenuMadresActivity extends AbstractAsyncActivity {
                     }
 		        	break;
 				case 2:
-                    if (zpo05!=null) {
+                    if (zpo05!=null && zpo05.getDeliDeliveryDate()!=null) {
                         fechaIngreso.add(Calendar.DATE, 730);
                         fechaEvento = fechaIngreso.getTime();
                         fechaIngreso.add(Calendar.DATE, -730);
