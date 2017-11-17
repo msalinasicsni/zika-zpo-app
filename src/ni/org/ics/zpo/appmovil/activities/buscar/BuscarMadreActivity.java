@@ -164,20 +164,17 @@ public class BuscarMadreActivity extends AbstractAsyncListActivity {
 	@Override
 	protected void onListItemClick(ListView listView, View view, int position,
 			long id) {
-
 		Zpo00Screening mTamizaje = (Zpo00Screening) getListAdapter().getItem(position);
-		/*if (mTamizaje.getScrRemain().equals("0") || mTamizaje.getScrAge15().equals("0") || mTamizaje.getScrPregnant().equals("0")
-				|| mTamizaje.getScrPregant13().equals("0")|| mTamizaje.getScrZikaOther().equals("1") || mTamizaje.getScrMeetCriteria().equals("0")
-				|| mTamizaje.getScrConsentObta().equals("0")){
-			showToast(getString(R.string.notelegible));
-		}
-		else if(mTamizaje.getScrConsentObta().equals("1") && mTamizaje.getScrObAge()<18){
-			if(mTamizaje.getScrObAssent().matches("0")) showToast(getString(R.string.notelegible));
-            else cargarMenu(mTamizaje);
-		}
-		else{*/
+        if (mTamizaje.getScrConsentObta().equals("0")){
+            showToast(getString(R.string.notelegible));
+        }else if(mTamizaje.getScrConsentObta().equals("1") && mTamizaje.getScrObAge()<18){
+            if(mTamizaje.getScrObAssent()==null || mTamizaje.getScrObAssent().matches("0"))
+                showToast(getString(R.string.notelegible));
+            else
+                cargarMenu(mTamizaje);
+        }else{
             cargarMenu(mTamizaje);
-		//}
+        }
 	}
 
     private void cargarMenu(Zpo00Screening mTamizaje){
