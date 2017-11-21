@@ -38,6 +38,7 @@ public class Zpo00ScreeningHelper {
 		cv.put(MainDBConstants.scrReasonNot, screening.getScrReasonNot());
 		cv.put(MainDBConstants.scrReasonOther, screening.getScrReasonOther());
 
+        if (screening.getRecordDate() != null) cv.put(MainDBConstants.recordDate, screening.getRecordDate().getTime());
 		cv.put(MainDBConstants.recordUser, screening.getRecordUser());
 		cv.put(MainDBConstants.pasive, String.valueOf(screening.getPasive()));
 		cv.put(MainDBConstants.ID_INSTANCIA, screening.getIdInstancia());
@@ -81,6 +82,8 @@ public class Zpo00ScreeningHelper {
 
         mScreening.setScrReasonNot(cursorScreening.getString(cursorScreening.getColumnIndex(MainDBConstants.scrReasonNot)));
 		mScreening.setScrReasonOther(cursorScreening.getString(cursorScreening.getColumnIndex(MainDBConstants.scrReasonOther)));
+
+        if(cursorScreening.getLong(cursorScreening.getColumnIndex(MainDBConstants.recordDate))>0) mScreening.setRecordDate(new Date(cursorScreening.getLong(cursorScreening.getColumnIndex(MainDBConstants.recordDate))));
 		mScreening.setRecordUser(cursorScreening.getString(cursorScreening.getColumnIndex(MainDBConstants.recordUser)));
 		mScreening.setPasive(cursorScreening.getString(cursorScreening.getColumnIndex(MainDBConstants.pasive)).charAt(0));
 		mScreening.setIdInstancia(cursorScreening.getInt(cursorScreening.getColumnIndex(MainDBConstants.ID_INSTANCIA)));
