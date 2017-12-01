@@ -25,7 +25,7 @@ public class UploadAllTask extends UploadTask {
 	}
 
 	protected static final String TAG = UploadAllTask.class.getSimpleName();
-    private static final String TOTAL_TASK = "20";
+    private static final String TOTAL_TASK = "21";
 	private ZpoAdapter zpoA = null;
 
     private List<Zpo00Screening> mTamizajes = new ArrayList<Zpo00Screening>();
@@ -41,6 +41,7 @@ public class UploadAllTask extends UploadTask {
     private List<ZpoEstadoEmbarazada> mStatus = new ArrayList<ZpoEstadoEmbarazada>();
     private List<ZpoControlConsentimientosSalida> mSalidasCons = new ArrayList<ZpoControlConsentimientosSalida>();
     private List<ZpoControlConsentimientosRecepcion> mRecepcionesCons = new ArrayList<ZpoControlConsentimientosRecepcion>();
+    private List<ZpoVisitaFallida> mVisitasFallidas = new ArrayList<ZpoVisitaFallida>();
     private List<ZpoInfantData> mInfantData = new ArrayList<ZpoInfantData>();
     private List<ZpoEstadoInfante> mEstadoInfante = new ArrayList<ZpoEstadoInfante>();
     private List<Zpo07InfantAssessmentVisit> mInfantAssessment = new ArrayList<Zpo07InfantAssessmentVisit>();
@@ -75,6 +76,7 @@ public class UploadAllTask extends UploadTask {
     public static final int CONSSAL = 18;
     public static final int CONSREC = 19;
     public static final int SALIDA = 20;
+    public static final int VISITA_FALL = 21;
 
     @Override
 	protected String doInBackground(String... values) {
@@ -108,6 +110,7 @@ public class UploadAllTask extends UploadTask {
             mcInfantImageStudies = zpoA.getZpo07cInfantImageStudies(filtro, MainDBConstants.recordId);
             mdInfantBayleyScales = zpoA.getZpo07dInfantBayleyScales(filtro, MainDBConstants.recordId);
             mEstadoInfante = zpoA.getZpoEstadoInfantes(filtro, MainDBConstants.recordId);
+            mVisitasFallidas = zpoA.getZpoVisitaFallidas(filtro, null);
             
 			publishProgress("Datos completos!", "2", "2");
             actualizarBaseDatos(Constants.STATUS_SUBMITTED, TAMIZAJE);
@@ -231,6 +234,12 @@ public class UploadAllTask extends UploadTask {
             error = uploadExits(url, username, password);
             if (!error.matches("Datos recibidos!")){
                 actualizarBaseDatos(Constants.STATUS_NOT_SUBMITTED, SALIDA);
+                return error;
+            }
+            actualizarBaseDatos(Constants.STATUS_SUBMITTED, VISITA_FALL);
+            error = uploadFailedVisits(url, username, password);
+            if (!error.matches("Datos recibidos!")){
+                actualizarBaseDatos(Constants.STATUS_NOT_SUBMITTED, VISITA_FALL);
                 return error;
             }
 
@@ -387,7 +396,18 @@ public class UploadAllTask extends UploadTask {
                             .valueOf(c).toString());
                 }
             }
-        }        
+        }
+       else if(opcion==VISITA_FALL){
+           c = mVisitasFallidas.size();
+           if(c>0){
+               for (ZpoVisitaFallida visitaFallida : mVisitasFallidas) {
+                   visitaFallida.setEstado(estado);
+                   zpoA.editarZpoVisitaFallida(visitaFallida);
+                   publishProgress("Actualizando visitas fallidas base de datos local", Integer.valueOf(mVisitasFallidas.indexOf(visitaFallida)).toString(), Integer
+                           .valueOf(c).toString());
+               }
+           }
+       }
         /***************INFANTES***********/        
         else if(opcion==EVAL_INFANTE){
             c = mInfantAssessment.size();
@@ -1166,6 +1186,41 @@ public class UploadAllTask extends UploadTask {
                 restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
                 restTemplate.getMessageConverters().add(new MappingJacksonHttpMessageConverter());
                 // Hace la solicitud a la red, pone la vivienda y espera un mensaje de respuesta del servidor
+                ResponseEntity<String> response = restTemplate.exchange(urlRequest, HttpMethod.POST, requestEntity,
+                        String.class);
+                return response.getBody();
+            }
+            else{
+                return "Datos recibidos!";
+            }
+        } catch (Exception e) {
+            Log.e(TAG, e.getMessage(), e);
+            return e.getMessage();
+        }
+    }
+
+    /***************************************************/
+    /********************* Zpo Visitas Fallidas ************************/
+    /***************************************************/
+    // url, username, password
+    protected String uploadFailedVisits(String url, String username,
+                                 String password) throws Exception {
+        try {
+            if(mVisitasFallidas.size()>0){
+                publishProgress("Enviando visitas fallidas!", String.valueOf(VISITA_FALL), TOTAL_TASK);
+                // La URL de la solicitud POST
+                final String urlRequest = url + "/movil/zpoVisitasFallidas";
+                ZpoVisitaFallida[] envio = mVisitasFallidas.toArray(new ZpoVisitaFallida[mVisitasFallidas.size()]);
+                HttpHeaders requestHeaders = new HttpHeaders();
+                HttpAuthentication authHeader = new HttpBasicAuthentication(username, password);
+                requestHeaders.setContentType(MediaType.APPLICATION_JSON);
+                requestHeaders.setAuthorization(authHeader);
+                HttpEntity<ZpoVisitaFallida[]> requestEntity =
+                        new HttpEntity<ZpoVisitaFallida[]>(envio, requestHeaders);
+                RestTemplate restTemplate = new RestTemplate();
+                restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
+                restTemplate.getMessageConverters().add(new MappingJacksonHttpMessageConverter());
+                // Hace la solicitud a la red, pone la visita y espera un mensaje de respuesta del servidor
                 ResponseEntity<String> response = restTemplate.exchange(urlRequest, HttpMethod.POST, requestEntity,
                         String.class);
                 return response.getBody();

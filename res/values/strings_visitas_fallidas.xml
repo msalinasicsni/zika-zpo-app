@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="visitaf_1">Visita Fallida</string>
+	<string name="visitaf_2">Agregar Visita Fallida</string>
+	<string name="razon">Razon:</string>
+    <string name="otrarazon">Otra Razon:</string>
+	<string name="persona_vf">Persona:</string>
+    <string name="otrarazon_hint">Escriba otra razon</string>
+    <string name="persona_vf_hint">Escriba nombre de la persona que visitaba</string>
+    <string name="error_razon">Debe seleccionar una razón válida!</string>
+    <string name="error_otra_razon">Debe ingresar otra razón válida!</string>
+    <string name="error_persona_vf">Debe ingresar una persona válida!</string>
+</resources>

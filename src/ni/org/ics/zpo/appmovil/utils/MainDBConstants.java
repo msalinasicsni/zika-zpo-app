@@ -26,7 +26,7 @@ public class MainDBConstants {
 
 	//Base de datos y tablas
 	public static final String DATABASE_NAME = "zikazpocryp.sqlite3";
-	public static final int DATABASE_VERSION = 1;
+	public static final int DATABASE_VERSION = 2;
 	
 	//Tabla usuarios
 	public static final String USER_TABLE = "users";
@@ -369,4 +369,35 @@ public class MainDBConstants {
             + PHONE_NUMBER  + " text, "
             + TODAY  + " date, "
             + "primary key (" + codigo  +"));";
+
+    //Tabla ZpoVisitaFallida
+    public static final String FAIL_VISIT_TABLE = "zpo_visita_fallida";
+    //Campos tabla ZpoVisitaFallida
+    public static final String id="id";
+    public static final String razon="razon";
+    public static final String otraRazon="otraRazon";
+    public static final String fechaVisita="fechaVisita";
+
+    //Crear tabla ZpoVisitaFallida
+    public static final String CREATE_FAIL_VISIT_TABLE = "create table if not exists "
+            + FAIL_VISIT_TABLE + " ("
+            + id + " text not null, "
+            + razon + " text not null, "
+            + otraRazon + " text not null, "
+            + fechaVisita + " date not null, "
+            + persona + " text not null, "
+            + recordDate + " date, "
+            + recordUser + " text, "
+            + pasive + " text, "
+            + ID_INSTANCIA + " integer,"
+            + FILE_PATH + " text,"
+            + STATUS + " text not null, "
+            + START  + " text, "
+            + END  + " text, "
+            + DEVICE_ID  + " text, "
+            + SIM_SERIAL + " text, "
+            + PHONE_NUMBER  + " text, "
+            + TODAY  + " date, "
+            + "primary key (" + id  +"));";
+
 }

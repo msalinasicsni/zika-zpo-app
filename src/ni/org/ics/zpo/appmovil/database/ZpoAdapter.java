@@ -71,11 +71,15 @@ public class ZpoAdapter {
             db.execSQL(Zpo07dDBConstants.CREATE_DINFANT_BAYLEYSCALES_TABLE);
             db.execSQL(MainDBConstants.CREATE_DATA_CONSREC_TABLE);
             db.execSQL(MainDBConstants.CREATE_DATA_CONSSAL_TABLE);
+            db.execSQL(MainDBConstants.CREATE_FAIL_VISIT_TABLE);
 		}
 
 		@Override
 		public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 			onCreate(db);
+            if(oldVersion==1){
+                db.execSQL(MainDBConstants.CREATE_FAIL_VISIT_TABLE);
+            }
 		}	
 	}
 
@@ -224,6 +228,8 @@ public class ZpoAdapter {
         c = crearCursor(Zpo07cDBConstants.CINFANT_IMAGESTUDIES_TABLE, MainDBConstants.STATUS + "='"  + Constants.STATUS_NOT_SUBMITTED+ "'", null, null);
         if (c != null && c.getCount()>0) {c.close();return true;}
         c = crearCursor(Zpo07dDBConstants.DINFANT_BAYLEYSCALES_TABLE, MainDBConstants.STATUS + "='"  + Constants.STATUS_NOT_SUBMITTED+ "'", null, null);
+        if (c != null && c.getCount()>0) {c.close();return true;}
+        c = crearCursor(MainDBConstants.FAIL_VISIT_TABLE, MainDBConstants.STATUS + "='"  + Constants.STATUS_NOT_SUBMITTED+ "'", null, null);
         if (c != null && c.getCount()>0) {c.close();return true;}
         c.close();
         return false;
@@ -1186,5 +1192,54 @@ public class ZpoAdapter {
         }
         if (!cursorStatus.isClosed()) cursorStatus.close();
         return zpControlConsentimientosRecepcion;
+    }
+
+    /**
+     * Metodos para ZpoVisitaFallida en la base de datos
+     *
+     * @param datos
+     *            Objeto ZpoVisitaFallida que contiene la informacion
+     *
+     */
+    //Crear nuevo ZpoVisitaFallida en la base de datos
+    public void crearZpoVisitaFallida(ZpoVisitaFallida datos) {
+        ContentValues cv = ZpoVisitaFallidaHelper.crearZpoVisitaFallida(datos);
+        mDb.insert(MainDBConstants.FAIL_VISIT_TABLE, null, cv);
+    }
+    //Editar ZpoVisitaFallida existente en la base de datos
+    public boolean editarZpoVisitaFallida(ZpoVisitaFallida datos) {
+        ContentValues cv = ZpoVisitaFallidaHelper.crearZpoVisitaFallida(datos);
+        return mDb.update(MainDBConstants.FAIL_VISIT_TABLE, cv, MainDBConstants.id + "='" + datos.getId() +"'", null) > 0;
+    }
+    //Limpiar la tabla de ZpoVisitaFallida de la base de datos
+    public boolean borrarZpoVisitaFallida() {
+        return mDb.delete(MainDBConstants.FAIL_VISIT_TABLE, null, null) > 0;
+    }
+    //Obtener un ZpoVisitaFallida de la base de datos
+    public ZpoVisitaFallida getZpoVisitaFallida(String filtro, String orden) throws SQLException {
+        ZpoVisitaFallida mDatos = null;
+        Cursor cursorDatos = crearCursor(MainDBConstants.FAIL_VISIT_TABLE, filtro, null, orden);
+        if (cursorDatos != null && cursorDatos.getCount() > 0) {
+            cursorDatos.moveToFirst();
+            mDatos=ZpoVisitaFallidaHelper.crearZpoVisitaFallida(cursorDatos);
+        }
+        if (!cursorDatos.isClosed()) cursorDatos.close();
+        return mDatos;
+    }
+    //Obtener una lista de ZpoVisitaFallida de la base de datos
+    public List<ZpoVisitaFallida> getZpoVisitaFallidas(String filtro, String orden) throws SQLException {
+        List<ZpoVisitaFallida> zpoVisitaFallidas = new ArrayList<ZpoVisitaFallida>();
+        Cursor cursorStatus = crearCursor(MainDBConstants.FAIL_VISIT_TABLE, filtro, null, orden);
+        if (cursorStatus != null && cursorStatus.getCount() > 0) {
+            cursorStatus.moveToFirst();
+            zpoVisitaFallidas.clear();
+            do{
+                ZpoVisitaFallida visitaFallida = null;
+                visitaFallida = ZpoVisitaFallidaHelper.crearZpoVisitaFallida(cursorStatus);
+                zpoVisitaFallidas.add(visitaFallida);
+            } while (cursorStatus.moveToNext());
+        }
+        if (!cursorStatus.isClosed()) cursorStatus.close();
+        return zpoVisitaFallidas;
     }
 }

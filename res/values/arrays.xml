@@ -154,6 +154,16 @@
         <item>Socrates Flores</item>
         <item>Francisco Buitrago</item>
         <item>Oficina ICS</item>
-    </string-array>    
+    </string-array>
+
+    <string-array name="list_razon_visita_fall">
+        <item>@string/select</item>
+        <item>Cambio de domicilio</item>
+        <item>Casa cerrada</item>
+        <item>No ubicada</item>
+        <item>Madre ausente</item>
+        <item>Regresar otro dia</item>
+        <item>Otra razon</item>
+    </string-array>
 
 </resources>

@@ -17,6 +17,7 @@ import ni.org.ics.zpo.appmovil.MainActivity;
 import ni.org.ics.zpo.appmovil.MyZpoApplication;
 import ni.org.ics.zpo.appmovil.R;
 import ni.org.ics.zpo.appmovil.activities.nuevos.NewZpo00ScreeningActivity;
+import ni.org.ics.zpo.appmovil.activities.nuevos.NewZpoVisitaFallidaActivity;
 import ni.org.ics.zpo.appmovil.activities.paginas.MenuMadresActivity;
 import ni.org.ics.zpo.appmovil.adapters.ScreeningAdapter;
 import ni.org.ics.zpo.appmovil.database.ZpoAdapter;
@@ -35,7 +36,8 @@ public class BuscarMadreActivity extends AbstractAsyncListActivity {
 	private ImageButton mBarcodeButton;
 	private ImageButton mFindButton;
 	private Button mAddButton;
-	
+	private Button mVisitaFallButton;
+
 	public static final int BARCODE_CAPTURE = 2;
 
 	private ZpoAdapter zpoA;
@@ -96,6 +98,8 @@ public class BuscarMadreActivity extends AbstractAsyncListActivity {
 		mFindButton = (ImageButton) findViewById(R.id.find_button);
 		mAddButton = (Button) findViewById(R.id.add_button);
 		mAddButton.setText(getString(R.string.add)+ " " +getString(R.string.main_maternal));
+        mVisitaFallButton = (Button) findViewById(R.id.vf_button);
+        mVisitaFallButton.setText(getString(R.string.visitaf_2));
 
 		mBarcodeButton.setOnClickListener(new View.OnClickListener()  {
 			@Override
@@ -142,6 +146,16 @@ public class BuscarMadreActivity extends AbstractAsyncListActivity {
 				startActivity(i);
 			}
 		});
+
+        mVisitaFallButton.setOnClickListener(new View.OnClickListener()  {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(),
+                        NewZpoVisitaFallidaActivity.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(i);
+            }
+        });
 
 	}
 	

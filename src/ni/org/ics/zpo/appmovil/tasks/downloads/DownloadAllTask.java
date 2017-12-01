@@ -25,7 +25,7 @@ public class DownloadAllTask extends DownloadTask {
 	
 	protected static final String TAG = DownloadAllTask.class.getSimpleName();
 	private ZpoAdapter zpoA = null;
-    private static final String TOTAL_TASK = "20";
+    private static final String TOTAL_TASK = "21";
 
     private List<Zpo00Screening> mTamizajes = null;
     private List<Zpo01StudyEntrySectionAtoB> mIngresosAD = null;
@@ -40,6 +40,7 @@ public class DownloadAllTask extends DownloadTask {
     private List<ZpoEstadoEmbarazada> mStatus = null;
     private List<ZpoControlConsentimientosSalida> mZpoControlConsentimientosSalida = null;
     private List<ZpoControlConsentimientosRecepcion> mZpoControlConsentimientosRecepcion = null;
+    private List<ZpoVisitaFallida> mVisitasFallidas = null;
     private List<ZpoInfantData> mInfantData = null;
     private List<ZpoEstadoInfante> mEstadoInfante = null;
     private List<Zpo07InfantAssessmentVisit> mInfantAssessment = null;
@@ -68,6 +69,7 @@ public class DownloadAllTask extends DownloadTask {
     public static final int CONSSAL = 18;
     public static final int CONSREC = 19;
     public static final int SALIDA = 20;
+    public static final int VISITA_FALL = 21;
     
 	private String error = null;
 	private String url = null;
@@ -111,6 +113,7 @@ public class DownloadAllTask extends DownloadTask {
         zpoA.borrarZpo07bInfantAudioResults();
         zpoA.borrarZpo07cInfantImageStudies();
         zpoA.borrarZpo07dInfantBayleyScales();
+        zpoA.borrarZpoVisitaFallida();
 
         zpoA.borrarZpoInfantData();
         zpoA.borrarZpoEstadoInfante();
@@ -297,6 +300,15 @@ public class DownloadAllTask extends DownloadTask {
                 while (iter.hasNext()){
                     zpoA.crearZpo08StudyExit(iter.next());
                     publishProgress("Insertando salidas del estudio en la base de datos...", Integer.valueOf(iter.nextIndex()).toString(), Integer
+                            .valueOf(v).toString());
+                }
+            }
+            if (mVisitasFallidas != null){
+                v = mVisitasFallidas.size();
+                ListIterator<ZpoVisitaFallida> iter = mVisitasFallidas.listIterator();
+                while (iter.hasNext()){
+                    zpoA.crearZpoVisitaFallida(iter.next());
+                    publishProgress("Insertando visitas fallidas en la base de datos...", Integer.valueOf(iter.nextIndex()).toString(), Integer
                             .valueOf(v).toString());
                 }
             }
@@ -509,6 +521,15 @@ public class DownloadAllTask extends DownloadTask {
                     Zpo08StudyExit[].class, username);
             // convert the array to a list and return it
             mExits = Arrays.asList(responseZpo08StudyExit.getBody());
+
+            //Descargar visitas fallidas
+            urlRequest = url + "/movil/zpoVisitasFallidas";
+            publishProgress("Solicitando visitas fallidas",String.valueOf(VISITA_FALL),TOTAL_TASK);
+            // Perform the HTTP GET request
+            ResponseEntity<ZpoVisitaFallida[]> responseZpoVisitaFallida = restTemplate.exchange(urlRequest, HttpMethod.GET, requestEntity,
+                    ZpoVisitaFallida[].class, username);
+            // convert the array to a list and return it
+            mVisitasFallidas = Arrays.asList(responseZpoVisitaFallida.getBody());
 
 
             return null;
