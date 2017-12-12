@@ -22,15 +22,18 @@ import ni.org.ics.zpo.appmovil.MyZpoApplication;
 import ni.org.ics.zpo.appmovil.R;
 import ni.org.ics.zpo.appmovil.database.ZpoAdapter;
 import ni.org.ics.zpo.appmovil.parsers.Zpo08StudyExitXml;
+import ni.org.ics.zpo.appmovil.utils.MainDBConstants;
 import ni.org.ics.zpo.domain.Zpo08StudyExit;
 import ni.org.ics.zpo.appmovil.preferences.PreferencesActivity;
 import ni.org.ics.zpo.appmovil.utils.Constants;
 import ni.org.ics.zpo.appmovil.utils.FileUtils;
+import ni.org.ics.zpo.domain.ZpoInfantData;
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 
 import java.io.File;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by FIRSTICT on 10/31/2016.
@@ -254,6 +257,15 @@ public class NewZpo08StudyExitActivity extends AbstractAsyncActivity {
             try {
                 zpoA.open();
                 zpoA.crearZpo08StudyExit(mExit);
+                if (mExit.getRecordId().matches("^ZPO-\\d{3}[0]$")){
+                    List<ZpoInfantData> infantesMadre = zpoA.getZpoInfantDatas(MainDBConstants.pregnantId + " = '"+mExit.getRecordId()+"'", null);
+                    for (ZpoInfantData infantData : infantesMadre){
+                        mExit.setRecordId(infantData.getRecordId());
+                        int numInfante = Integer.valueOf(infantData.getRecordId().substring(infantData.getRecordId().length()-1,infantData.getRecordId().length()))+1;
+                        mExit.setExtSubjClass(String.valueOf(numInfante));
+                        zpoA.crearZpo08StudyExit(mExit);
+                    }
+                }
                 zpoA.close();
             } catch (Exception e) {
                 Log.e(TAG, e.getLocalizedMessage(), e);

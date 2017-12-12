@@ -11,6 +11,7 @@
         <item>@string/maternal_a_1</item>
         <item>@string/maternal_a_2</item>
         <item>@string/maternal_a_3</item>
+        <item>@string/maternal_a_4</item>
     </string-array>
     
     <string-array name="menu_maternal_ingreso">

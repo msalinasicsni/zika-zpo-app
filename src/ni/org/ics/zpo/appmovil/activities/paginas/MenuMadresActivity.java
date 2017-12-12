@@ -22,6 +22,7 @@ import ni.org.ics.zpo.appmovil.AbstractAsyncActivity;
 import ni.org.ics.zpo.appmovil.MainActivity;
 import ni.org.ics.zpo.appmovil.MyZpoApplication;
 import ni.org.ics.zpo.appmovil.R;
+import ni.org.ics.zpo.appmovil.activities.nuevos.NewZpo08StudyExitActivity;
 import ni.org.ics.zpo.appmovil.activities.paginas.eventosmadre.*;
 import ni.org.ics.zpo.appmovil.adapters.MenuMadresAdapter;
 import ni.org.ics.zpo.appmovil.database.ZpoAdapter;
@@ -240,18 +241,17 @@ public class MenuMadresActivity extends AbstractAsyncActivity {
 		Bundle arguments = new Bundle();
 		Intent i;
 		switch(position){
-		
-		case 0:
-			i = new Intent(getApplicationContext(),
-					IngresoActivity.class);
-			//Aca se pasa evento, tamizaje y estado
-			arguments.putString(Constants.EVENT, Constants.ENTRY);
-			if (zp00!=null) arguments.putSerializable(Constants.OBJECTO_ZP00 , zp00);
-			if (zpEstado!=null) arguments.putSerializable(Constants.OBJECTO_ZPEST , zpEstado);
-			i.putExtras(arguments);
-			startActivity(i);
-			break;
-		case 1:case 2:
+            case 0:
+                i = new Intent(getApplicationContext(),
+                        IngresoActivity.class);
+                //Aca se pasa evento, tamizaje y estado
+                arguments.putString(Constants.EVENT, Constants.ENTRY);
+                if (zp00!=null) arguments.putSerializable(Constants.OBJECTO_ZP00 , zp00);
+                if (zpEstado!=null) arguments.putSerializable(Constants.OBJECTO_ZPEST , zpEstado);
+                i.putExtras(arguments);
+                startActivity(i);
+                break;
+            case 1:case 2:
                 i = new Intent(getApplicationContext(),
                         MotherVisitActivity.class);
                 //Aca se pasa evento, tamizaje y estado
@@ -261,7 +261,15 @@ public class MenuMadresActivity extends AbstractAsyncActivity {
                 if (zpEstado!=null) arguments.putSerializable(Constants.OBJECTO_ZPEST , zpEstado);
                 i.putExtras(arguments);
                 startActivity(i);
-			break;		
+                break;
+            case 3:
+                i = new Intent(getApplicationContext(),
+                        NewZpo08StudyExitActivity.class);
+                //Aca se pasa evento, tamizaje y estado
+                arguments.putString(Constants.RECORDID, zp00.getRecordId());
+                i.putExtras(arguments);
+                startActivity(i);
+                break;
 		default:
 			break;
 		}
