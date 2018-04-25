@@ -105,6 +105,8 @@
                   android:screenOrientation="portrait" />
         <activity android:name="ni.org.ics.zpo.appmovil.activities.nuevos.NewZpoVisitaFallidaActivity"
                   android:screenOrientation="portrait" />
+        <activity android:name="ni.org.ics.zpo.appmovil.activities.paginas.eventosinfante.UnscheduledInfantVisitActivity"
+                  android:screenOrientation="portrait" />
     </application>
 
 </manifest>

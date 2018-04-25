@@ -25,6 +25,7 @@ import ni.org.ics.zpo.appmovil.R;
 import ni.org.ics.zpo.appmovil.activities.nuevos.NewZpo08StudyExitActivity;
 import ni.org.ics.zpo.appmovil.activities.paginas.eventosinfante.InfantEntryActivity;
 import ni.org.ics.zpo.appmovil.activities.paginas.eventosinfante.InfantVisitActivity;
+import ni.org.ics.zpo.appmovil.activities.paginas.eventosinfante.UnscheduledInfantVisitActivity;
 import ni.org.ics.zpo.appmovil.adapters.MenuInfantesAdapter;
 import ni.org.ics.zpo.appmovil.database.ZpoAdapter;
 import ni.org.ics.zpo.domain.Zpo08StudyExit;
@@ -228,7 +229,20 @@ public class MenuInfantesActivity extends AbstractAsyncActivity {
                 i.putExtras(arguments);
                 startActivity(i);
                 break;
-            case 3:
+
+            case 3: case 4:case 5:
+                i = new Intent(getApplicationContext(),
+                        UnscheduledInfantVisitActivity.class);
+                //Aca se pasa evento, tamizaje y estado
+                if(position==3)	arguments.putString(Constants.EVENT, Constants.UNSHED1);
+                if(position==4)	arguments.putString(Constants.EVENT, Constants.UNSHED2);
+                if(position==5)	arguments.putString(Constants.EVENT, Constants.UNSHED3);
+                if (zpInfante!=null) arguments.putSerializable(Constants.OBJECTO_ZPINFDATA , zpInfante);
+                if (zpEstado!=null) arguments.putSerializable(Constants.OBJECTO_ZPESTINF , zpEstado);
+                i.putExtras(arguments);
+                startActivity(i);
+                break;
+            case 6:
                 i = new Intent(getApplicationContext(),
                         NewZpo08StudyExitActivity.class);
                 //Aca se pasa evento, tamizaje y estado

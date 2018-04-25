@@ -61,5 +61,8 @@ public class Constants {
 	public static final String MONTH12 = "12_months_arm_2";
     public static final String MONTH24 = "24_months_arm_2";
     public static final String RECORDID = "recordId";
+	public static final String UNSHED1 = "unscheduled_visit_1";
+	public static final String UNSHED2 = "unscheduled_visit_2";
+	public static final String UNSHED3 = "unscheduled_visit_3";
 
 }

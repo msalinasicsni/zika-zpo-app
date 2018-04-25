@@ -32,6 +32,9 @@
         <item>@string/infant_a_1</item>
         <item>@string/infant_a_2</item>
         <item>@string/infant_a_3</item>
+        <item>@string/infant_a_4</item>
+        <item>@string/infant_a_5</item>
+        <item>@string/infant_a_6</item>
         <item>@string/infant_a_10</item>
     </string-array>
 
@@ -87,15 +90,17 @@
         <item>Lohana Julissa Zeledón López</item>
         <item>Izamar Altamirano Arias</item>
         <item>Gloria Liseth Baldelomar Carballo</item>
-        <item>Mabel Gissell Sequeira González</item>
+        <!--<item>Mabel Gissell Sequeira González</item>-->
         <item>Anna Gajewski</item>
         <item>Elsa Videa López</item>
         <item>Liliam Llufrío González</item>
         <item>William Rivas</item>
         <item>Josue Narvaez</item>
-        <item>Carmen Gisselle Arauz</item>
+        <!--<item>Carmen Gisselle Arauz</item>-->
         <item>Fabio Marchena</item>
         <item>Oscar Ortega</item>
+        <item>Emile Ivan Olivieri</item>
+        <item>Joxiry Rios</item>
     </string-array>
     
    	<string-array name="list_personas_llegada_cons">
@@ -118,16 +123,18 @@
         <item>Lohana Julissa Zeledón López</item>
         <item>Izamar Altamirano Arias</item>
         <item>Gloria Liseth Baldelomar Carballo</item>
-        <item>Mabel Gissell Sequeira González</item>
+        <!--<item>Mabel Gissell Sequeira González</item>-->
         <item>Heidi del Carmen González Gaitán</item>
         <item>Anna Gajewski</item>
         <item>Elsa Videa López</item>
         <item>Liliam Llufrío González</item>
         <item>William Rivas</item>
         <item>Josue Narvaez</item>
-        <item>Carmen Gisselle Arauz</item>
+        <!--<item>Carmen Gisselle Arauz</item>-->
         <item>Fabio Marchena</item>
         <item>Oscar Ortega</item>
+        <item>Emile Ivan Olivieri</item>
+        <item>Joxiry Rios</item>
     </string-array>
     
    	<string-array name="list_personas_llegada_us">
@@ -139,21 +146,26 @@
         <item>Ennio Sáenz Martínez</item>
         <item>William Rivas</item>
         <item>Josue Narvaez</item>
-        <item>Carmen Gisselle Arauz</item>
+        <!--<item>Carmen Gisselle Arauz</item>-->
         <item>Fabio Marchena</item>
         <item>Oscar Ortega</item>
+        <item>Emile Ivan Olivieri</item>
+        <item>Joxiry Rios</item>
+
     </string-array>
     
     <string-array name="list_lugares_salida">
         <item>@string/select</item>
         <item>Socrates Flores</item>
         <item>Francisco Buitrago</item>
+        <item>Edgard Lang</item>
     </string-array>
 
     <string-array name="list_lugares_llegada">
         <item>@string/select</item>
         <item>Socrates Flores</item>
         <item>Francisco Buitrago</item>
+        <item>Edgard Lang</item>
         <item>Oficina ICS</item>
     </string-array>
 

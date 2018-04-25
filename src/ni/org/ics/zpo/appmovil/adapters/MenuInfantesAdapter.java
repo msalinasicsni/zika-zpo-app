@@ -166,7 +166,29 @@ public class MenuInfantesAdapter extends ArrayAdapter<String> {
                 textView.setCompoundDrawablesWithIntrinsicBounds(null, img, null, null);
                 fechaIngreso.add(Calendar.DATE, -730);
                 break;
+
             case 3:
+                textView.setTextColor(Color.BLACK);
+                textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.available)+"\n\n");
+                img=getContext().getResources().getDrawable( R.drawable.ic_addvisit);
+                textView.setCompoundDrawablesWithIntrinsicBounds(null, img, null, null);
+                break;
+
+            case 4:
+                textView.setTextColor(Color.BLACK);
+                textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.available)+"\n\n");
+                img=getContext().getResources().getDrawable( R.drawable.ic_addvisit);
+                textView.setCompoundDrawablesWithIntrinsicBounds(null, img, null, null);
+                break;
+
+            case 5:
+                textView.setTextColor(Color.BLACK);
+                textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.available)+"\n\n");
+                img=getContext().getResources().getDrawable( R.drawable.ic_addvisit);
+                textView.setCompoundDrawablesWithIntrinsicBounds(null, img, null, null);
+                break;
+
+            case 6:
                 textView.setTextColor(Color.BLACK);
                 if(mZpSalida!=null){
                     textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.inf_retired)+"\n\n");
