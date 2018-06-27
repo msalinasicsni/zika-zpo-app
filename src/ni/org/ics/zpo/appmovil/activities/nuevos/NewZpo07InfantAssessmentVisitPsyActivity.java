@@ -183,7 +183,7 @@ public class NewZpo07InfantAssessmentVisitPsyActivity extends AbstractAsyncActiv
                         "_id","jrFormId","displayName"};
                 //cursor que busca el formulario
                 Cursor c = getContentResolver().query(Constants.CONTENT_URI, projection,
-                        "jrFormId = 'ZP07_Infant_Assessment_Psychologist' and displayName = 'Zika Zip Visita de evaluacion al infante'", null, null);
+                		"jrFormId = 'zpo07_infant_assessment_psychologist' and displayName = 'Estudio ZPO Visita de evaluacion al infante'", null, null);
                 c.moveToFirst();
                 //captura el id del formulario
                 Integer id = Integer.parseInt(c.getString(0));
