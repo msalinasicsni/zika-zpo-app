@@ -49,6 +49,7 @@ public class UploadAllTask extends UploadTask {
     private List<Zpo07bInfantAudioResults> mbInfantAudioResults = new ArrayList<Zpo07bInfantAudioResults>();
     private List<Zpo07cInfantImageStudies> mcInfantImageStudies = new ArrayList<Zpo07cInfantImageStudies>();
     private List<Zpo07dInfantBayleyScales> mdInfantBayleyScales = new ArrayList<Zpo07dInfantBayleyScales>();
+    private List<Zpo07InfantOtoacousticEmissions> mOtoEmi = new ArrayList<Zpo07InfantOtoacousticEmissions>();
 
 	private String url = null;
 	private String username = null;
@@ -77,6 +78,7 @@ public class UploadAllTask extends UploadTask {
     public static final int CONSREC = 19;
     public static final int SALIDA = 20;
     public static final int VISITA_FALL = 21;
+    public static final int OTO_EMI = 22;
 
     @Override
 	protected String doInBackground(String... values) {
@@ -111,6 +113,7 @@ public class UploadAllTask extends UploadTask {
             mdInfantBayleyScales = zpoA.getZpo07dInfantBayleyScales(filtro, MainDBConstants.recordId);
             mEstadoInfante = zpoA.getZpoEstadoInfantes(filtro, MainDBConstants.recordId);
             mVisitasFallidas = zpoA.getZpoVisitaFallidas(filtro, null);
+            mOtoEmi = zpoA.getZpo07InfantOtoacousticEms(filtro, MainDBConstants.recordId);
             
 			publishProgress("Datos completos!", "2", "2");
             actualizarBaseDatos(Constants.STATUS_SUBMITTED, TAMIZAJE);
@@ -254,6 +257,13 @@ public class UploadAllTask extends UploadTask {
             error = uploadFailedVisits(url, username, password);
             if (!error.matches("Datos recibidos!")){
                 actualizarBaseDatos(Constants.STATUS_NOT_SUBMITTED, VISITA_FALL);
+                return error;
+            }
+
+            actualizarBaseDatos(Constants.STATUS_SUBMITTED, OTO_EMI);
+            error = uploadOtoEmissions(url, username, password);
+            if (!error.matches("Datos recibidos!")){
+                actualizarBaseDatos(Constants.STATUS_NOT_SUBMITTED, OTO_EMI);
                 return error;
             }
 
@@ -504,6 +514,20 @@ public class UploadAllTask extends UploadTask {
                 }
             }
         }
+
+
+       else if(opcion==OTO_EMI){
+           c = mOtoEmi.size();
+           if(c>0){
+               for (Zpo07InfantOtoacousticEmissions dOtoEmi : mOtoEmi) {
+                   dOtoEmi.setEstado(estado);
+                   zpoA.editarZpo07InfantOtoacousticEm(dOtoEmi);
+                   publishProgress("Actualizando Emisiones Otoacusticas de base de datos local", Integer.valueOf(mOtoEmi.indexOf(dOtoEmi)).toString(), Integer
+                           .valueOf(c).toString());
+               }
+           }
+       }
+
     }
 
 
@@ -1231,6 +1255,42 @@ public class UploadAllTask extends UploadTask {
                 requestHeaders.setAuthorization(authHeader);
                 HttpEntity<ZpoVisitaFallida[]> requestEntity =
                         new HttpEntity<ZpoVisitaFallida[]>(envio, requestHeaders);
+                RestTemplate restTemplate = new RestTemplate();
+                restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
+                restTemplate.getMessageConverters().add(new MappingJacksonHttpMessageConverter());
+                // Hace la solicitud a la red, pone la visita y espera un mensaje de respuesta del servidor
+                ResponseEntity<String> response = restTemplate.exchange(urlRequest, HttpMethod.POST, requestEntity,
+                        String.class);
+                return response.getBody();
+            }
+            else{
+                return "Datos recibidos!";
+            }
+        } catch (Exception e) {
+            Log.e(TAG, e.getMessage(), e);
+            return e.getMessage();
+        }
+    }
+
+
+    /***************************************************/
+    /********************* Zpo Emisiones Otoacusticas ************************/
+    /***************************************************/
+    // url, username, password
+    protected String uploadOtoEmissions(String url, String username,
+                                        String password) throws Exception {
+        try {
+            if(mOtoEmi.size()>0){
+                publishProgress("Enviando Emisiones Otoacústicas!", String.valueOf(OTO_EMI), TOTAL_TASK);
+                // La URL de la solicitud POST
+                final String urlRequest = url + "/movil/zpo07InfantOtoacousticEms";
+                Zpo07InfantOtoacousticEmissions[] envio = mOtoEmi.toArray(new Zpo07InfantOtoacousticEmissions[mOtoEmi.size()]);
+                HttpHeaders requestHeaders = new HttpHeaders();
+                HttpAuthentication authHeader = new HttpBasicAuthentication(username, password);
+                requestHeaders.setContentType(MediaType.APPLICATION_JSON);
+                requestHeaders.setAuthorization(authHeader);
+                HttpEntity<Zpo07InfantOtoacousticEmissions[]> requestEntity =
+                        new HttpEntity<Zpo07InfantOtoacousticEmissions[]>(envio, requestHeaders);
                 RestTemplate restTemplate = new RestTemplate();
                 restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
                 restTemplate.getMessageConverters().add(new MappingJacksonHttpMessageConverter());

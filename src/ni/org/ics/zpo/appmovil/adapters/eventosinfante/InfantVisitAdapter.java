@@ -22,9 +22,10 @@ public class InfantVisitAdapter extends ArrayAdapter<String> {
 	private final Zpo07bInfantAudioResults mZpo07b;
 	private final Zpo07cInfantImageStudies mZpo07c;
 	private final Zpo07dInfantBayleyScales mZpo07d;
+	private final Zpo07InfantOtoacousticEmissions mZpo07OtoE;
 	
 	public InfantVisitAdapter(Context context, int textViewResourceId,
-                              String[] values, Zpo02BiospecimenCollection zp02, Zpo07InfantAssessmentVisit zp07, Zpo07aInfantOphtResults zp07a, Zpo07bInfantAudioResults zp07b, Zpo07cInfantImageStudies zp07c, Zpo07dInfantBayleyScales zp07d) {
+                              String[] values, Zpo02BiospecimenCollection zp02, Zpo07InfantAssessmentVisit zp07, Zpo07aInfantOphtResults zp07a, Zpo07bInfantAudioResults zp07b, Zpo07cInfantImageStudies zp07c, Zpo07dInfantBayleyScales zp07d, Zpo07InfantOtoacousticEmissions mZpo07OtoE) {
 		super(context, textViewResourceId, values);
 		this.context = context;
 		this.values = values;
@@ -34,6 +35,8 @@ public class InfantVisitAdapter extends ArrayAdapter<String> {
 		this.mZpo07b = zp07b;
 		this.mZpo07c = zp07c;
 		this.mZpo07d = zp07d;
+		this.mZpo07OtoE = mZpo07OtoE;
+
 	}
 
 	@Override
@@ -153,6 +156,16 @@ public class InfantVisitAdapter extends ArrayAdapter<String> {
 					textView.setText(textView.getText() + "\n" + context.getResources().getString(R.string.pending));
 				}
 				img = getContext().getResources().getDrawable(R.drawable.ic_bayley);
+				textView.setCompoundDrawablesWithIntrinsicBounds(null, img, null, null);
+				break;
+			case 8:
+				if (mZpo07OtoE != null) {
+					textView.setText(textView.getText() + "\n" + context.getResources().getString(R.string.done));
+				} else {
+					textView.setTextColor(Color.RED);
+					textView.setText(textView.getText() + "\n" + context.getResources().getString(R.string.pending));
+				}
+				img = getContext().getResources().getDrawable(R.drawable.ic_oae);
 				textView.setCompoundDrawablesWithIntrinsicBounds(null, img, null, null);
 				break;
 		default:

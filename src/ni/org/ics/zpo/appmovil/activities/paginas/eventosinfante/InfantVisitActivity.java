@@ -40,6 +40,7 @@ public class InfantVisitActivity extends AbstractAsyncActivity {
 	private static Zpo07bInfantAudioResults zp07b = null;
 	private static Zpo07cInfantImageStudies zp07c = null;
 	private static Zpo07dInfantBayleyScales zp07d = null;
+	private static Zpo07InfantOtoacousticEmissions zp07OtoE = null;
 
 	
 	private SimpleDateFormat mDateFormat = new SimpleDateFormat("MMM dd, yyyy");
@@ -146,6 +147,13 @@ public class InfantVisitActivity extends AbstractAsyncActivity {
 						i = new Intent(getApplicationContext(),
 								NewZpo07dInfantBayleyScalesActivity.class);
 						if (zp07d != null) arguments.putSerializable(Constants.OBJECTO_ZP07D, zp07d);
+						i.putExtras(arguments);
+						startActivity(i);
+						break;
+					case 8: //EMISIONES OTOACUSTICAS
+						i = new Intent(getApplicationContext(),
+								NewZpo07InfantOtoacousticEmissionsActivity.class);
+						if (zp07OtoE != null) arguments.putSerializable(Constants.OBJECTO_ZPO07OtoE, zp07OtoE);
 						i.putExtras(arguments);
 						startActivity(i);
 						break;
@@ -290,8 +298,9 @@ public class InfantVisitActivity extends AbstractAsyncActivity {
 					zp07b = zipA.getZpo07bInfantAudioResult(filtro, MainDBConstants.recordId);
 					zp07c = zipA.getZpo07cInfantImageSt(filtro, MainDBConstants.recordId);
 					zp07d = zipA.getZpo07dInfantBayleySc(filtro, MainDBConstants.recordId);
+					zp07OtoE = zipA.getZpo07InfantOtoacousticE(filtro, MainDBConstants.recordId);
 
-					if (zp02 !=null && zp07!=null && zp07a!=null && zp07b!=null && zp07c!=null && zp07d!=null){
+					if (zp02 !=null && zp07!=null && zp07a!=null && zp07b!=null && zp07c!=null && zp07d!=null && zp07OtoE!=null  ){
 						if(eventoaFiltrar.matches(Constants.MONTH12)){
 							zpEstado.setMes12('1');
 						}
@@ -311,7 +320,7 @@ public class InfantVisitActivity extends AbstractAsyncActivity {
 			protected void onPostExecute(String resultado) {
 				// after the network request completes, hide the progress indicator
 				gridView.setAdapter(new InfantVisitAdapter(getApplicationContext(), R.layout.menu_item_2, menu_infante_info,
-                        zp02, zp07, zp07a, zp07b, zp07c, zp07d));
+                        zp02, zp07, zp07a, zp07b, zp07c, zp07d, zp07OtoE));
 				dismissProgressDialog();
 			}
 

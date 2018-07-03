@@ -72,6 +72,7 @@ public class ZpoAdapter {
             db.execSQL(MainDBConstants.CREATE_DATA_CONSREC_TABLE);
             db.execSQL(MainDBConstants.CREATE_DATA_CONSSAL_TABLE);
             db.execSQL(MainDBConstants.CREATE_FAIL_VISIT_TABLE);
+            db.execSQL(Zpo07OtoEDBConstants.CREATE_INFANT_OTO_EMS_TABLE);
 		}
 
 		@Override
@@ -79,6 +80,7 @@ public class ZpoAdapter {
 			onCreate(db);
             if(oldVersion==1){
                 db.execSQL(MainDBConstants.CREATE_FAIL_VISIT_TABLE);
+                db.execSQL(Zpo07OtoEDBConstants.CREATE_INFANT_OTO_EMS_TABLE);
             }
 		}	
 	}
@@ -230,6 +232,8 @@ public class ZpoAdapter {
         c = crearCursor(Zpo07dDBConstants.DINFANT_BAYLEYSCALES_TABLE, MainDBConstants.STATUS + "='"  + Constants.STATUS_NOT_SUBMITTED+ "'", null, null);
         if (c != null && c.getCount()>0) {c.close();return true;}
         c = crearCursor(MainDBConstants.FAIL_VISIT_TABLE, MainDBConstants.STATUS + "='"  + Constants.STATUS_NOT_SUBMITTED+ "'", null, null);
+        if (c != null && c.getCount()>0) {c.close();return true;}
+        c = crearCursor(Zpo07OtoEDBConstants.INFANT_OTO_EMS_TABLE, MainDBConstants.STATUS + "='"  + Constants.STATUS_NOT_SUBMITTED+ "'", null, null);
         if (c != null && c.getCount()>0) {c.close();return true;}
         c.close();
         return false;
@@ -1095,6 +1099,55 @@ public class ZpoAdapter {
         if (!cursor.isClosed()) cursor.close();
         return mZpoEstadoInfantes;
     }
+
+
+    /**
+     * Metodos para Zpo07InfantOtoacousticEmissions en la base de datos
+     *
+     */
+    //Crear nuevo Zpo07InfantOtoacousticEmissions en la base de datos
+    public void crearZpo07InfantOtoacousticEm(Zpo07InfantOtoacousticEmissions infantOtoEm) {
+        ContentValues cv = Zpo07InfantOtoacousticEmissionsHelper.crearZpo07InfantOtoacousticEmissions(infantOtoEm);
+        mDb.insert(Zpo07OtoEDBConstants.INFANT_OTO_EMS_TABLE, null, cv);
+    }
+    //Editar Zpo07InfantOtoacousticEmissions existente en la base de datos
+    public boolean editarZpo07InfantOtoacousticEm(Zpo07InfantOtoacousticEmissions infantOtoEms) {
+        ContentValues cv = Zpo07InfantOtoacousticEmissionsHelper.crearZpo07InfantOtoacousticEmissions(infantOtoEms);
+        return mDb.update(Zpo07OtoEDBConstants.INFANT_OTO_EMS_TABLE, cv, Zpo07OtoEDBConstants.recordId + "='"
+                + infantOtoEms.getRecordId() + "' and " + MainDBConstants.recordId + "='" + infantOtoEms.getEventName() +"'", null) > 0;
+    }
+    //Limpiar la tabla de Zpo07InfantOtoacousticEmissions de la base de datos
+    public boolean borrarZpo07InfantOtoacousticE() {
+        return mDb.delete(Zpo07OtoEDBConstants.INFANT_OTO_EMS_TABLE, null, null) > 0;
+    }
+    //Obtener un Zpo07InfantOtoacousticEmissions de la base de datos
+    public Zpo07InfantOtoacousticEmissions getZpo07InfantOtoacousticE(String filtro, String orden) throws SQLException {
+        Zpo07InfantOtoacousticEmissions infantOtoEm = null;
+        Cursor cursor = crearCursor(Zpo07OtoEDBConstants.INFANT_OTO_EMS_TABLE, filtro, null, orden);
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            infantOtoEm = Zpo07InfantOtoacousticEmissionsHelper.crearZpo07InfantOtoacousticEmissions(cursor);
+        }
+        if (!cursor.isClosed()) cursor.close();
+        return infantOtoEm;
+    }
+    //Obtener una lista de Zpo07InfantOtoacousticEmissions de la base de datos
+    public List<Zpo07InfantOtoacousticEmissions> getZpo07InfantOtoacousticEms(String filtro, String orden) throws SQLException {
+        List<Zpo07InfantOtoacousticEmissions> infantOtoEms = new ArrayList<Zpo07InfantOtoacousticEmissions>();
+        Cursor cursor = crearCursor(Zpo07OtoEDBConstants.INFANT_OTO_EMS_TABLE, filtro, null, orden);
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            infantOtoEms.clear();
+            do{
+                Zpo07InfantOtoacousticEmissions infantOtoE = null;
+                infantOtoE = Zpo07InfantOtoacousticEmissionsHelper.crearZpo07InfantOtoacousticEmissions(cursor);
+                infantOtoEms.add(infantOtoE);
+            } while (cursor.moveToNext());
+        }
+        if (!cursor.isClosed()) cursor.close();
+        return infantOtoEms;
+    }
+
 
     /**
      * Metodos para ZpoControlConsentimientosSalida en la base de datos

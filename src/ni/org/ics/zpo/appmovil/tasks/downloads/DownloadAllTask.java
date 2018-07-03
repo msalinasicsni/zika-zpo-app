@@ -25,7 +25,7 @@ public class DownloadAllTask extends DownloadTask {
 	
 	protected static final String TAG = DownloadAllTask.class.getSimpleName();
 	private ZpoAdapter zpoA = null;
-    private static final String TOTAL_TASK = "21";
+    private static final String TOTAL_TASK = "22";
 
     private List<Zpo00Screening> mTamizajes = null;
     private List<Zpo01StudyEntrySectionAtoB> mIngresosAD = null;
@@ -48,6 +48,7 @@ public class DownloadAllTask extends DownloadTask {
     private List<Zpo07bInfantAudioResults> mbInfantAudioResult = null;
     private List<Zpo07cInfantImageStudies> mcInfantImageSt = null;
     private List<Zpo07dInfantBayleyScales> mdInfantBayleySc = null;
+    private List<Zpo07InfantOtoacousticEmissions> mOtoEmissions = null;
 
     public static final int TAMIZAJE = 1;
     public static final int ESTADO = 2;
@@ -70,6 +71,7 @@ public class DownloadAllTask extends DownloadTask {
     public static final int CONSREC = 19;
     public static final int SALIDA = 20;
     public static final int VISITA_FALL = 21;
+    public static final int OTOEMI = 22;
     
 	private String error = null;
 	private String url = null;
@@ -114,6 +116,7 @@ public class DownloadAllTask extends DownloadTask {
         zpoA.borrarZpo07cInfantImageStudies();
         zpoA.borrarZpo07dInfantBayleyScales();
         zpoA.borrarZpoVisitaFallida();
+        zpoA.borrarZpo07InfantOtoacousticE();
 
         zpoA.borrarZpoInfantData();
         zpoA.borrarZpoEstadoInfante();
@@ -313,6 +316,15 @@ public class DownloadAllTask extends DownloadTask {
                 }
             }
 
+            if (mOtoEmissions != null){
+                v = mOtoEmissions.size();
+                ListIterator<Zpo07InfantOtoacousticEmissions> iter = mOtoEmissions.listIterator();
+                while (iter.hasNext()){
+                    zpoA.crearZpo07InfantOtoacousticEm(iter.next());
+                    publishProgress("Insertando Emisiones Otoacústicas en la base de datos...", Integer.valueOf(iter.nextIndex()).toString(), Integer
+                            .valueOf(v).toString());
+                }
+            }
 
         } catch (Exception e) {
             // Regresa error al insertar
@@ -531,6 +543,14 @@ public class DownloadAllTask extends DownloadTask {
             // convert the array to a list and return it
             mVisitasFallidas = Arrays.asList(responseZpoVisitaFallida.getBody());
 
+            //Descargar Emisiones Otoacústicas
+            urlRequest = url + "/movil/zpo07InfantOtoacousticEms";
+            publishProgress("Solicitando Emisiones Otoacústicas", String.valueOf(OTOEMI), TOTAL_TASK);
+            // Perform the HTTP GET request
+            ResponseEntity<Zpo07InfantOtoacousticEmissions[]> responseZp07OtoEmi = restTemplate.exchange(urlRequest, HttpMethod.GET, requestEntity,
+                    Zpo07InfantOtoacousticEmissions[].class, username);
+            // convert the array to a list and return it
+            mOtoEmissions = Arrays.asList(responseZp07OtoEmi.getBody());
 
             return null;
         } catch (Exception e) {
