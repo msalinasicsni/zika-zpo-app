@@ -109,6 +109,8 @@
                   android:screenOrientation="portrait" />
         <activity android:name="ni.org.ics.zpo.appmovil.activities.nuevos.NewZpo07InfantOtoacousticEmissionsActivity"
                   android:screenOrientation="portrait" />
+        <activity android:name="ni.org.ics.zpo.appmovil.activities.nuevos.NewZpo01StudyEntrySectionDActivity"
+                  android:screenOrientation="portrait" />
     </application>
 
 </manifest>

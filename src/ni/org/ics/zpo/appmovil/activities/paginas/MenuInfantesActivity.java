@@ -15,19 +15,21 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Button;
 import android.widget.GridView;
 import android.widget.TextView;
 import ni.org.ics.zpo.appmovil.AbstractAsyncActivity;
 import ni.org.ics.zpo.appmovil.MainActivity;
 import ni.org.ics.zpo.appmovil.MyZpoApplication;
 import ni.org.ics.zpo.appmovil.R;
+import ni.org.ics.zpo.appmovil.activities.nuevos.NewZpo01StudyEntrySectionDActivity;
 import ni.org.ics.zpo.appmovil.activities.nuevos.NewZpo08StudyExitActivity;
 import ni.org.ics.zpo.appmovil.activities.paginas.eventosinfante.InfantEntryActivity;
 import ni.org.ics.zpo.appmovil.activities.paginas.eventosinfante.InfantVisitActivity;
 import ni.org.ics.zpo.appmovil.activities.paginas.eventosinfante.UnscheduledInfantVisitActivity;
 import ni.org.ics.zpo.appmovil.adapters.MenuInfantesAdapter;
 import ni.org.ics.zpo.appmovil.database.ZpoAdapter;
+import ni.org.ics.zpo.appmovil.utils.Zpo01DBConstants;
+import ni.org.ics.zpo.domain.Zpo01StudyEntrySectionDtoF;
 import ni.org.ics.zpo.domain.Zpo08StudyExit;
 import ni.org.ics.zpo.domain.ZpoEstadoInfante;
 import ni.org.ics.zpo.domain.ZpoInfantData;
@@ -38,7 +40,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class MenuInfantesActivity extends AbstractAsyncActivity {
@@ -46,6 +47,7 @@ public class MenuInfantesActivity extends AbstractAsyncActivity {
     private static ZpoInfantData zpInfante = new ZpoInfantData();
     private static ZpoEstadoInfante zpEstado = new ZpoEstadoInfante();
     private static Zpo08StudyExit zpSalida= new Zpo08StudyExit();
+    private static Zpo01StudyEntrySectionDtoF entryD = new Zpo01StudyEntrySectionDtoF();
     private GridView gridView;
     private TextView textView;
     private SimpleDateFormat mDateFormat = new SimpleDateFormat("MMM dd, yyyy");
@@ -122,6 +124,7 @@ public class MenuInfantesActivity extends AbstractAsyncActivity {
                 else{
                     entrarPantalla(position);
                 }
+
             }
         });
 
@@ -242,8 +245,18 @@ public class MenuInfantesActivity extends AbstractAsyncActivity {
                 i.putExtras(arguments);
                 startActivity(i);
                 break;
+
             case 6:
-                i = new Intent(getApplicationContext(),
+                i = new Intent( getApplicationContext(),
+                        NewZpo01StudyEntrySectionDActivity.class );
+                //Aca se pasa evento, tamizaje y estado
+                if (entryD!=null) arguments.putSerializable(Constants.OBJECTO_ZP01F , entryD);
+                i.putExtras(arguments);
+                startActivity(i);
+
+                break;
+            case 7:
+                i = new Intent( getApplicationContext(),
                         NewZpo08StudyExitActivity.class);
                 //Aca se pasa evento, tamizaje y estado
                 arguments.putString(Constants.RECORDID, zpInfante.getRecordId());
@@ -285,6 +298,7 @@ public class MenuInfantesActivity extends AbstractAsyncActivity {
                 zipA.open();
                 zpEstado = zipA.getZpoEstadoInfante(filtro, MainDBConstants.recordId);
                 zpSalida = zipA.getZpo08StudyExit(filtro, null);
+                entryD = zipA.getZpo01StudyEntrySectionDtoF(MainDBConstants.recordId + "='" + zpInfante.getPregnantId() + "'", null);
                 zipA.close();
             } catch (Exception e) {
                 Log.e(TAG, e.getLocalizedMessage(), e);
@@ -300,7 +314,7 @@ public class MenuInfantesActivity extends AbstractAsyncActivity {
             textView.setText(getString(R.string.infant_events)+"\n"+
                     getString(R.string.inf_id)+": "+zpInfante.getRecordId()+"\n"+
                     getString(R.string.inf_dob)+": "+ (zpInfante.getInfantBirthDate()!=null?mDateFormat.format(zpInfante.getInfantBirthDate()):"ND"));
-            gridView.setAdapter(new MenuInfantesAdapter(getApplicationContext(), R.layout.menu_item_2, menu_infante_info, zpInfante, zpEstado, zpSalida));
+            gridView.setAdapter(new MenuInfantesAdapter(getApplicationContext(), R.layout.menu_item_2, menu_infante_info, zpInfante, zpEstado, zpSalida, entryD));
             if (zpSalida != null){
                 textView.setTextColor(Color.RED);
                 textView.setText(textView.getText()+"\n"+getString(R.string.inf_retired)

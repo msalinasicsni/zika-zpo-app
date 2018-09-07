@@ -257,11 +257,13 @@ public class Zpo07InfantAssessmentVisitHelper {
         infantAssessmentVisit.setInfantFurtherNeuro(cursorIA.getString(cursorIA.getColumnIndex(Zpo07DBConstants.infantFurtherNeuro)));
         infantAssessmentVisit.setInfantEvaluation(cursorIA.getString(cursorIA.getColumnIndex(Zpo07DBConstants.infantEvaluation)));
         infantAssessmentVisit.setInfantNeuroAsq(cursorIA.getString(cursorIA.getColumnIndex(Zpo07DBConstants.infantNeuroAsq)));
-        infantAssessmentVisit.setInfantAsqCommuni(cursorIA.getFloat(cursorIA.getColumnIndex(Zpo07DBConstants.infantAsqCommuni)));
-        infantAssessmentVisit.setInfantAsqGross(cursorIA.getFloat(cursorIA.getColumnIndex(Zpo07DBConstants.infantAsqGross)));
-        infantAssessmentVisit.setInfantAsqFine(cursorIA.getFloat(cursorIA.getColumnIndex(Zpo07DBConstants.infantAsqFine)));
-        infantAssessmentVisit.setInfantAsqProblem(cursorIA.getFloat(cursorIA.getColumnIndex(Zpo07DBConstants.infantAsqProblem)));
-        infantAssessmentVisit.setInfantAsqPersonal(cursorIA.getFloat(cursorIA.getColumnIndex(Zpo07DBConstants.infantAsqPersonal)));
+
+        if (cursorIA.getString(cursorIA.getColumnIndex(Zpo07DBConstants.infantAsqCommuni))!= null) infantAssessmentVisit.setInfantAsqCommuni(Float.valueOf(cursorIA.getString(cursorIA.getColumnIndex(Zpo07DBConstants.infantAsqCommuni))));
+        if (cursorIA.getString(cursorIA.getColumnIndex(Zpo07DBConstants.infantAsqGross))!= null) infantAssessmentVisit.setInfantAsqGross(Float.valueOf(cursorIA.getString(cursorIA.getColumnIndex(Zpo07DBConstants.infantAsqGross))));
+        if (cursorIA.getString(cursorIA.getColumnIndex(Zpo07DBConstants.infantAsqFine))!= null) infantAssessmentVisit.setInfantAsqFine(Float.valueOf(cursorIA.getString(cursorIA.getColumnIndex(Zpo07DBConstants.infantAsqFine))));
+        if (cursorIA.getString(cursorIA.getColumnIndex(Zpo07DBConstants.infantAsqProblem))!= null) infantAssessmentVisit.setInfantAsqProblem(Float.valueOf(cursorIA.getString(cursorIA.getColumnIndex(Zpo07DBConstants.infantAsqProblem))));
+        if (cursorIA.getString(cursorIA.getColumnIndex(Zpo07DBConstants.infantAsqPersonal))!= null) infantAssessmentVisit.setInfantAsqPersonal(Float.valueOf(cursorIA.getString(cursorIA.getColumnIndex(Zpo07DBConstants.infantAsqPersonal))));
+
         infantAssessmentVisit.setInfantNeuroBisd(cursorIA.getString(cursorIA.getColumnIndex(Zpo07DBConstants.infantNeuroBisd)));
         if (cursorIA.getFloat(cursorIA.getColumnIndex(Zpo07DBConstants.infantCgScore))>0) infantAssessmentVisit.setInfantCgScore(cursorIA.getFloat(cursorIA.getColumnIndex(Zpo07DBConstants.infantCgScore)));
         infantAssessmentVisit.setInfantCgRisk(cursorIA.getString(cursorIA.getColumnIndex(Zpo07DBConstants.infantCgRisk)));

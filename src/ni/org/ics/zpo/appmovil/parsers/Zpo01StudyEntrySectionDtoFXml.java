@@ -173,14 +173,22 @@ public class Zpo01StudyEntrySectionDtoFXml {
     private String note2;
 
     @Element(required=false)
+    private String generated_table_list_label_3;
+    @Element(required=false)
     private String generated_table_list_label_5;
+    @Element(required=false)
+    private String generated_table_list_label_10;
     @Element(required=false)
     private String generated_table_list_label_12;
 
     @Element(required=false)
+    private String reserved_name_for_field_list_labels_4;
+    @Element(required=false)
     private String reserved_name_for_field_list_labels_6;
     @Element(required=false)
     private String reserved_name_for_field_list_labels_13;
+    @Element(required=false)
+    private String reserved_name_for_field_list_labels_11;
 
 
 
