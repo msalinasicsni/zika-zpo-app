@@ -210,7 +210,6 @@ public class NewZpo01StudyEntrySectionDActivity extends AbstractAsyncActivity {
 		try {
 			Zpo01StudyEntrySectionDtoFXml zp01Xml = new Zpo01StudyEntrySectionDtoFXml();
 			zp01Xml = serializer.read(Zpo01StudyEntrySectionDtoFXml.class, source);
-			mZp01D.setSeaFirstPreg("0");
             mZp01D.setSeaAnemia(zp01Xml.getSeaAnemia());
             mZp01D.setSeaVaginal(zp01Xml.getSeaVaginal());
             mZp01D.setSeaUtiPrior(zp01Xml.getSeaUtiPrior());

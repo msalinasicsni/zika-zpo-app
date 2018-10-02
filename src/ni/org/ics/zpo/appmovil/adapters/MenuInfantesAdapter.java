@@ -202,7 +202,7 @@ public class MenuInfantesAdapter extends ArrayAdapter<String> {
 
             case 6:
                 if(entryD != null){
-                    if(entryD.getSeaFirstPreg().equals("1")){
+                    if(entryD.getSeaAnemia()== null){
                         textView.setText(textView.getText()+"\n"+ context.getResources().getString(R.string.available)+"\n\n");
                         textView.setTextColor(Color.BLACK);
 
