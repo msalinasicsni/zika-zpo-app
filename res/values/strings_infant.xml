@@ -22,6 +22,7 @@
     <string name="infant_b_7">Estudios de Imágenes</string>
     <string name="infant_b_8">Escala de Bayley</string>
     <string name="infant_b_9">Emisiones Otoacústicas</string>
+    <string name="infant_b_10">Factores de Riesgo</string>
     
     <string name="inf_id">Código del bebé</string>
     <string name="inf_search">Buscar bebé</string>

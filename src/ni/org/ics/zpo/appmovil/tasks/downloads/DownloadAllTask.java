@@ -49,6 +49,7 @@ public class DownloadAllTask extends DownloadTask {
     private List<Zpo07cInfantImageStudies> mcInfantImageSt = null;
     private List<Zpo07dInfantBayleyScales> mdInfantBayleySc = null;
     private List<Zpo07InfantOtoacousticEmissions> mOtoEmissions = null;
+    private List<Zpo04ExtendedSectionAtoF> mTrimesterVisitAF = null;
 
     public static final int TAMIZAJE = 1;
     public static final int ESTADO = 2;
@@ -72,6 +73,7 @@ public class DownloadAllTask extends DownloadTask {
     public static final int SALIDA = 20;
     public static final int VISITA_FALL = 21;
     public static final int OTOEMI = 22;
+    public static final int EXTENDEDAF = 23;
     
 	private String error = null;
 	private String url = null;
@@ -117,6 +119,7 @@ public class DownloadAllTask extends DownloadTask {
         zpoA.borrarZpo07dInfantBayleyScales();
         zpoA.borrarZpoVisitaFallida();
         zpoA.borrarZpo07InfantOtoacousticE();
+        zpoA.borrarZpo04ExtendedSectionAtoF();
 
         zpoA.borrarZpoInfantData();
         zpoA.borrarZpoEstadoInfante();
@@ -322,6 +325,16 @@ public class DownloadAllTask extends DownloadTask {
                 while (iter.hasNext()){
                     zpoA.crearZpo07InfantOtoacousticEm(iter.next());
                     publishProgress("Insertando Emisiones Otoacústicas en la base de datos...", Integer.valueOf(iter.nextIndex()).toString(), Integer
+                            .valueOf(v).toString());
+                }
+            }
+
+            if (mTrimesterVisitAF != null){
+                v = mTrimesterVisitAF.size();
+                ListIterator<Zpo04ExtendedSectionAtoF> iter = mTrimesterVisitAF.listIterator();
+                while (iter.hasNext()){
+                    zpoA.crearZpo04ExtendedSectionAtoF(iter.next());
+                    publishProgress("Insertando formulario Factores de Riesgo (A-F) en la base de datos...", Integer.valueOf(iter.nextIndex()).toString(), Integer
                             .valueOf(v).toString());
                 }
             }
@@ -551,6 +564,15 @@ public class DownloadAllTask extends DownloadTask {
                     Zpo07InfantOtoacousticEmissions[].class, username);
             // convert the array to a list and return it
             mOtoEmissions = Arrays.asList(responseZp07OtoEmi.getBody());
+
+            //Descargar formulario factores de reiesgo
+            urlRequest = url + "/movil/zpo04ExtendedSectionAtoFs/{username}";
+            publishProgress("Solicitando formulario Factores de Riesgo (A-F)",String.valueOf(EXTENDEDAF),TOTAL_TASK);
+            // Perform the HTTP GET request
+            ResponseEntity<Zpo04ExtendedSectionAtoF[]> responseZpo04ExtendedSectionAtoF = restTemplate.exchange(urlRequest, HttpMethod.GET, requestEntity,
+                    Zpo04ExtendedSectionAtoF[].class, username);
+            // convert the array to a list and return it
+            mTrimesterVisitAF = Arrays.asList(responseZpo04ExtendedSectionAtoF.getBody());
 
             return null;
         } catch (Exception e) {

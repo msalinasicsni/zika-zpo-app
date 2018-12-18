@@ -50,6 +50,7 @@ public class UploadAllTask extends UploadTask {
     private List<Zpo07cInfantImageStudies> mcInfantImageStudies = new ArrayList<Zpo07cInfantImageStudies>();
     private List<Zpo07dInfantBayleyScales> mdInfantBayleyScales = new ArrayList<Zpo07dInfantBayleyScales>();
     private List<Zpo07InfantOtoacousticEmissions> mOtoEmi = new ArrayList<Zpo07InfantOtoacousticEmissions>();
+    private List<Zpo04ExtendedSectionAtoF> mTrimesterVisitAF = new ArrayList<Zpo04ExtendedSectionAtoF>();
 
 	private String url = null;
 	private String username = null;
@@ -79,6 +80,7 @@ public class UploadAllTask extends UploadTask {
     public static final int SALIDA = 20;
     public static final int VISITA_FALL = 21;
     public static final int OTO_EMI = 22;
+    public static final int EXTENDEDAF = 23;
 
     @Override
 	protected String doInBackground(String... values) {
@@ -114,6 +116,7 @@ public class UploadAllTask extends UploadTask {
             mEstadoInfante = zpoA.getZpoEstadoInfantes(filtro, MainDBConstants.recordId);
             mVisitasFallidas = zpoA.getZpoVisitaFallidas(filtro, null);
             mOtoEmi = zpoA.getZpo07InfantOtoacousticEms(filtro, MainDBConstants.recordId);
+            mTrimesterVisitAF = zpoA.getZpo04ExtendedSectionAtoFs(filtro, MainDBConstants.recordId);
             
 			publishProgress("Datos completos!", "2", "2");
             actualizarBaseDatos(Constants.STATUS_SUBMITTED, TAMIZAJE);
@@ -264,6 +267,13 @@ public class UploadAllTask extends UploadTask {
             error = uploadOtoEmissions(url, username, password);
             if (!error.matches("Datos recibidos!")){
                 actualizarBaseDatos(Constants.STATUS_NOT_SUBMITTED, OTO_EMI);
+                return error;
+            }
+
+            actualizarBaseDatos(Constants.STATUS_SUBMITTED, EXTENDEDAF);
+            error = uploadExtendedAF(url, username, password);
+            if (!error.matches("Datos recibidos!")){
+                actualizarBaseDatos(Constants.STATUS_NOT_SUBMITTED, EXTENDEDAF);
                 return error;
             }
 
@@ -523,6 +533,18 @@ public class UploadAllTask extends UploadTask {
                    dOtoEmi.setEstado(estado);
                    zpoA.editarZpo07InfantOtoacousticEm(dOtoEmi);
                    publishProgress("Actualizando Emisiones Otoacusticas de base de datos local", Integer.valueOf(mOtoEmi.indexOf(dOtoEmi)).toString(), Integer
+                           .valueOf(c).toString());
+               }
+           }
+       }
+
+       else if(opcion== EXTENDEDAF){
+           c = mTrimesterVisitAF.size();
+           if(c>0){
+               for (Zpo04ExtendedSectionAtoF extendedSectionAtoF : mTrimesterVisitAF) {
+                   extendedSectionAtoF.setEstado(estado);
+                   zpoA.editarZpo04ExtendedSectionAtoF(extendedSectionAtoF);
+                   publishProgress("Actualizando formulario Factores de Riesgo (A-F) base de datos local", Integer.valueOf(mTrimesterVisitAF.indexOf(extendedSectionAtoF)).toString(), Integer
                            .valueOf(c).toString());
                }
            }
@@ -1295,6 +1317,41 @@ public class UploadAllTask extends UploadTask {
                 restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
                 restTemplate.getMessageConverters().add(new MappingJacksonHttpMessageConverter());
                 // Hace la solicitud a la red, pone la visita y espera un mensaje de respuesta del servidor
+                ResponseEntity<String> response = restTemplate.exchange(urlRequest, HttpMethod.POST, requestEntity,
+                        String.class);
+                return response.getBody();
+            }
+            else{
+                return "Datos recibidos!";
+            }
+        } catch (Exception e) {
+            Log.e(TAG, e.getMessage(), e);
+            return e.getMessage();
+        }
+    }
+
+    /***************************************************/
+    /********************* Zp04 AtoF ************************/
+    /***************************************************/
+    // url, username, password
+    protected String uploadExtendedAF(String url, String username,
+                                      String password) throws Exception {
+        try {
+            if(mTrimesterVisitAF.size()>0){
+                publishProgress("Enviando formulario Factores de Riesgo (A-F)!", String.valueOf(EXTENDEDAF), TOTAL_TASK);
+                // La URL de la solicitud POST
+                final String urlRequest = url + "/movil/zpo04ExtendedSectionAtoFs";
+                Zpo04ExtendedSectionAtoF[] envio = mTrimesterVisitAF.toArray(new Zpo04ExtendedSectionAtoF[mTrimesterVisitAF.size()]);
+                HttpHeaders requestHeaders = new HttpHeaders();
+                HttpAuthentication authHeader = new HttpBasicAuthentication(username, password);
+                requestHeaders.setContentType(MediaType.APPLICATION_JSON);
+                requestHeaders.setAuthorization(authHeader);
+                HttpEntity<Zpo04ExtendedSectionAtoF[]> requestEntity =
+                        new HttpEntity<Zpo04ExtendedSectionAtoF[]>(envio, requestHeaders);
+                RestTemplate restTemplate = new RestTemplate();
+                restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
+                restTemplate.getMessageConverters().add(new MappingJacksonHttpMessageConverter());
+                // Hace la solicitud a la red, pone la vivienda y espera un mensaje de respuesta del servidor
                 ResponseEntity<String> response = restTemplate.exchange(urlRequest, HttpMethod.POST, requestEntity,
                         String.class);
                 return response.getBody();

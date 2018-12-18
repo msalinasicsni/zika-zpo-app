@@ -45,6 +45,7 @@ public class Constants {
 	public static final String OBJECTO_ZP07C = "zp07c";
 	public static final String OBJECTO_ZP07D = "zp07d";
 	public static final String OBJECTO_ZPO07OtoE = "zpo07OtoE";
+	public static final String OBJECTO_ZP04AF = "zp04af";
 
 	public static final String OBJECTO_ZPEST = "zpestado";
 	public static final String OBJECTO_ZPDATA = "zpdatos";

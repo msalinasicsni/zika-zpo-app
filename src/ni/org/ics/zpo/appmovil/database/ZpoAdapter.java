@@ -73,6 +73,7 @@ public class ZpoAdapter {
             db.execSQL(MainDBConstants.CREATE_DATA_CONSSAL_TABLE);
             db.execSQL(MainDBConstants.CREATE_FAIL_VISIT_TABLE);
             db.execSQL(Zpo07OtoEDBConstants.CREATE_INFANT_OTO_EMS_TABLE);
+            db.execSQL(Zpo04AFDBConstants.CREATE_EXTENDED_AF_TABLE);
 		}
 
 		@Override
@@ -81,6 +82,10 @@ public class ZpoAdapter {
             if(oldVersion==1){
                 db.execSQL(MainDBConstants.CREATE_FAIL_VISIT_TABLE);
                 db.execSQL(Zpo07OtoEDBConstants.CREATE_INFANT_OTO_EMS_TABLE);
+            }
+
+            if(oldVersion==2){
+                db.execSQL(Zpo04AFDBConstants.CREATE_EXTENDED_AF_TABLE);
             }
 		}	
 	}
@@ -234,6 +239,8 @@ public class ZpoAdapter {
         c = crearCursor(MainDBConstants.FAIL_VISIT_TABLE, MainDBConstants.STATUS + "='"  + Constants.STATUS_NOT_SUBMITTED+ "'", null, null);
         if (c != null && c.getCount()>0) {c.close();return true;}
         c = crearCursor(Zpo07OtoEDBConstants.INFANT_OTO_EMS_TABLE, MainDBConstants.STATUS + "='"  + Constants.STATUS_NOT_SUBMITTED+ "'", null, null);
+        if (c != null && c.getCount()>0) {c.close();return true;}
+        c = crearCursor(Zpo04AFDBConstants.EXTENDED_AF_TABLE, MainDBConstants.STATUS + "='"  + Constants.STATUS_NOT_SUBMITTED+ "'", null, null);
         if (c != null && c.getCount()>0) {c.close();return true;}
         c.close();
         return false;
@@ -1148,6 +1155,52 @@ public class ZpoAdapter {
         return infantOtoEms;
     }
 
+    /**
+     * Metodos para Zpo04ExtendedSectionAtoF en la base de datos
+     *
+     */
+    //Crear nuevo Zpo04ExtendedSectionAtoF en la base de datos
+    public void crearZpo04ExtendedSectionAtoF(Zpo04ExtendedSectionAtoF extendedSectionAtoF) {
+        ContentValues cv = Zpo04AFExtendedHelper.crearZpo04ExtendedSectionAtoF(extendedSectionAtoF);
+        mDb.insert(Zpo04AFDBConstants.EXTENDED_AF_TABLE, null, cv);
+    }
+    //Editar Zpo04ExtendedSectionAtoF existente en la base de datos
+    public boolean editarZpo04ExtendedSectionAtoF(Zpo04ExtendedSectionAtoF extendedSectionAtoF) {
+        ContentValues cv = Zpo04AFExtendedHelper.crearZpo04ExtendedSectionAtoF(extendedSectionAtoF);
+        return mDb.update(Zpo04AFDBConstants.EXTENDED_AF_TABLE, cv, Zpo04AFDBConstants.recordId + "='"
+                + extendedSectionAtoF.getRecordId() + "' and " + Zpo04AFDBConstants.eventName + "='" + extendedSectionAtoF.getEventName() +"'", null) > 0;
+    }
+    //Limpiar la tabla de Zpo04ExtendedSectionAtoF de la base de datos
+    public boolean borrarZpo04ExtendedSectionAtoF() {
+        return mDb.delete(Zpo04AFDBConstants.EXTENDED_AF_TABLE, null, null) > 0;
+    }
+    //Obtener un Zpo04ExtendedSectionAtoF de la base de datos
+    public Zpo04ExtendedSectionAtoF getZpo04ExtendedSectionAtoF(String filtro, String orden) throws SQLException {
+        Zpo04ExtendedSectionAtoF extendedSectionAtoF = null;
+        Cursor cursorAF = crearCursor(Zpo04AFDBConstants.EXTENDED_AF_TABLE, filtro, null, orden);
+        if (cursorAF != null && cursorAF.getCount() > 0) {
+            cursorAF.moveToFirst();
+            extendedSectionAtoF= Zpo04AFExtendedHelper.crearZpo04ExtendedSectionAtoF(cursorAF);
+        }
+        if (!cursorAF.isClosed()) cursorAF.close();
+        return extendedSectionAtoF;
+    }
+    //Obtener una lista de Zpo04ExtendedSectionAtoF de la base de datos
+    public List<Zpo04ExtendedSectionAtoF> getZpo04ExtendedSectionAtoFs(String filtro, String orden) throws SQLException {
+        List<Zpo04ExtendedSectionAtoF> extendedSectionAtoFs = new ArrayList<Zpo04ExtendedSectionAtoF>();
+        Cursor cursorAF = crearCursor(Zpo04AFDBConstants.EXTENDED_AF_TABLE, filtro, null, orden);
+        if (cursorAF != null && cursorAF.getCount() > 0) {
+            cursorAF.moveToFirst();
+            extendedSectionAtoFs.clear();
+            do{
+                Zpo04ExtendedSectionAtoF extendedSectionAtoF = null;
+                extendedSectionAtoF = Zpo04AFExtendedHelper.crearZpo04ExtendedSectionAtoF(cursorAF);
+                extendedSectionAtoFs.add(extendedSectionAtoF);
+            } while (cursorAF.moveToNext());
+        }
+        if (!cursorAF.isClosed()) cursorAF.close();
+        return extendedSectionAtoFs;
+    }
 
     /**
      * Metodos para ZpoControlConsentimientosSalida en la base de datos
