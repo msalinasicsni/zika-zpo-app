@@ -41,6 +41,7 @@ public class UnscheduledInfantVisitActivity extends AbstractAsyncActivity {
 	private static Zpo07cInfantImageStudies zp07c = null;
 	private static Zpo07dInfantBayleyScales zp07d = null;
 	private static Zpo07InfantOtoacousticEmissions zp07OAE = null;
+	private static Zpo04ExtendedSectionAtoF zp04AF = null;
 
 	
 	private SimpleDateFormat mDateFormat = new SimpleDateFormat("MMM dd, yyyy");
@@ -154,6 +155,13 @@ public class UnscheduledInfantVisitActivity extends AbstractAsyncActivity {
 						i = new Intent(getApplicationContext(),
 								NewZpo07InfantOtoacousticEmissionsActivity.class);
 						if (zp07OAE != null) arguments.putSerializable(Constants.OBJECTO_ZPO07OtoE, zp07OAE);
+						i.putExtras(arguments);
+						startActivity(i);
+						break;
+					case 9: //FACTORES DE RIESGO
+						i = new Intent(getApplicationContext(),
+								NewZpo04ExtendedSectionAtoFActivity.class);
+						if (zp04AF != null) arguments.putSerializable(Constants.OBJECTO_ZP04AF, zp04AF);
 						i.putExtras(arguments);
 						startActivity(i);
 						break;
@@ -299,8 +307,9 @@ public class UnscheduledInfantVisitActivity extends AbstractAsyncActivity {
 					zp07c = zipA.getZpo07cInfantImageSt(filtro, MainDBConstants.recordId);
 					zp07d = zipA.getZpo07dInfantBayleySc(filtro, MainDBConstants.recordId);
 					zp07OAE = zipA.getZpo07InfantOtoacousticE(filtro, MainDBConstants.recordId);
+					zp04AF = zipA.getZpo04ExtendedSectionAtoF( filtro, MainDBConstants.recordId);
 
-					if (zp02 !=null && zp07!=null && zp07a!=null && zp07b!=null && zp07c!=null && zp07d!=null && zp07OAE!=null){
+					if (zp02 !=null && zp07!=null && zp07a!=null && zp07b!=null && zp07c!=null && zp07d!=null && zp07OAE!=null && zp04AF!=null){
 						if(eventoaFiltrar.matches(Constants.MONTH12)){
 							zpEstado.setMes12('1');
 						}
@@ -320,7 +329,7 @@ public class UnscheduledInfantVisitActivity extends AbstractAsyncActivity {
 			protected void onPostExecute(String resultado) {
 				// after the network request completes, hide the progress indicator
 				gridView.setAdapter(new UnscheduledInfantVisitAdapter(getApplicationContext(), R.layout.menu_item_2, menu_infante_info,
-                        zp02, zp07, zp07a, zp07b, zp07c, zp07d, zp07OAE));
+                        zp02, zp07, zp07a, zp07b, zp07c, zp07d, zp07OAE, zp04AF ));
 				dismissProgressDialog();
 			}
 

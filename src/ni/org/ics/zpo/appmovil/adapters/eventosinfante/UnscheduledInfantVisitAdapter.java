@@ -23,9 +23,10 @@ public class UnscheduledInfantVisitAdapter extends ArrayAdapter<String> {
 	private final Zpo07cInfantImageStudies mZpo07c;
 	private final Zpo07dInfantBayleyScales mZpo07d;
 	private final Zpo07InfantOtoacousticEmissions mZpo07OtoE;
+	private final Zpo04ExtendedSectionAtoF mZpo04AF;
 
 	public UnscheduledInfantVisitAdapter(Context context, int textViewResourceId,
-                                         String[] values, Zpo02BiospecimenCollection zp02, Zpo07InfantAssessmentVisit zp07, Zpo07aInfantOphtResults zp07a, Zpo07bInfantAudioResults zp07b, Zpo07cInfantImageStudies zp07c, Zpo07dInfantBayleyScales zp07d, Zpo07InfantOtoacousticEmissions mZpo07OtoE) {
+                                         String[] values, Zpo02BiospecimenCollection zp02, Zpo07InfantAssessmentVisit zp07, Zpo07aInfantOphtResults zp07a, Zpo07bInfantAudioResults zp07b, Zpo07cInfantImageStudies zp07c, Zpo07dInfantBayleyScales zp07d, Zpo07InfantOtoacousticEmissions mZpo07OtoE, Zpo04ExtendedSectionAtoF mZpo04AF) {
 		super(context, textViewResourceId, values);
 		this.context = context;
 		this.values = values;
@@ -36,6 +37,7 @@ public class UnscheduledInfantVisitAdapter extends ArrayAdapter<String> {
 		this.mZpo07c = zp07c;
 		this.mZpo07d = zp07d;
 		this.mZpo07OtoE = mZpo07OtoE;
+		this.mZpo04AF = mZpo04AF;
 	}
 
 	@Override
@@ -165,6 +167,17 @@ public class UnscheduledInfantVisitAdapter extends ArrayAdapter<String> {
 					textView.setText(textView.getText() + "\n" + context.getResources().getString(R.string.pending));
 				}
 				img = getContext().getResources().getDrawable(R.drawable.ic_oae);
+				textView.setCompoundDrawablesWithIntrinsicBounds(null, img, null, null);
+				break;
+
+			case 9:
+				if (mZpo04AF != null) {
+					textView.setText(textView.getText() + "\n" + context.getResources().getString(R.string.done));
+				} else {
+					textView.setTextColor(Color.RED);
+					textView.setText(textView.getText() + "\n" + context.getResources().getString(R.string.pending));
+				}
+				img = getContext().getResources().getDrawable(R.drawable.ic_pest);
 				textView.setCompoundDrawablesWithIntrinsicBounds(null, img, null, null);
 				break;
 		default:

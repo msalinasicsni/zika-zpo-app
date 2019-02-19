@@ -13,7 +13,7 @@
     
     <string name="app_preferences">Configuración Aplicación</string>
     <string name="update_app_preferences">Actualizar Aplicación</string>
-    <string name="version_app_preferences">Versión 2.2</string>
-    <string name="versiondate_app_preferences">Diciembre 18, 2018</string>
+    <string name="version_app_preferences">Versión 2.3</string>
+    <string name="versiondate_app_preferences">Febrero 19, 2019</string>
   
 </resources>
