@@ -109,11 +109,11 @@
         <!--<item>Mabel Gissell Sequeira González</item>-->
         <item>Anna Gajewski</item>
         <item>Elsa Videa López</item>
-        <item>Liliam Llufrío González</item>
+        <!--<item>Liliam Llufrío González</item>-->
         <item>William Rivas</item>
         <item>Josue Narvaez</item>
         <!--<item>Carmen Gisselle Arauz</item>-->
-        <item>Fabio Marchena</item>
+        <!--<item>Fabio Marchena</item>-->
         <item>Oscar Ortega</item>
         <item>Emile Ivan Olivieri</item>
         <item>Joxiry Rios</item>
@@ -123,13 +123,14 @@
         <item>@string/select</item>
         <item>Anna Gajewski</item>
         <item>Elsa Videa López</item>
-        <item>Liliam Llufrío González</item>
-        <item>Ennio Sáenz Martínez</item>
+        <!--<item>Liliam Llufrío González</item>-->
+        <!--<item>Ennio Sáenz Martínez</item>-->
         <item>William Rivas</item>
         <item>Josue Narvaez</item>
-        <item>Carmen Gisselle Arauz</item>
-        <item>Fabio Marchena</item>
+        <!--<item>Carmen Gisselle Arauz</item>-->
+        <!--<item>Fabio Marchena</item>-->
         <item>Oscar Ortega</item>
+        <item>Miguel Tercero</item>
     </string-array>   
     
    	<string-array name="list_personas_salida_us">
@@ -143,11 +144,11 @@
         <item>Heidi del Carmen González Gaitán</item>
         <item>Anna Gajewski</item>
         <item>Elsa Videa López</item>
-        <item>Liliam Llufrío González</item>
+        <!--<item>Liliam Llufrío González</item>-->
         <item>William Rivas</item>
         <item>Josue Narvaez</item>
         <!--<item>Carmen Gisselle Arauz</item>-->
-        <item>Fabio Marchena</item>
+        <!--<item>Fabio Marchena</item>-->
         <item>Oscar Ortega</item>
         <item>Emile Ivan Olivieri</item>
         <item>Joxiry Rios</item>
@@ -158,12 +159,12 @@
         <item>@string/select</item>
         <item>Anna Gajewski</item>
         <item>Elsa Videa López</item>
-        <item>Liliam Llufrío González</item>
-        <item>Ennio Sáenz Martínez</item>
+        <!--<item>Liliam Llufrío González</item>-->
+        <!--<item>Ennio Sáenz Martínez</item>-->
         <item>William Rivas</item>
         <item>Josue Narvaez</item>
         <!--<item>Carmen Gisselle Arauz</item>-->
-        <item>Fabio Marchena</item>
+        <!--<item>Fabio Marchena</item>-->
         <item>Oscar Ortega</item>
         <item>Emile Ivan Olivieri</item>
         <item>Joxiry Rios</item>
