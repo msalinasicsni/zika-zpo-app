@@ -22,13 +22,13 @@ public class Zpo07InfantAssessmentVisit extends BaseMetaData{
     private String infantTmpUnit;
     private Float infantWt;
     private String infantWtUnit;
-    private Float infantWtPercen;
+    private String infantWtPercen;
     private String infantWtpercenNa;
     private Float infantLength;
-    private Float infantLengthPercen;
+    private String infantLengthPercen;
     private String infantLenpercenNa;
     private Float infantHeadcircu;
-    private Float infantHeapercen;
+    private String infantHeapercen;
     private String infantHeapercenNa;
     private String infantHeasize;//nuevo
     private String infantSkinEvalu;
@@ -336,15 +336,6 @@ public class Zpo07InfantAssessmentVisit extends BaseMetaData{
     }
 
     
-    public Float getInfantWtPercen() {
-        return infantWtPercen;
-    }
-
-    public void setInfantWtPercen(Float infantWtPercen) {
-        this.infantWtPercen = infantWtPercen;
-    }
-
-    
     public String getInfantWtpercenNa() {
         return infantWtpercenNa;
     }
@@ -360,15 +351,6 @@ public class Zpo07InfantAssessmentVisit extends BaseMetaData{
 
     public void setInfantLength(Float infantLength) {
         this.infantLength = infantLength;
-    }
-
-    
-    public Float getInfantLengthPercen() {
-        return infantLengthPercen;
-    }
-
-    public void setInfantLengthPercen(Float infantLengthPercen) {
-        this.infantLengthPercen = infantLengthPercen;
     }
 
     
@@ -389,16 +371,6 @@ public class Zpo07InfantAssessmentVisit extends BaseMetaData{
         this.infantHeadcircu = infantHeadcircu;
     }
 
-    
-    public Float getInfantHeapercen() {
-        return infantHeapercen;
-    }
-
-    public void setInfantHeapercen(Float infantHeapercen) {
-        this.infantHeapercen = infantHeapercen;
-    }
-
-    
     public String getInfantHeapercenNa() {
         return infantHeapercenNa;
     }
@@ -1587,7 +1559,31 @@ public class Zpo07InfantAssessmentVisit extends BaseMetaData{
 		this.infantDob = infantDob;
 	}
 
-	@Override
+    public String getInfantWtPercen() {
+        return infantWtPercen;
+    }
+
+    public void setInfantWtPercen(String infantWtPercen) {
+        this.infantWtPercen = infantWtPercen;
+    }
+
+    public String getInfantLengthPercen() {
+        return infantLengthPercen;
+    }
+
+    public void setInfantLengthPercen(String infantLengthPercen) {
+        this.infantLengthPercen = infantLengthPercen;
+    }
+
+    public String getInfantHeapercen() {
+        return infantHeapercen;
+    }
+
+    public void setInfantHeapercen(String infantHeapercen) {
+        this.infantHeapercen = infantHeapercen;
+    }
+
+    @Override
     public String toString() {
         return "ZPO07{" + recordId + ", " + eventName + "}";
     }

@@ -219,13 +219,13 @@ public class Zpo07InfantAssessmentVisitHelper {
         infantAssessmentVisit.setInfantTmpUnit(cursorIA.getString(cursorIA.getColumnIndex(Zpo07DBConstants.infantTmpUnit)));
         if (cursorIA.getFloat(cursorIA.getColumnIndex(Zpo07DBConstants.infantWt))>0) infantAssessmentVisit.setInfantWt(cursorIA.getFloat(cursorIA.getColumnIndex(Zpo07DBConstants.infantWt)));
         infantAssessmentVisit.setInfantWtUnit(cursorIA.getString(cursorIA.getColumnIndex(Zpo07DBConstants.infantWtUnit)));
-        if (cursorIA.getFloat(cursorIA.getColumnIndex(Zpo07DBConstants.infantWtPercen))>0) infantAssessmentVisit.setInfantWtPercen(cursorIA.getFloat(cursorIA.getColumnIndex(Zpo07DBConstants.infantWtPercen)));
+        infantAssessmentVisit.setInfantWtPercen(cursorIA.getString(cursorIA.getColumnIndex(Zpo07DBConstants.infantWtPercen)));
         infantAssessmentVisit.setInfantWtpercenNa(cursorIA.getString(cursorIA.getColumnIndex(Zpo07DBConstants.infantWtpercenNa)));
         if (cursorIA.getFloat(cursorIA.getColumnIndex(Zpo07DBConstants.infantLength))>0) infantAssessmentVisit.setInfantLength(cursorIA.getFloat(cursorIA.getColumnIndex(Zpo07DBConstants.infantLength)));
-        if (cursorIA.getFloat(cursorIA.getColumnIndex(Zpo07DBConstants.infantLengthPercen))>0) infantAssessmentVisit.setInfantLengthPercen(cursorIA.getFloat(cursorIA.getColumnIndex(Zpo07DBConstants.infantLengthPercen)));
+        infantAssessmentVisit.setInfantLengthPercen(cursorIA.getString(cursorIA.getColumnIndex(Zpo07DBConstants.infantLengthPercen)));
         infantAssessmentVisit.setInfantLenpercenNa(cursorIA.getString(cursorIA.getColumnIndex(Zpo07DBConstants.infantLenpercenNa)));
         if (cursorIA.getFloat(cursorIA.getColumnIndex(Zpo07DBConstants.infantHeadcircu))>0) infantAssessmentVisit.setInfantHeadcircu(cursorIA.getFloat(cursorIA.getColumnIndex(Zpo07DBConstants.infantHeadcircu)));
-        if (cursorIA.getFloat(cursorIA.getColumnIndex(Zpo07DBConstants.infantHeapercen))>0) infantAssessmentVisit.setInfantHeapercen(cursorIA.getFloat(cursorIA.getColumnIndex(Zpo07DBConstants.infantHeapercen)));
+        infantAssessmentVisit.setInfantHeapercen(cursorIA.getString(cursorIA.getColumnIndex(Zpo07DBConstants.infantHeapercen)));
         infantAssessmentVisit.setInfantHeapercenNa(cursorIA.getString(cursorIA.getColumnIndex(Zpo07DBConstants.infantHeapercenNa)));
         infantAssessmentVisit.setInfantHeasize(cursorIA.getString(cursorIA.getColumnIndex(Zpo07DBConstants.infantHeasize)));
         infantAssessmentVisit.setInfantSkinEvalu(cursorIA.getString(cursorIA.getColumnIndex(Zpo07DBConstants.infantSkinEvalu)));

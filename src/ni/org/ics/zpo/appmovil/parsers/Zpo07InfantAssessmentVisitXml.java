@@ -44,19 +44,19 @@ public class Zpo07InfantAssessmentVisitXml {
     @Element(required = false)
     private String infantWtUnit;
     @Element(required = false)
-    private Float infantWtPercen;
+    private String infantWtPercen;
     @Element(required = false)
     private String infantWtpercenNa;
     @Element(required = false)
     private Float infantLength;
     @Element(required = false)
-    private Float infantLengthPercen;
+    private String infantLengthPercen;
     @Element(required = false)
     private String infantLenpercenNa;
     @Element(required = false)
     private Float infantHeadcircu;
     @Element(required = false)
-    private Float infantHeapercen;
+    private String infantHeapercen;
     @Element(required = false)
     private String infantHeapercenNa;
     @Element(required = false)
@@ -493,10 +493,6 @@ public class Zpo07InfantAssessmentVisitXml {
         return infantWtUnit;
     }
 
-    public Float getInfantWtPercen() {
-        return infantWtPercen;
-    }
-
     public String getInfantWtpercenNa() {
         return infantWtpercenNa;
     }
@@ -505,20 +501,12 @@ public class Zpo07InfantAssessmentVisitXml {
         return infantLength;
     }
 
-    public Float getInfantLengthPercen() {
-        return infantLengthPercen;
-    }
-
     public String getInfantLenpercenNa() {
         return infantLenpercenNa;
     }
 
     public Float getInfantHeadcircu() {
         return infantHeadcircu;
-    }
-
-    public Float getInfantHeapercen() {
-        return infantHeapercen;
     }
 
     public String getInfantHeapercenNa() {
@@ -1047,6 +1035,18 @@ public class Zpo07InfantAssessmentVisitXml {
 
     public Integer getIdInstancia3() {
         return idInstancia3;
+    }
+
+    public String getInfantWtPercen() {
+        return infantWtPercen;
+    }
+
+    public String getInfantLengthPercen() {
+        return infantLengthPercen;
+    }
+
+    public String getInfantHeapercen() {
+        return infantHeapercen;
     }
 
     public String getId() {
